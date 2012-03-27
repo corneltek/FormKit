@@ -5,7 +5,30 @@ use CascadingAttribute;
 abstract class BaseWidget extends CascadingAttribute
 {
 
-    public function __construct()
+    /**
+     * @var string field name
+     */
+    public $name;
+
+    /**
+     * @var array class name
+     */
+    public $class = array();
+
+
+    /**
+     * @var array id field
+     */
+    public $id = array();
+
+    public function __construct($name, $attributes = array() )
+    {
+        $this->name = $name;
+        $this->attributes += $attributes;
+        $this->init();
+    }
+
+    public function init()
     {
         $this->setAttributeType( 'class', self::ATTR_ARRAY );
         $this->setAttributeType( 'id', self::ATTR_ARRAY );
