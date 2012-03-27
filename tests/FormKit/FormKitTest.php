@@ -30,8 +30,9 @@ class FormKitTest extends PHPUnit_Framework_TestCase
 		$widget = FormKit\FormKit::checkbox( 'confirmed' );
 		$html .= $widget->render();
 
-
-
+		$widget = FormKit\FormKit::select( 'country' );
+        // $widget->choices(array(  ));
+		$html .= $widget->render();
 
 		file_put_contents( 'tests/index.html', $html );
     }
