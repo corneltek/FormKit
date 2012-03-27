@@ -7,12 +7,14 @@ namespace FormKit;
 class FormKit
 {
 
-    static function input( $name, $attributes = array() )
+    static function text( $name, $attributes = array() )
     {
+
     }
 
     static function select($name, $attributes = array() )
     {
+
     }
 
 }
