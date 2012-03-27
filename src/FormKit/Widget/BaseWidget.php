@@ -12,6 +12,11 @@ abstract class BaseWidget extends CascadingAttribute
         $this->setAttributeType( 'name', self::ATTR_STRING );
         $this->setAttributeType( 'type', self::ATTR_STRING );
         $this->setAttributeType( 'value', self::ATTR_STRING );
+
+        // virtual attribute (not for rendering widget elements )
+        $this->setAttributeType( 'label', self::ATTR_STRING );
+        $this->setAttributeType( 'hint', self::ATTR_STRING );
+        $this->setAttributeType( 'tooltip', self::ATTR_STRING );
     }
 
     abstract public function render();
@@ -20,5 +25,6 @@ abstract class BaseWidget extends CascadingAttribute
     {
         return $this->render();
     }
+
 }
 
