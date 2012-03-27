@@ -28,6 +28,18 @@ abstract class BaseWidget extends CascadingAttribute
         $this->init();
     }
 
+    public function addClass($class)
+    {
+        $this->class[] = $class;
+        return $this;
+    }
+
+    public function addId($id)
+    {
+        $this->id[] = $id;
+        return $this;
+    }
+
     public function init()
     {
         $this->setAttributeType( 'class', self::ATTR_ARRAY );
@@ -43,6 +55,20 @@ abstract class BaseWidget extends CascadingAttribute
     }
 
     abstract public function render();
+
+
+    protected function _renderBasicAttributes()
+    {
+        $html = '';
+        if( $this->class ) {
+            $html .= ' class="' . join(' ',$this->class) . '"';
+        }
+        if( $this->id ) {
+            $html .= ' id="' . join(' ',$this->id) . '"';
+        }
+        return $html;
+    }
+
 
     public function __toString()
     {
