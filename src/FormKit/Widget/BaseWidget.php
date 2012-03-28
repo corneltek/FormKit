@@ -57,6 +57,13 @@ abstract class BaseWidget extends \FormKit\Element
         $this->setAttributeType( 'tooltip', self::ATTR_STRING );
     }
 
+    public function renderHint()
+    {
+        if( $this->hint )
+            return '<div class="formkit-hint">' . $this->hint . '</div>';
+    }
+
+
     protected function _renderBasicAttributes()
     {
         return $this->_renderAttributes(array('class id'));

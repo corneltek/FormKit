@@ -12,7 +12,8 @@ class TextInput extends BaseWidget
             . $this->_renderAttributes(array(
                 'class','id','type',
                 'name','value','size','maxlength','minlength'))
-            . '/>';
+                . '/>' 
+                . $this->renderHint();
     }
 }
 
