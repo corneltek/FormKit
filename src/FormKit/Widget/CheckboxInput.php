@@ -9,7 +9,8 @@ namespace FormKit\Widget;
  */
 class CheckboxInput extends BaseWidget
 {
-    public $class = array('formkit-checkbox');
+    public $class = array('formkit-widget','formkit-checkbox');
+    public $type = 'checkbox';
 
 	public function init() 
 	{ 

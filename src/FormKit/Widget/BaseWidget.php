@@ -33,7 +33,6 @@ abstract class BaseWidget extends \FormKit\Element
         $this->init();
     }
 
-
     public function getStylesheets()
     {
         return $this->css;

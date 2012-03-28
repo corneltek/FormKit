@@ -3,12 +3,8 @@ namespace FormKit\Widget;
 
 class TextInput extends BaseWidget
 {
-    public $class = array('formkit-text');
-
-    public function init()
-    {
-        $this->type = 'text';
-    }
+    public $class = array('formkit-widget','formkit-text');
+    public $type = 'text';
 
     public function render()
     {
