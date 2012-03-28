@@ -23,7 +23,7 @@ class GenericTable extends Element
 
     public function render() 
     {
-        return '<table' . $this->_renderAttributes(array('id','class')) . '>'
+        return '<table' . $this->_renderAttributes(array('id','class','width','height','border')) . '>'
             . $this->_renderChildren()
             . '</table>';
     }

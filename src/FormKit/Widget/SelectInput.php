@@ -3,28 +3,24 @@ namespace FormKit\Widget;
 
 class SelectInput extends BaseWidget
 {
-	public $choices = array();
-
-	public function init()
-	{
-		$this->setAttributeType('multiple',self::ATTR_BOOLEAN);
-	}
+	public $options = array();
+    public $multiple;
 
 	public function render()
 	{
 		ob_start();
-		?><select multiple="<?= $this->multiple ? 'true' : 'false' ?>" name="<?=$this->name?>">
+        ?><select <?=$this->_renderAttributes(array('multiple','name')); ?>>
 <?php 
-foreach( $this->choices as $k => $choice ) {
-	if ( is_array($choice) ) {
+foreach( $this->options as $k => $option ) {
+	if ( is_array($option) ) {
 		$groupLabel = $k;
 	}
 	else {
 		if( is_integer($k) ) {
 			$value = $k;
-			$label = $choice;
+			$label = $option;
 		} else {
-			$value = $label = $choice;
+			$value = $label = $option;
 		}
 
 		?><option value="<?= $value ?>" 
@@ -35,14 +31,9 @@ foreach( $this->choices as $k => $choice ) {
 	}
 
 }
-foreach( $this->choices as $key => $choice ) {
-
-} 
-
 ?>
 </select>
 		<?php
-
 		$html = ob_get_contents();
 		ob_end_clean();
 		return $html;

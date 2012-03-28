@@ -11,15 +11,11 @@ class PasswordInput extends TextInput
 
     public function render()
     {
-        $html = sprintf( '<input type="%s" name="%s" value="%s" ', 
-            $this->type,
-            $this->name,
-            $this->value );
-
-        $html .= $this->_renderAttributes(array('class','id'));
+        $html = '<input' . $this->_renderAttributes(array('class','id','type','name','value'));
         $html .= '/>';
         return $html;
     }
+
 }
 
 

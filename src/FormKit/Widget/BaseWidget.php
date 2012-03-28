@@ -42,7 +42,6 @@ abstract class BaseWidget extends \FormKit\Element
         return $this->js;
     }
 
-
     public function init()
     {
         $this->setAttributeType( 'class', self::ATTR_ARRAY );
