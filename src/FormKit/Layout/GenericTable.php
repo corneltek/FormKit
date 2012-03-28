@@ -31,6 +31,13 @@ class GenericTable extends Element
 
     }
 
+    public function addRow()
+    {
+        $row = new TableRow;
+        $this->addChild( $row );
+        return $row;
+    }
+
     public function addWidget($widget)
     {
         $cell = new TableCell;
