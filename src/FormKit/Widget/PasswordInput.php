@@ -1,11 +1,12 @@
 <?php
+
 namespace FormKit\Widget;
 
-class TextInput extends BaseWidget
+class PasswordInput extends TextInput
 {
     public function init()
     {
-        $this->type = 'text';
+        $this->type = 'password';
     }
 
     public function render()
@@ -16,7 +17,6 @@ class TextInput extends BaseWidget
             $this->value );
 
         $html .= $this->_renderBasicAttributes();
-
         $html .= '/>';
         return $html;
     }

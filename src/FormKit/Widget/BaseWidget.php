@@ -16,10 +16,23 @@ abstract class BaseWidget extends CascadingAttribute
     public $class = array();
 
 
+
+    /**
+     * @var array css style sheets
+     */
+    public $css = array();
+
+
+    /**
+     * @var array js files
+     */
+    public $js = array();
+
     /**
      * @var array id field
      */
     public $id = array();
+
 
     public function __construct($name, $attributes = array() )
     {
@@ -27,6 +40,19 @@ abstract class BaseWidget extends CascadingAttribute
         $this->attributes += $attributes;
         $this->init();
     }
+
+
+    public function getStylesheets()
+    {
+        return $this->css;
+    }
+
+
+    public function getJavascripts()
+    {
+        return $this->js;
+    }
+
 
     public function addClass($class)
     {
@@ -56,19 +82,20 @@ abstract class BaseWidget extends CascadingAttribute
 
     abstract public function render();
 
-
-    protected function _renderBasicAttributes()
+    protected function _renderAttributes($keys) 
     {
         $html = '';
-        if( $this->class ) {
-            $html .= ' class="' . join(' ',$this->class) . '"';
-        }
-        if( $this->id ) {
-            $html .= ' id="' . join(' ',$this->id) . '"';
+        foreach( $keys as $key ) {
+            $val = $this->$key;
+            $html .= sprintf(' %s="%s"', $key , is_array($val) ? join(' ',$val) : $val );
         }
         return $html;
     }
 
+    protected function _renderBasicAttributes()
+    {
+        return $this->_renderAttributes(array('class id'));
+    }
 
     public function __toString()
     {
