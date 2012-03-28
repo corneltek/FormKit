@@ -9,13 +9,6 @@ class PasswordInput extends TextInput
         $this->type = 'password';
     }
 
-    public function render()
-    {
-        $html = '<input' . $this->_renderAttributes(array('class','id','type','name','value'));
-        $html .= '/>';
-        return $html;
-    }
-
 }
 
 

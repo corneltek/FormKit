@@ -27,7 +27,9 @@ abstract class BaseWidget extends \FormKit\Element
     public function __construct($name, $attributes = array() )
     {
         $this->name = $name;
-        $this->attributes += $attributes;
+        foreach( $attributes as $k => $val ) {
+            $this->_setAttribute($k,$val);
+        }
         $this->init();
     }
 

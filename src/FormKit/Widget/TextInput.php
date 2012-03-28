@@ -3,6 +3,7 @@ namespace FormKit\Widget;
 
 class TextInput extends BaseWidget
 {
+
     public function init()
     {
         $this->type = 'text';
@@ -10,15 +11,11 @@ class TextInput extends BaseWidget
 
     public function render()
     {
-        $html = sprintf( '<input type="%s" name="%s" value="%s" ', 
-            $this->type,
-            $this->name,
-            $this->value );
-
-        $html .= $this->_renderAttributes(array('class','id'));
-
-        $html .= '/>';
-        return $html;
+        return '<input' 
+            . $this->_renderAttributes(array(
+                'class','id','type',
+                'name','value','size','maxlength','minlength'))
+            . '/>';
     }
 }
 
