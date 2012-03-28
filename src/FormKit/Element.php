@@ -2,7 +2,6 @@
 namespace FormKit;
 use CascadingAttribute;
 
-
 abstract class Element extends CascadingAttribute
 {
 

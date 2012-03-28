@@ -8,7 +8,11 @@ use FormKit\Element\TableRow;
 class GenericTable extends Element
 {
 
+    public $class = array('formkit-table','formkit-generic-table');
+
+
     public $labelColumnAlign = 'right';
+
     public $widgetColumnAlign = 'left';
 
 
@@ -22,7 +26,6 @@ class GenericTable extends Element
      */
     public $widgetColumnWidth;
 
-
     public function __construct()
     {
 
@@ -33,11 +36,13 @@ class GenericTable extends Element
         $cell = new TableCell;
         $cell->align( $this->labelColumnAlign );
         $cell->width( $this->labelColumnWidth );
+        $cell->addClass( 'formkit-column-label' );
         $cell->addChild( new Label($widget->label) );
 
         $cell2 = new TableCell;
         $cell2->align( $this->widgetColumnAlign );
         $cell2->width( $this->widgetColumnWidth );
+        $cell2->addClass( 'formkit-column-widget' );
         $cell2->addChild( $widget );
 
         $row = new TableRow;
