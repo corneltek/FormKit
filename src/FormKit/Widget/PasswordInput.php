@@ -16,7 +16,7 @@ class PasswordInput extends TextInput
             $this->name,
             $this->value );
 
-        $html .= $this->_renderBasicAttributes();
+        $html .= $this->_renderAttributes(array('class','id'));
         $html .= '/>';
         return $html;
     }

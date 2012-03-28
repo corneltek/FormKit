@@ -102,5 +102,6 @@ abstract class BaseWidget extends CascadingAttribute
         return $this->render();
     }
 
+
 }
 
