@@ -3,6 +3,7 @@ namespace FormKit\Widget;
 
 class TextInput extends BaseWidget
 {
+    public $class = array('formkit-text');
 
     public function init()
     {

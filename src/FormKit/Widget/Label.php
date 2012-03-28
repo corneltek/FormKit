@@ -4,6 +4,8 @@ use FormKit\Element;
 
 class Label extends Element
 {
+    public $class = array('formkit-label');
+
     public $text;
 
     public function __construct($text)
