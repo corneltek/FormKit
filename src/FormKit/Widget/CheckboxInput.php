@@ -1,6 +1,12 @@
 <?php
 namespace FormKit\Widget;
 
+
+/**
+ * $checkbox = new CheckboxInput('confirmed');
+ * $checkbox->value(10);
+ * $checkbox->checked();
+ */
 class CheckboxInput extends BaseWidget
 {
 	public function init() 
@@ -9,9 +15,12 @@ class CheckboxInput extends BaseWidget
 		$this->value = 1;
    	}
 
-	public function check() 
+	public function check( $value = null ) 
 	{
-		$this->checked = true;
+        if( $value !== null )
+            $this->checked = $value;
+        else
+            $this->checked = true;
 	}
 
 	public function uncheck()
