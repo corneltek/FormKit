@@ -7,7 +7,7 @@ class TableCell extends Element
 {
     public function render()
     {
-        return '<td ' . $this->_renderAttributes(array('id','class')) . '>'
+        return '<td' . $this->_renderAttributes(array('id','class','width','height')) . '>'
             . $this->_renderChildren()
             . '</td>';
     }
@@ -26,7 +26,7 @@ class TableRow extends Element
 
     public function render()
     {
-        return '<tr ' . $this->_renderAttributes(array('id','class')) . '>'
+        return '<tr' . $this->_renderAttributes(array('id','class','width','height')) . '>'
             . $this->_renderChildren()
             . '</tr>';
     }
@@ -50,7 +50,7 @@ class GenericTable extends Element
 
     public function render() 
     {
-        return '<table ' . $this->_renderAttributes(array('id','class')) . '>'
+        return '<table' . $this->_renderAttributes(array('id','class')) . '>'
             . $this->_renderChildren()
             . '</table>';
     }

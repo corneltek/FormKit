@@ -46,7 +46,7 @@ abstract class Element extends CascadingAttribute
     protected function _renderChildren()
     {
         return join("\n",array_map(function($item) { 
-            return $item->render() . PHP_EOL . PHP_EOL;
+            return $item->render() . PHP_EOL;
         }, $this->children ));
     }
 
