@@ -5,6 +5,11 @@ class TextInput extends BaseWidget
 {
     public $class = array('formkit-widget','formkit-text');
     public $type = 'text';
+    public $value;
+    public $size;
+    public $alt;
+    public $readonly;
+    public $style;
 
     public function render()
     {
