@@ -57,7 +57,7 @@ abstract class Element extends CascadingAttribute
             if( $val ) {
                 $html .= sprintf(' %s="%s"', 
                         $key, 
-                        htmlentities( is_array($val) ? join(' ',$val) : $val ) 
+                        htmlspecialchars( is_array($val) ? join(' ',$val) : $val ) 
                     );
             }
         }
