@@ -39,10 +39,11 @@ class CheckboxInput extends BaseWidget
         return $this;
     }
 
+
     public function render()
     {
         ob_start();
-        $fieldId = $this->name . '-' . time();
+        $fieldId = $this->getSerial();
         ?><input id="<?= $fieldId ?>" type="hidden" 
             name="<?=$this->name?>" 
             value="<?= ($this->value) ? $this->value : ''; ?>"/>

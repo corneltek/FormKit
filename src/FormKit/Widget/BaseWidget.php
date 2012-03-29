@@ -76,5 +76,12 @@ abstract class BaseWidget extends \FormKit\Element
         return $this->_renderAttributes(array('class id'));
     }
 
+    public function getSerial()
+    {
+        if( function_exists('uniqid') )
+            return uniqid( $this->name );
+        return $this->name . '-' . microtime(true);
+    }
+
 }
 

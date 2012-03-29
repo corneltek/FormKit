@@ -38,6 +38,11 @@ $countries = new FormKit\Widget\SelectInput( 'country' , array(
     )
 ));
 
+$radio = new FormKit\Widget\RadioInput('type' , array( 
+    'label' => 'Size',
+    'options' => array( "One", "Two" , "Three" )
+));
+
 $size = new FormKit\Widget\SelectInput('size' , array( 
     'label' => 'Size',
     'options' => array(
@@ -62,6 +67,7 @@ $layout->addWidget( $text )
     ->cellspacing(6)
     ->border(0);
 
+$layout->addWidget( $radio );
 $layout->addWidget( $file );
 $layout->addWidget( $submit );
 
