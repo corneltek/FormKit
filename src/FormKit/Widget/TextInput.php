@@ -13,9 +13,26 @@ class TextInput extends BaseWidget
                 'class','id','type',
                 'name','value','size','maxlength',
                 'minlength','align','src','alt','accept',
-                'readonly','style'))
-                . '/>' 
-                . $this->renderHint();
+                'readonly','style',
+
+                /* event attributes */
+                'onblur',
+                'onchange',
+                'onclick',
+                'ondblclick',
+                'onfocus',
+                'onmousedown',
+                'onmousemove',
+                'onmouseout',
+                'onmouseover',
+                'onmouseup',
+                'onkeydown',
+                'onkeypress',
+                'onkeyup',
+                'onselect',
+            ))
+            . '/>' 
+            . $this->renderHint();
     }
 }
 
