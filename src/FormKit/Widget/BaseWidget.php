@@ -27,7 +27,9 @@ abstract class BaseWidget extends \FormKit\Element
     public function __construct($name, $attributes = null )
     {
         $this->name = $name;
-        $this->loadAttributes( $attributes );
+        if( $attributes ) {
+            $this->loadAttributes( $attributes );
+        }
         $this->init();
     }
 
