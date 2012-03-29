@@ -35,11 +35,9 @@ class CheckboxInput extends BaseWidget
     {
 		ob_start();
 		$fieldId = $this->name . '-' . time();
-		?>
-		<input id="<?= $fieldId ?>" type="hidden" 
+		?><input id="<?= $fieldId ?>" type="hidden" 
 			name="<?=$this->name?>" 
 			value="<?= ($this->value) ? $this->value : ''; ?>"/>
-
 		<input type="<?= $this->type ?>" <?=$this->_renderBasicAttributes(); ?> 
 			<?php if( $this->checked ): ?>checked<?php endif ?> onclick=" 
 				var el = document.getElementById('<?= $fieldId ?>');
