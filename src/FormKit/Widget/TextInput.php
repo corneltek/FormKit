@@ -20,7 +20,7 @@ class TextInput extends BaseWidget
                 'minlength','align','src','alt','accept',
                 'readonly','style',
 
-                /* event attributes */
+                /* Event Attributes */
                 'onblur',
                 'onchange',
                 'onclick',
