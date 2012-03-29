@@ -55,7 +55,10 @@ abstract class Element extends CascadingAttribute
         foreach( $keys as $key ) {
             $val = $this->$key;
             if( $val ) {
-                $html .= sprintf(' %s="%s"', $key , is_array($val) ? join(' ',$val) : $val );
+                $html .= sprintf(' %s="%s"', 
+                        $key, 
+                        htmlentities( is_array($val) ? join(' ',$val) : $val ) 
+                    );
             }
         }
         return $html;
