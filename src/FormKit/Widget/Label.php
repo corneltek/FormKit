@@ -5,6 +5,7 @@ use FormKit\Element;
 class Label extends Element
 {
     public $class = array('formkit-widget','formkit-label');
+    public $for;
     public $text;
 
     public function __construct($text)
@@ -14,9 +15,9 @@ class Label extends Element
 
     public function render() 
     {
-        return '<div' . $this->_renderAttributes(array('id','class')) . '>'
+        return '<label' . $this->_renderAttributes(array('id','class','for')) . '>'
             . $this->text
-            . '</div>';
+            . '</label>';
     }
 }
 
