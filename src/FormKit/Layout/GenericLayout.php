@@ -5,7 +5,10 @@ use FormKit\Element;
 use FormKit\Element\TableCell;
 use FormKit\Element\TableRow;
 
-class GenericTable extends Element
+/**
+ * @class Generic table layout, 2 columns
+ */
+class GenericLayout extends Element
 {
 
     public $class = array('formkit-table','formkit-generic-table');
