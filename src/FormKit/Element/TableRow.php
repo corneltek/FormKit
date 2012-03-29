@@ -14,8 +14,9 @@ class TableRow extends Element
         return $this;
     }
 
-    public function render()
+    public function render( $attributes = array() ) 
     {
+        $this->loadAttributes( $attributes );
         return '<tr' . $this->_renderAttributes(array('id','class','width','height')) . '>'
             . $this->_renderChildren()
             . '</tr>';

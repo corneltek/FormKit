@@ -12,8 +12,9 @@ class Form extends Element
 	public $class = array('formkit-form');
 	public $enctype = 'multipart/form-data';
 
-    public function render()
+    public function render( $attributes = array() ) 
     {
+        $this->loadAttributes( $attributes );
         return '<form' . $this->_renderAttributes(
                     array('id','class','action','name','method','enctype','target')) . '>'
             . $this->_renderChildren()

@@ -64,10 +64,11 @@ abstract class Element extends CascadingAttribute
         return $html;
     }
 
-    abstract public function render();
+    abstract public function render( $attributes = array() );
 
     public function __toString()
     {
+
         return $this->render();
     }
 }

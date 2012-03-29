@@ -3,6 +3,7 @@ namespace FormKit\Widget;
 
 class TextInput extends BaseWidget
 {
+    public $tag;
     public $class = array('formkit-widget','formkit-text');
     public $type = 'text';
     public $value;
@@ -11,8 +12,9 @@ class TextInput extends BaseWidget
     public $readonly;
     public $style;
 
-    public function render()
+    public function render( $attributes = array() )
     {
+        $this->loadAttributes( $attributes );
         return '<input' 
             . $this->_renderAttributes(array(
                 'class','id','type',
@@ -39,6 +41,7 @@ class TextInput extends BaseWidget
             . '/>' 
             . $this->renderHint();
     }
+
 }
 
 

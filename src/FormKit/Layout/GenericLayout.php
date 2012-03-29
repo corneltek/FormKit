@@ -63,8 +63,9 @@ class GenericLayout extends Element
         return $this;
     }
 
-    public function render() 
+    public function render( $attributes = array() ) 
     {
+        $this->loadAttributes( $attributes );
         return '<table' . $this->_renderAttributes(array(
                     'id','class','width','summary',
                     'cellpadding','cellspacing','height','border'

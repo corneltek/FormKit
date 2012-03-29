@@ -1,6 +1,13 @@
 <?php
 require '../tests/bootstrap.php';
-
+?>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
+</head>
+<body>
+<?php
 $text = new FormKit\Widget\TextInput('username', array( 'label' => 'Username' ));
 $text->value( 'default' )
     ->maxlength(10)
@@ -12,6 +19,11 @@ $password = new FormKit\Widget\PasswordInput('password', array( 'label' => 'Pass
 $remember = new FormKit\Widget\CheckboxInput('remember', array( 'label' => 'Remember me' ));
 $remember->value(12);
 $remember->check();
+
+$ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 
+    'label' => 'names',
+    'source' => 'ajax_complete.php',
+));
 
 $file = new FormKit\Widget\FileInput('file', array( 'label' => _('File') ));
 
@@ -67,6 +79,7 @@ $layout->addWidget( $text )
     ->cellspacing(6)
     ->border(0);
 
+$layout->addWidget( $ajaxComplete );
 $layout->addWidget( $radio );
 $layout->addWidget( $file );
 $layout->addWidget( $submit );
@@ -84,3 +97,6 @@ echo $form;
 #  echo $remember;
 #  $layout->renderRow( 'username' );
 #  $layout->renderRow( 'password' );
+?>
+</body>
+</html>
