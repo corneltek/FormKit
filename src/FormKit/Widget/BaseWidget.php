@@ -24,13 +24,18 @@ abstract class BaseWidget extends \FormKit\Element
     public $js = array();
 
 
-    public function __construct($name, $attributes = array() )
+    public function __construct($name, $attributes = null )
     {
         $this->name = $name;
+        $this->loadAttributes( $attributes );
+        $this->init();
+    }
+
+    public function loadAttributes($attributes)
+    {
         foreach( $attributes as $k => $val ) {
             $this->_setAttribute($k,$val);
         }
-        $this->init();
     }
 
     public function getStylesheets()
