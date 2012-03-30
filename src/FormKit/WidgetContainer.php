@@ -2,6 +2,13 @@
 namespace FormKit;
 use ArrayAccess;
 
+/**
+ * WidgetContainer class is a simple container,
+ * contains widgets and their sequence.
+ *
+ * WidgetContains provides a better way to retrieve widget by names or by 
+ * sequence.
+ */
 class WidgetContainer
     implements ArrayAccess
 {
