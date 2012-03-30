@@ -4,15 +4,15 @@ use FormKit\Widget\Label;
 use FormKit\Element;
 use FormKit\Element\TableCell;
 use FormKit\Element\TableRow;
+use ArrayAccess;
 
 /**
  * @class Generic table layout, 2 columns
  */
 class GenericLayout extends Element
+    implements ArrayAccess
 {
-
     public $class = array('formkit-table','formkit-generic-table');
-
 
     public $labelColumnAlign = 'right';
 
@@ -28,6 +28,9 @@ class GenericLayout extends Element
      * configure widget column width
      */
     public $widgetColumnWidth;
+
+
+    public $widgets = array();
 
     public function __construct()
     {
@@ -65,8 +68,16 @@ class GenericLayout extends Element
         $row->addChild($cell);
         $row->addChild($cell2);
 
+        $this->widgets[ $widget->name ] = $row;
+
         $this->addChild( $row );
         return $this;
+    }
+
+    public function renderWidget($name, $attributes = array() )
+    {
+        if( isset($this->widgets[ $name ]) )
+            return $this->widgets[ $name ]->render( $attributes );
     }
 
     public function render( $attributes = array() ) 
@@ -83,6 +94,26 @@ class GenericLayout extends Element
     public function __toString()
     {
         return $this->render();
+    }
+
+    public function offsetSet($name,$value)
+    {
+        $this->widgets[ $name ] = $value;
+    }
+    
+    public function offsetExists($name)
+    {
+        return isset($this->widgets[ $name ]);
+    }
+    
+    public function offsetGet($name)
+    {
+        return $this->widgets[ $name ];
+    }
+    
+    public function offsetUnset($name)
+    {
+        unset($this->widgets[$name]);
     }
 }
 
