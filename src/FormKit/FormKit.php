@@ -6,6 +6,9 @@ namespace FormKit;
  */
 class FormKit
 {
+    static $useCss    = true;
+    static $useJs     = true;
+    static $baseUrl   = '';
 
     static function text( $name, $attributes = array() )
     {

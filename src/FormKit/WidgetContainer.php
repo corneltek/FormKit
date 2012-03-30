@@ -1,6 +1,7 @@
 <?php
 namespace FormKit;
 use ArrayAccess;
+use FormKit\FormKit;
 
 /**
  * WidgetContainer class is a simple container,
@@ -15,23 +16,28 @@ class WidgetContainer
     public $widgets = array();
     public $widgetsByName = array();
 
-
     public function getJavascripts()
     {
+        if( false === FormKit::$useJs )
+            return array();
+
         $urls = array();
         foreach( $this->widgets as $widget ) {
             foreach( $widget->getJavascripts() as $url )
-                $urls[] = $url;
+                $urls[] = FormKit::$baseUrl . $url;
         }
         return $urls;
     }
 
     public function getStylesheets()
     {
+        if( false === FormKit::$useCss )
+            return array();
+
         $urls = array();
         foreach( $this->widgets as $widget ) {
             foreach( $widget->getStylesheets() as $url )
-                $urls[] = $url;
+                $urls[] = FormKit::$baseUrl . $url;
         }
         return $urls;
     }
