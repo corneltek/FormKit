@@ -6,10 +6,15 @@ namespace FormKit\Widget;
  *     'source' => 'ajax_complete.php',
  *     'min_length' => 2,
  * ));
+ *
+ * jQuery UI CDN:
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/black-tie/jquery-ui.css" type="text/css" />
  */
 class AjaxCompleteInput extends TextInput
 {
-
     public $class = array('formkit-widget','formkit-text','formkit-ajax-complete');
 
     public $source;

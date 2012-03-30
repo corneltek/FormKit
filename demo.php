@@ -17,7 +17,7 @@ $remember->check();
 
 $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 
     'label' => 'names',
-    'source' => 'ajax_complete.php',
+    'source' => 'tests/ajax_complete.php',
 ));
 
 $file = new FormKit\Widget\FileInput('file', array( 'label' => _('File') ));
@@ -86,8 +86,10 @@ $layout->addWidget( $submit );
 ?>
 <html>
 <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/black-tie/jquery-ui.css" type="text/css" />
     <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
         <script src="<?= $url ?>"> </script>
     <?php endforeach ?>
