@@ -90,8 +90,13 @@ $layout->addWidget( $submit );
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/black-tie/jquery-ui.css" type="text/css" />
+
     <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
         <script src="<?= $url ?>"> </script>
+    <?php endforeach ?>
+
+    <?php foreach( $layout->widgets->getStylesheets() as $url ) : ?>
+        <link rel="stylesheet" href="<?= $url ?>" type="text/css"/>
     <?php endforeach ?>
 </head>
 <body>
