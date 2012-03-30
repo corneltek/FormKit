@@ -4,7 +4,7 @@ namespace FormKit\Widget;
 class SelectInput extends BaseWidget
 {
     public $class = array('formkit-widget','formkit-select');
-	public $options = array();
+    public $options = array();
     public $multiple;
 
     public function renderGroup($label,$options)
@@ -44,19 +44,19 @@ class SelectInput extends BaseWidget
         return $html;
     }
 
-	public function render( $attributes = array() )
-	{
+    public function render( $attributes = array() )
+    {
         $this->loadAttributes( $attributes );
-		ob_start();
+        ob_start();
         ?><select <?=$this->_renderAttributes(array('multiple','name')); ?>>
             <? echo $this->renderOptions($this->options); ?>
         </select>
-		<?php
-		$html = ob_get_contents();
-		ob_end_clean();
+        <?php
+        $html = ob_get_contents();
+        ob_end_clean();
         $html .= $this->renderHint();
-		return $html;
-	}
+        return $html;
+    }
 
 }
 

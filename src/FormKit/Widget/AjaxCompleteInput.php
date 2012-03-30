@@ -27,21 +27,21 @@ class AjaxCompleteInput extends TextInput
                 background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
             }
             </style>
-			select: function( event, ui ) {
-				log( ui.item ?
-					"Selected: " + ui.item.value + " aka " + ui.item.id :
-					"Nothing selected, input was " + this.value );
-			}
+            select: function( event, ui ) {
+                log( ui.item ?
+                    "Selected: " + ui.item.value + " aka " + ui.item.id :
+                    "Nothing selected, input was " + this.value );
+            }
         */
         ?>
-	<script>
-	jQuery(function() {
+    <script>
+    jQuery(function() {
         jQuery( "#<?= $serial ?>" ).autocomplete({
             source: "<?= $this->source ?>",
             minLength: <?= $this->min_length ?>
-		});
-	});
-	</script>
+        });
+    });
+    </script>
         <?php
         $script = ob_get_contents();
         ob_end_clean();
