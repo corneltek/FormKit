@@ -88,7 +88,7 @@ class GenericLayout extends Element
     public function renderLabel($name, $attributes = array() )
     {
         if( isset($this->widgets[ $name ]) ) {
-            $label = new Label($widget->label) );
+            $label = new Label($widget->label);
             return $label->render( $attributes );
         }
     }
