@@ -29,13 +29,19 @@ class WidgetContainer
             return $this->widgets[ $name ];
     }
 
+    public function render($name , $attributes = array() )
+    {
+        if( $widget = $this->get($name) )
+            return $widget->render( $attributes );
+    }
 
     public function __get($name)
     {
-        return $this->get( $name );
+        if( isset($this->widgets[ $name ]) )
+            return $this->widgets[ $name ];
+        else
+            throw new Exception("Undefined widget $name");
     }
-
-
 
     
     public function offsetSet($name,$value)
