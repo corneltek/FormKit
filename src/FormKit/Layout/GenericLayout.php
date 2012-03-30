@@ -30,13 +30,15 @@ class GenericLayout extends Element
     public $widgetColumnWidth;
 
 
-    public $widgets = array();
-
     public function __construct()
     {
-
+        $this->widgets = new \FormKit\WidgetContainer;
     }
 
+
+    /**
+     * @return TableRow
+     */
     public function addRow()
     {
         $row = new TableRow;
@@ -44,12 +46,21 @@ class GenericLayout extends Element
         return $row;
     }
 
-    public function addWidgets($widgets)
+
+    /**
+     * @param array $widget
+     */
+    public function addWidgets(array $widgets)
     {
         foreach( $widgets as $widget )
             $this->addWidget( $widget );
     }
 
+
+
+    /**
+     * Add Widget into a new row , two cells
+     */
     public function addWidget($widget)
     {
         $cell = new TableCell;

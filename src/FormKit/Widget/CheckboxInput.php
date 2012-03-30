@@ -3,6 +3,8 @@ namespace FormKit\Widget;
 
 
 /**
+ * Checkbox Widget
+ *
  * $checkbox = new CheckboxInput('confirmed');
  * $checkbox->value(10);
  * $checkbox->checked();
@@ -58,7 +60,4 @@ class CheckboxInput extends BaseWidget
         return $html;
     }
 }
-
-
-
 
