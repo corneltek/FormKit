@@ -1,5 +1,7 @@
 <?php
-require '../tests/bootstrap.php';
+require 'tests/bootstrap.php';
+
+FormKit\FormKit::$baseUrl = 'static/';
 
 $text = new FormKit\Widget\TextInput('username', array( 'label' => 'Username' ));
 $text->value( 'default' )
@@ -43,10 +45,15 @@ $countries = new FormKit\Widget\SelectInput( 'country' , array(
     )
 ));
 
+$color = new FormKit\Widget\ColorInput('color', array(
+    'label' => _('Color')
+));
+
 $radio = new FormKit\Widget\RadioInput('type' , array( 
     'label' => 'Size',
     'options' => array( "One", "Two" , "Three" )
 ));
+
 
 $size = new FormKit\Widget\SelectInput('size' , array( 
     'label' => 'Size',
@@ -71,6 +78,7 @@ $layout->addWidget( $text )
     ->cellspacing(6)
     ->border(0);
 
+$layout->addWidget( $color );
 $layout->addWidget( $ajaxComplete );
 $layout->addWidget( $radio );
 $layout->addWidget( $file );
