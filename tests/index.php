@@ -84,9 +84,10 @@ $layout->addWidget( $radio );
 $layout->addWidget( $file );
 $layout->addWidget( $submit );
 
+/*
 echo $layout->renderWidget( 'size' );
 echo $layout->widgets->render( 'size' );
-
+*/
 
 $form = new FormKit\Element\Form;
 $form->method('post')->action('/');
