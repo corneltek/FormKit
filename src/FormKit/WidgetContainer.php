@@ -23,8 +23,9 @@ class WidgetContainer
 
         $urls = array();
         foreach( $this->widgets as $widget ) {
-            foreach( $widget->getJavascripts() as $url )
+            foreach( $widget->getJavascripts() as $url ) {
                 $urls[] = FormKit::$baseUrl . $url;
+            }
         }
         return $urls;
     }

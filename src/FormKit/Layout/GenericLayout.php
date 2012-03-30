@@ -79,10 +79,18 @@ class GenericLayout extends Element
         $row->addChild($cell);
         $row->addChild($cell2);
 
-        $this->widgets[ $widget->name ] = $row;
+        $this->widgets[ $widget->name ] = $widget;
 
         $this->addChild( $row );
         return $this;
+    }
+
+    public function renderLabel($name, $attributes = array() )
+    {
+        if( isset($this->widgets[ $name ]) ) {
+            $label = new Label($widget->label) );
+            return $label->render( $attributes );
+        }
     }
 
     public function renderWidget($name, $attributes = array() )

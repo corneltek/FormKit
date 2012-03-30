@@ -1,13 +1,6 @@
 <?php
 require '../tests/bootstrap.php';
-?>
-<html>
-<head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
-</head>
-<body>
-<?php
+
 $text = new FormKit\Widget\TextInput('username', array( 'label' => 'Username' ));
 $text->value( 'default' )
     ->maxlength(10)
@@ -66,7 +59,6 @@ $size = new FormKit\Widget\SelectInput('size' , array(
 ));
 
 $submit = new FormKit\Widget\Submit;
-
 $layout = new FormKit\Layout\GenericLayout;
 $layout->width(400);
 $layout->addWidget( $text )
@@ -83,6 +75,18 @@ $layout->addWidget( $ajaxComplete );
 $layout->addWidget( $radio );
 $layout->addWidget( $file );
 $layout->addWidget( $submit );
+?>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
+    <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
+        <script src="<?= $url ?>"> </script>
+    <?php endforeach ?>
+</head>
+<body>
+<?php
+
 
 /*
 echo $layout->renderWidget( 'size' );
