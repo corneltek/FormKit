@@ -15,6 +15,27 @@ class WidgetContainer
     public $widgets = array();
     public $widgetsByName = array();
 
+
+    public function getJavascripts()
+    {
+        $urls = array();
+        foreach( $this->widgets as $widget ) {
+            foreach( $widget->getJavascripts() as $url )
+                $urls[] = $url;
+        }
+        return $urls;
+    }
+
+    public function getStylesheets()
+    {
+        $urls = array();
+        foreach( $this->widgets as $widget ) {
+            foreach( $widget->getStylesheets() as $url )
+                $urls[] = $url;
+        }
+        return $urls;
+    }
+
     public function add( $widget )
     {
         $this->widgets[ $widget->name ] = $widget;
