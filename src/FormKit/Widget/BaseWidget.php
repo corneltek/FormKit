@@ -84,9 +84,5 @@ abstract class BaseWidget extends \FormKit\Element
         return $this->name . '-' . microtime(true);
     }
 
-
-
-
-
 }
 
