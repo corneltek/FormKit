@@ -41,13 +41,11 @@ class GenericLayout extends Element
         return $row;
     }
 
-
     public function addWidgets($widgets)
     {
         foreach( $widgets as $widget )
             $this->addWidget( $widget );
     }
-
 
     public function addWidget($widget)
     {
