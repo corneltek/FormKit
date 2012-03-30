@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
+  <name>FormKit</name>
+  <channel>pear.corneltek.com</channel>
+  <summary>Form widgets</summary>
+  <description>Form widgets</description>
+  <lead>
+    <name>Yo-An Lin</name>
+    <user/>
+    <email>cornelius.howl@gmail.com</email>
+    <active>yes</active>
+  </lead>
+  <date>2012-03-30</date>
+  <time>14:26:51</time>
+  <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+  </version>
+  <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+  </stability>
+  <license>PHP</license>
+  <notes>-</notes>
+  <contents>
+    <dir name="/">
+      <file name="doc/FormKit.md" role="doc" md5sum="792c94333cd8cbb11813207b40f713bb"/>
+      <file name="tests/ajax_complete.php" role="test" md5sum="50a857cc929da2d75e3c1c42d0a44f49"/>
+      <file name="tests/bootstrap.php" role="test" md5sum="9e6044c4147426fb95e07aa0ef0f121d"/>
+      <file name="tests/FormKit/FormKitTest.php" role="test" md5sum="7a7112af7d08cc90b7d2aaf545926ce7"/>
+      <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
+      <file name="tests/SeleniumTest.php" role="test" md5sum="8a2d904d1bc4da3538d96bb109c0b810"/>
+      <file name="src/FormKit/Element/Form.php" role="php" md5sum="3f293a5b7d22c45093f489d2a69e3c52"/>
+      <file name="src/FormKit/Element/TableCell.php" role="php" md5sum="a795113074d9b9e74bedec17dfb69b71"/>
+      <file name="src/FormKit/Element/TableRow.php" role="php" md5sum="16f43113080a611d7a282d565a7aeabd"/>
+      <file name="src/FormKit/Element.php" role="php" md5sum="045ea0e19aaa2fe68e6a970b7f00978b"/>
+      <file name="src/FormKit/FormKit.php" role="php" md5sum="72a182dd707cb0e81deb605d0f86593d"/>
+      <file name="src/FormKit/Layout/GenericLayout.php" role="php" md5sum="6d1de237282ec6823e21b4b21a522456"/>
+      <file name="src/FormKit/Widget/AjaxCompleteInput.php" role="php" md5sum="ed8a386bd49a82a84c70c0efecd52a12"/>
+      <file name="src/FormKit/Widget/BaseWidget.php" role="php" md5sum="ec680569db38deb63df39311c140f609"/>
+      <file name="src/FormKit/Widget/CheckboxInput.php" role="php" md5sum="75a6124917e01ff1be6d3a9b74c7f537"/>
+      <file name="src/FormKit/Widget/ColorInput.php" role="php" md5sum="dd7ccc662eca6eb8e84590a7ab0f1b5e"/>
+      <file name="src/FormKit/Widget/FileInput.php" role="php" md5sum="2cb8b051afbd6f77928601786a485040"/>
+      <file name="src/FormKit/Widget/HiddenInput.php" role="php" md5sum="4f3b875ffa57c541826d5731e0f47edd"/>
+      <file name="src/FormKit/Widget/Label.php" role="php" md5sum="e777fdfe34042b9975aede88110a9b77"/>
+      <file name="src/FormKit/Widget/PasswordInput.php" role="php" md5sum="282b22af7d876420762bb62fcd6e8c75"/>
+      <file name="src/FormKit/Widget/RadioInput.php" role="php" md5sum="fc89e917f2f58b6a79c4881e422533ae"/>
+      <file name="src/FormKit/Widget/SelectInput.php" role="php" md5sum="cd7cdf19c932f9be9547cb35e2b2605e"/>
+      <file name="src/FormKit/Widget/Submit.php" role="php" md5sum="fd3c650479d1f4dcb3c137ee27876a37"/>
+      <file name="src/FormKit/Widget/TextInput.php" role="php" md5sum="049b9eb4e049b5311bf8cd63fe0d8143"/>
+      <file name="src/FormKit/WidgetContainer.php" role="php" md5sum="fd1f3afef922a05f99fe77f2e920bae5"/>
+    </dir>
+  </contents>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3</min>
+      </php>
+      <pearinstaller>
+        <min>1.14</min>
+      </pearinstaller>
+      <package>
+        <name>CascadingAttribute</name>
+        <channel>pear.corneltek.com</channel>
+      </package>
+    </required>
+  </dependencies>
+  <phprelease>
+    <filelist>
+      <install name="doc/FormKit.md" as="FormKit.md"/>
+      <install name="tests/ajax_complete.php" as="ajax_complete.php"/>
+      <install name="tests/bootstrap.php" as="bootstrap.php"/>
+      <install name="tests/FormKit/FormKitTest.php" as="FormKit/FormKitTest.php"/>
+      <install name="tests/helpers.php" as="helpers.php"/>
+      <install name="tests/SeleniumTest.php" as="SeleniumTest.php"/>
+      <install name="src/FormKit/Element/Form.php" as="FormKit/Element/Form.php"/>
+      <install name="src/FormKit/Element/TableCell.php" as="FormKit/Element/TableCell.php"/>
+      <install name="src/FormKit/Element/TableRow.php" as="FormKit/Element/TableRow.php"/>
+      <install name="src/FormKit/Element.php" as="FormKit/Element.php"/>
+      <install name="src/FormKit/FormKit.php" as="FormKit/FormKit.php"/>
+      <install name="src/FormKit/Layout/GenericLayout.php" as="FormKit/Layout/GenericLayout.php"/>
+      <install name="src/FormKit/Widget/AjaxCompleteInput.php" as="FormKit/Widget/AjaxCompleteInput.php"/>
+      <install name="src/FormKit/Widget/BaseWidget.php" as="FormKit/Widget/BaseWidget.php"/>
+      <install name="src/FormKit/Widget/CheckboxInput.php" as="FormKit/Widget/CheckboxInput.php"/>
+      <install name="src/FormKit/Widget/ColorInput.php" as="FormKit/Widget/ColorInput.php"/>
+      <install name="src/FormKit/Widget/FileInput.php" as="FormKit/Widget/FileInput.php"/>
+      <install name="src/FormKit/Widget/HiddenInput.php" as="FormKit/Widget/HiddenInput.php"/>
+      <install name="src/FormKit/Widget/Label.php" as="FormKit/Widget/Label.php"/>
+      <install name="src/FormKit/Widget/PasswordInput.php" as="FormKit/Widget/PasswordInput.php"/>
+      <install name="src/FormKit/Widget/RadioInput.php" as="FormKit/Widget/RadioInput.php"/>
+      <install name="src/FormKit/Widget/SelectInput.php" as="FormKit/Widget/SelectInput.php"/>
+      <install name="src/FormKit/Widget/Submit.php" as="FormKit/Widget/Submit.php"/>
+      <install name="src/FormKit/Widget/TextInput.php" as="FormKit/Widget/TextInput.php"/>
+      <install name="src/FormKit/WidgetContainer.php" as="FormKit/WidgetContainer.php"/>
+    </filelist>
+  </phprelease>
+</package>
