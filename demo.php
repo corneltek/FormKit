@@ -20,7 +20,16 @@ $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array(
     'source' => 'tests/ajax_complete.php',
 ));
 
-$file = new FormKit\Widget\FileInput('file', array( 'label' => _('File') ));
+$file = new FormKit\Widget\FileInput('file', array( 'label' => _('File'), 'style' => array( 'background-color' => '#ccc' ) ));
+
+$canvas = new FormKit\Widget\CanvasInput('canvas', array(
+    'id' => 'canvas',
+    'label' => _('Canvas'),
+    'width' => 356,
+    'height' => 480,
+    'background' => 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Renoir23.jpg/356px-Renoir23.jpg',
+    'value' => 'famous-artist-518.jpg'
+));
 
 $role = new FormKit\Widget\SelectInput('role' , array( 
     'label' => 'Role',
@@ -82,10 +91,13 @@ $layout->addWidget( $color );
 $layout->addWidget( $ajaxComplete );
 $layout->addWidget( $radio );
 $layout->addWidget( $file );
+$layout->addWidget( $canvas );
 $layout->addWidget( $submit );
 ?>
+<!Doctype html>
 <html>
 <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
@@ -98,6 +110,11 @@ $layout->addWidget( $submit );
     <?php foreach( $layout->widgets->getStylesheets() as $url ) : ?>
         <link rel="stylesheet" href="<?= $url ?>" type="text/css"/>
     <?php endforeach ?>
+
+    <!--
+    $_POST = <? print_r($_POST) ?>
+    $_FILES = <? print_r($_FILES) ?>
+    -->
 </head>
 <body>
 <?php
@@ -109,7 +126,7 @@ echo $layout->widgets->render( 'size' );
 */
 
 $form = new FormKit\Element\Form;
-$form->method('post')->action('/');
+$form->method('post')->action('?');
 $form->addChild( $layout );
 
 // $form->addChild( $submit );
