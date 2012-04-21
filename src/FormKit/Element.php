@@ -55,6 +55,16 @@ abstract class Element extends CascadingAttribute
         foreach( $keys as $key ) {
             $val = $this->$key;
             if( $val ) {
+                if( is_array($val) ) {
+                    if( array_keys($val)===range(0, count($val)-1) )
+                        $val = join(' ', $val);
+                    else {
+                        $val0 = $val;
+                        $val = '';
+                        foreach( $val0 as $name => $data )
+                            $val .= "$name:$data;";
+                    }
+                }
                 $html .= sprintf(' %s="%s"', 
                         $key, 
                         htmlspecialchars( is_array($val) ? join(' ',$val) : $val ) 
