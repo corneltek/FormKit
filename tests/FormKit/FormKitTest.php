@@ -7,7 +7,7 @@ class FormKitTest extends PHPUnit_Framework_TestCase
         $widget = FormKit\FormKit::text('name');
         $widget->label( 'Name' );
         $html = $widget->render();
-        is( '<input type="text" name="name" value="" />', $html );
+        is( '<input class="formkit-widget formkit-text" type="text" name="name"/>', $html );
     }
 
     function testCheckbox()
