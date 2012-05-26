@@ -25,10 +25,10 @@ $file = new FormKit\Widget\FileInput('file', array( 'label' => _('File'), 'style
 $canvas = new FormKit\Widget\CanvasInput('canvas', array(
     'id' => 'canvas',
     'label' => _('Canvas'),
-    'width' => 356,
+    'width' => 385,
     'height' => 480,
-    'background' => 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Renoir23.jpg/356px-Renoir23.jpg',
-    'value' => 'famous-artist-518.jpg'
+    'background' => 'face.jpg',
+    'value' => 'draw.png'
 ));
 
 $role = new FormKit\Widget\SelectInput('role' , array( 
