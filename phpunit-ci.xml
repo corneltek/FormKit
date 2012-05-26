@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="tests/bootstrap.php"
          backupGlobals="false"
-         colors="true"
-         verbose="true">
+         colors="false"
+         verbose="false">
   <php>
 
     <!-- Unit Testing Variables -->
