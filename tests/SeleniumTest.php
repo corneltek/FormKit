@@ -10,26 +10,27 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase
 
     public $url;
 
-    protected function setUp()
+    function setUp()
     {
         $this->url = getenv('TESTING_URL');
         if( $this->url ) {
             $this->setBrowserUrl( $this->url );
         } else {
             $this->markTestSkipped('TESTING_URL is required.');
+            return;
         }
         $this->setBrowser('*firefox');
 		$this->setSleep(2500);
 
     }
  
-    public function testTitle()
+    function testTitle()
     {
         $this->open( $this->url );
         $this->assertTitle('Example WWW Page');
     }
 
-    public function test()
+    function test()
     {
     
     }
