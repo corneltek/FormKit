@@ -12,6 +12,13 @@ class TextInput extends BaseWidget
     public $readonly;
     public $style;
 
+
+    /**
+     * Render Widget with attributes
+     *
+     * @param array $attributes
+     * @param string HTML string
+     */
     public function render( $attributes = array() )
     {
         $this->loadAttributes( $attributes );

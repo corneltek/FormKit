@@ -25,6 +25,11 @@ abstract class BaseWidget extends \FormKit\Element
     public $js = array();
 
 
+    /**
+     *
+     * @param string $name
+     * @param array $attributes
+     */
     public function __construct($name, $attributes = null )
     {
         $this->name = $name;
@@ -34,10 +39,16 @@ abstract class BaseWidget extends \FormKit\Element
         $this->init();
     }
 
+
+    /**
+     * Set attributes from array
+     *
+     * @param array $attributes
+     */
     public function loadAttributes($attributes)
     {
         foreach( $attributes as $k => $val ) {
-            $this->_setAttribute($k,$val);
+            $this->setAttribute($k,$val);
         }
     }
 

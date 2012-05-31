@@ -9,7 +9,7 @@ class SubmitInput extends TextInput
     public $type = 'submit';
 
     /**
-     * a submit button usually does not have a name
+     * A submit button usually does not have a name
      */
     public function __construct( $name = null , $attributes = array() )
     {
