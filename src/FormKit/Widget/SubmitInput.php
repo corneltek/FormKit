@@ -2,7 +2,7 @@
 namespace FormKit\Widget;
 use FormKit\Widget\TextInput;
 
-class Submit extends TextInput
+class SubmitInput extends TextInput
 {
 
     public $class = array('formkit-widget','formkit-submit');

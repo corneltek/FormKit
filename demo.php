@@ -75,7 +75,8 @@ $size = new FormKit\Widget\SelectInput('size' , array(
     )
 ));
 
-$submit = new FormKit\Widget\Submit;
+$submit = new FormKit\Widget\SubmitInput;
+
 $layout = new FormKit\Layout\GenericLayout;
 $layout->width(400);
 $layout->addWidget( $text )
