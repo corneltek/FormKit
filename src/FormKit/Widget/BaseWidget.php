@@ -34,7 +34,7 @@ abstract class BaseWidget extends \FormKit\Element
     {
         $this->name = $name;
         if( $attributes ) {
-            $this->loadAttributes( $attributes );
+            $this->setAttributes( $attributes );
         }
         $this->init();
     }
@@ -45,7 +45,7 @@ abstract class BaseWidget extends \FormKit\Element
      *
      * @param array $attributes
      */
-    public function loadAttributes($attributes)
+    public function setAttributes($attributes)
     {
         foreach( $attributes as $k => $val ) {
             $this->setAttribute($k,$val);

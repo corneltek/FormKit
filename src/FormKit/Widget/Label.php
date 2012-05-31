@@ -15,7 +15,7 @@ class Label extends Element
 
     public function render( $attributes = array() ) 
     {
-        $this->loadAttributes( $attributes );
+        $this->setAttributes( $attributes );
         return '<label' . $this->_renderAttributes(array('id','class','for')) . '>'
             . $this->text
             . '</label>';

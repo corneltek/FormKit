@@ -14,7 +14,7 @@ class Form extends Element
 
     public function render( $attributes = array() ) 
     {
-        $this->loadAttributes( $attributes );
+        $this->setAttributes( $attributes );
         return '<form' . $this->_renderAttributes(
                     array('id','class','action','name','method','enctype','target')) . '>'
             . $this->_renderChildren()

@@ -16,7 +16,7 @@ class TableRow extends Element
 
     public function render( $attributes = array() ) 
     {
-        $this->loadAttributes( $attributes );
+        $this->setAttributes( $attributes );
         return '<tr' . $this->_renderAttributes(array('id','class','width','height')) . '>'
             . $this->_renderChildren()
             . '</tr>';

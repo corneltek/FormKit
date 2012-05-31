@@ -43,7 +43,7 @@ class CheckboxInput extends BaseWidget
 
     public function render( $attributes = array() )
     {
-        $this->loadAttributes( $attributes );
+        $this->setAttributes( $attributes );
         ob_start();
         $fieldId = $this->getSerial();
         ?><input id="<?= $fieldId ?>" type="hidden" 

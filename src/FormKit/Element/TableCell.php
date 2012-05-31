@@ -6,7 +6,7 @@ class TableCell extends Element
 {
     public function render( $attributes = array() ) 
     {
-        $this->loadAttributes( $attributes );
+        $this->setAttributes( $attributes );
         return '<td' . $this->_renderAttributes(
                     array('id','class','width','height','align','colspan','valign')) . '>'
             . $this->_renderChildren()

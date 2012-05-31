@@ -6,7 +6,7 @@ class CanvasInput extends BaseWidget
     public $js = array( 'js/jscanvas/jscanvas.js' );
     public function render( $attributes = array() )
     {
-        $this->loadAttributes( $attributes );
+        $this->setAttributes( $attributes );
         $this->setAttribute('data-value', $this->value);
         $this->setAttribute('data-name', $this->name);
         return '<span class="formkit-canvas"'

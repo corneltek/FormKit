@@ -21,7 +21,7 @@ class TextInput extends BaseWidget
      */
     public function render( $attributes = array() )
     {
-        $this->loadAttributes( $attributes );
+        $this->setAttributes( $attributes );
         return '<input' 
             . $this->_renderAttributes(array(
                 'class','id','type',
