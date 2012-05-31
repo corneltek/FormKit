@@ -28,6 +28,7 @@ class TextInput extends BaseWidget
                 'name','value','size','maxlength',
                 'minlength','align','src','alt','accept',
                 'readonly','style',
+                'placeholder',
                 'disabled',
 
                 /* Event Attributes */

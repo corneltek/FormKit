@@ -76,6 +76,7 @@ abstract class BaseWidget extends \FormKit\Element
         $this->setAttributeType( 'tooltip', self::ATTR_STRING );
         $this->setAttributeType( 'disabled', self::ATTR_FLAG );
         $this->setAttributeType( 'readonly', self::ATTR_FLAG );
+        $this->setAttributeType( 'placeholder', self::ATTR_STRING );
     }
 
     public function renderHint()
