@@ -63,18 +63,14 @@ abstract class BaseWidget extends \FormKit\Element
         $this->setAttributeType( 'label', self::ATTR_STRING );
         $this->setAttributeType( 'hint', self::ATTR_STRING );
         $this->setAttributeType( 'tooltip', self::ATTR_STRING );
+        $this->setAttributeType( 'disabled', self::ATTR_FLAG );
+        $this->setAttributeType( 'readonly', self::ATTR_FLAG );
     }
 
     public function renderHint()
     {
         if( $this->hint )
             return '<div class="formkit-hint">' . $this->hint . '</div>';
-    }
-
-
-    protected function _renderBasicAttributes()
-    {
-        return $this->_renderAttributes(array('class id'));
     }
 
     public function getSerial()

@@ -21,6 +21,7 @@ class TextInput extends BaseWidget
                 'name','value','size','maxlength',
                 'minlength','align','src','alt','accept',
                 'readonly','style',
+                'disabled',
 
                 /* Event Attributes */
                 'onblur',

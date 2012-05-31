@@ -40,6 +40,7 @@ $role = new FormKit\Widget\SelectInput('role' , array(
     )
 ));
 
+/* selector with group options */
 $countries = new FormKit\Widget\SelectInput( 'country' , array(
     'label' => 'Country',
     'options' => array(
