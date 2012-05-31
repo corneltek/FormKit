@@ -45,10 +45,10 @@ abstract class BaseWidget extends \FormKit\Element
      *
      * @param array $attributes
      */
-    public function setAttributes($attributes)
+    public function setAttributes($attributes = array())
     {
         foreach( $attributes as $k => $val ) {
-            $this->setAttribute($k,$val);
+            $this->_setAttribute($k,$val);
         }
     }
 

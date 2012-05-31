@@ -5,7 +5,7 @@ class RadioInput extends BaseWidget
 {
     public $class = array('formkit-widget','formkit-radio');
 
-	public $options = array();
+    public $options = array();
 
     /* render format option */
     public $render_format = '{radio} {label}';
@@ -14,12 +14,12 @@ class RadioInput extends BaseWidget
     {
         // is it start from index 0 ?
         $size = count($options);
-        $pair = isset($options[0]) && (
-            isset($options[$size-1]) ); 
+        $isPair = isset($options[0]) 
+                        && isset($options[$size-1]); 
 
         $html = '';
         foreach( $options as $k => $option ) {
-            if( $pair ) {
+            if( $isPair ) {
                 $value = $label = $option;
             } else {
                 $label = $k;
@@ -27,7 +27,6 @@ class RadioInput extends BaseWidget
             }
 
             $id = $this->getSerial();
-
             $radio = sprintf('<input type="radio" name="%s" value="%s" id="%s"', 
                     $this->name,
                     $value,

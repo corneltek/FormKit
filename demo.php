@@ -61,7 +61,8 @@ $color = new FormKit\Widget\ColorInput('color', array(
 
 $radio = new FormKit\Widget\RadioInput('type' , array( 
     'label' => 'Size',
-    'options' => array( "One", "Two" , "Three" )
+    'value' => 'Two',
+    'options' => array( "One", "Two" , "Three" ),
 ));
 
 
