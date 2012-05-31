@@ -53,22 +53,38 @@ abstract class Element extends CascadingAttribute
     {
         $html = '';
         foreach( $keys as $key ) {
-            $val = $this->$key;
-            if( $val ) {
+            if( $val = $this->$key ) {
                 if( is_array($val) ) {
-                    if( array_keys($val)===range(0, count($val)-1) )
+
+                    // check if array is a indexed array, check keys of array[0..cnt] 
+                    //
+                    // if it's an indexed array
+                    // for attributes like "class", which the parameter can be array('class1','class2')
+                    // this render the attribute as "class1 class2"
+                    //
+                    // if it's an associative array
+                    // for attribute "style", which the parameter can be array( 'border' => '1px solid #ccc' )
+                    // this render the attribute as "border: 1px solid #ccc;"
+                    if( array_keys($val) === range(0, count($val)-1) ) {
                         $val = join(' ', $val);
-                    else {
+                    } else {
                         $val0 = $val;
                         $val = '';
-                        foreach( $val0 as $name => $data )
+                        foreach( $val0 as $name => $data ) {
                             $val .= "$name:$data;";
+                        }
                     }
                 }
+                elseif ( is_bool($val) ) {
+                    $val = $key;
+                }
+
+                // for boolean values like readonly attribute, 
+                // we render it as readonly="readonly".
                 $html .= sprintf(' %s="%s"', 
                         $key, 
-                        htmlspecialchars( is_array($val) ? join(' ',$val) : $val ) 
-                    );
+                        htmlspecialchars( $val )
+                );
             }
         }
         return $html;
