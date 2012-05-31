@@ -62,16 +62,18 @@ $color = new FormKit\Widget\ColorInput('color', array(
 $radio = new FormKit\Widget\RadioInput('type' , array( 
     'label' => 'Size',
     'value' => 'Two',
-    'options' => array( "One", "Two" , "Three" ),
+    'options' => array( 'One', 'Two' , 'Three' ),
 ));
 
 
-$size = new FormKit\Widget\SelectInput('size' , array( 
+$size = new FormKit\Widget\SelectInput( 'size' , array( 
     'label' => 'Size',
     'options' => array(
-        "1" => "foo",
-        "2" => "bar",
-        "3" => "zxx",
+        '1' => 'foo',
+        '2' => 'bar',
+        '3' => 'zxx',
+
+        // test integer index
         4 => 'zzz',
     )
 ));
