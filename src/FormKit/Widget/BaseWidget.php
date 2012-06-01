@@ -45,6 +45,25 @@ abstract class BaseWidget extends \FormKit\Element
     }
 
 
+    public function init()
+    {
+        $this->setAttributeType( 'class', self::ATTR_ARRAY );
+        $this->setAttributeType( 'id', self::ATTR_ARRAY );
+        $this->setAttributeType( 'name', self::ATTR_STRING );
+        $this->setAttributeType( 'type', self::ATTR_STRING );
+        $this->setAttributeType( 'value', self::ATTR_STRING );
+
+        // virtual attribute (not for rendering widget elements )
+        $this->setAttributeType( 'label', self::ATTR_STRING );
+        $this->setAttributeType( 'hint', self::ATTR_STRING );
+        $this->setAttributeType( 'tooltip', self::ATTR_STRING );
+        $this->setAttributeType( 'disabled', self::ATTR_FLAG );
+        $this->setAttributeType( 'readonly', self::ATTR_FLAG );
+        $this->setAttributeType( 'placeholder', self::ATTR_STRING );
+    }
+
+
+
     /**
      * Set attributes from array
      *
@@ -100,23 +119,6 @@ abstract class BaseWidget extends \FormKit\Element
     public function addJavascript($js) {
         $this->js[] = $js;
         return $this;
-    }
-
-    public function init()
-    {
-        $this->setAttributeType( 'class', self::ATTR_ARRAY );
-        $this->setAttributeType( 'id', self::ATTR_ARRAY );
-        $this->setAttributeType( 'name', self::ATTR_STRING );
-        $this->setAttributeType( 'type', self::ATTR_STRING );
-        $this->setAttributeType( 'value', self::ATTR_STRING );
-
-        // virtual attribute (not for rendering widget elements )
-        $this->setAttributeType( 'label', self::ATTR_STRING );
-        $this->setAttributeType( 'hint', self::ATTR_STRING );
-        $this->setAttributeType( 'tooltip', self::ATTR_STRING );
-        $this->setAttributeType( 'disabled', self::ATTR_FLAG );
-        $this->setAttributeType( 'readonly', self::ATTR_FLAG );
-        $this->setAttributeType( 'placeholder', self::ATTR_STRING );
     }
 
     public function renderHint()
