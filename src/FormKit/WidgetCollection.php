@@ -22,7 +22,7 @@ class WidgetCollection
 
     public function getJavascripts()
     {
-        if( false === FormKit::$useJs )
+        if( false === FormKit::$useJavascript )
             return array();
 
         $urls = array();
@@ -37,7 +37,7 @@ class WidgetCollection
 
     public function getStylesheets()
     {
-        if( false === FormKit::$useCss )
+        if( false === FormKit::$useStylesheet )
             return array();
 
         $path = FormKit::$assetPath;
