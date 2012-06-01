@@ -1,6 +1,7 @@
 <?php
 namespace FormKit;
 use ArrayAccess;
+use Exception;
 use FormKit\FormKit;
 
 /**
@@ -13,7 +14,10 @@ use FormKit\FormKit;
 class WidgetCollection
     implements ArrayAccess
 {
+
     public $widgets = array();
+
+    /* save widgets by name */
     public $widgetsByName = array();
 
     public function getJavascripts()
@@ -48,23 +52,31 @@ class WidgetCollection
 
     public function add( $widget )
     {
-        $this->widgets[ $widget->name ] = $widget;
-        $this->widgetsByName[] = $widget;
+        $this->widgets[] = $widget;
+        $this->widgetsByName[ $widget->name ] = $widget;
+        return $this;
     }
 
     public function remove($widget)
     {
+        // get widget name
         $widgetName = is_string($widget) ? $widget : $widget->name;
-        if( false !== ($idx = array_search( $widgetName , $this->widgetsByName ) )) {
-            unset( $this->widgetsByName[ $idx ] );
+        if( isset($this->widgetsByName[$widgetName ] ) ) {
+            unset($this->widgetsByName[$widgetName]);
+            foreach( $this->widgets as $index => $w ) {
+                if( $w->name === $widgetName ) {
+                    array_splice( $this->widgets , $index , 1 );
+                    break;
+                }
+            }
         }
-        unset( $this->widgets[ $widgetName ] );
+        return $this;
     }
 
     public function get($name)
     {
-        if( isset($this->widgets[ $name ]) )
-            return $this->widgets[ $name ];
+        if( isset($this->widgetsByName[ $name ]) )
+            return $this->widgetsByName[ $name ];
     }
 
     public function render($name , $attributes = array() )
@@ -75,35 +87,37 @@ class WidgetCollection
 
     public function __get($name)
     {
-        if( isset($this->widgets[ $name ]) )
-            return $this->widgets[ $name ];
-        else
+        if( isset($this->widgetsByName[ $name ]) ) {
+            return $this->widgetsByName[ $name ];
+        } else {
             throw new Exception("Undefined widget $name");
+        }
     }
-
     
-    public function offsetSet($name,$value)
+    public function offsetSet($name,$widget)
     {
-        $this->widgets[ $name ] = $value;
-        $this->widgetsByName[] = $name;
+        $this->widgets[] = $widget;
+        $this->widgetsByName[$name] = $widget;
     }
     
     public function offsetExists($name)
     {
-        return isset($this->widgets[ $name ]);
+        return isset($this->widgetsByName[ $name ]);
     }
     
     public function offsetGet($name)
     {
-        return $this->widgets[ $name ];
+        return $this->widgetsByName[ $name ];
     }
     
     public function offsetUnset($name)
     {
-        unset($this->widgets[$name]);
-        if( false !== ($idx = array_search( $name , $this->widgetsByName ) )) {
-            unset( $this->widgetsByName[ $idx ] );
-        }
+        $this->remove($name);
+    }
+
+    public function size()
+    {
+        return count($this->widgets);
     }
 
 }
