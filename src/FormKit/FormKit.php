@@ -40,6 +40,24 @@ class FormKit
         return new Widget\SelectInput( $name, $attributes );
     }
 
+    /**
+     * So that we can create widgets dynamically:
+     *
+     *      $select = FormKit::select( 'role', array( 'options' => ... ) );
+     *      $canvas = FormKit::canvas( 'canvas', array( 'options' => ... ) );
+     *      $label = FormKit::label( null , array( 'options' => ... ) );
+     *
+     */
+    static function __callStatic($name,$arguments) {
+        $class = 'FormKit\\Widget\\' . ucfirst($name);
+        if( class_exists($class,true) ) {
+            return new $class($arguments[0],$arguments[1]);
+        } 
+        $class .= $class . 'Input';
+        if( class_exists($class, true) ) {
+            return new $class($arguments[0],$arguments[1]);
+        }
+    }
 
     /**
      * Configure global asset path
