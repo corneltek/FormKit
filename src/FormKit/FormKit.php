@@ -6,8 +6,24 @@ namespace FormKit;
  */
 class FormKit
 {
-    static $useCss    = true;
-    static $useJs     = true;
+
+    /**
+     * @var bool flag to enable/disable stylesheets.
+     */
+    static $useStylesheet    = true;
+
+
+    /**
+     * @var bool flag to enable/disable javascripts.
+     */
+    static $useJavascript     = true;
+
+    /**
+     * @var string asset path
+     *
+     * @see setAssetPath method
+     */
+    static $assetPath;
 
     static function text( $name, $attributes = array() )
     {
@@ -24,12 +40,6 @@ class FormKit
         return new Widget\SelectInput( $name, $attributes );
     }
 
-    /**
-     * @var string asset path
-     *
-     * @see setAssetPath method
-     */
-    static $assetPath;
 
     /**
      * Configure global asset path
@@ -41,6 +51,15 @@ class FormKit
     static function setAssetPath($path) 
     {
         static::$assetPath = $path;
+    }
+
+
+    static function useStylesheet($bool = true) {
+        static::$useStylesheet = $bool;
+    }
+
+    static function useJavascript($bool = true) {
+        static::$useJavascript = $bool;
     }
 
 

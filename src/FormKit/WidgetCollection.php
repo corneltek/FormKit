@@ -32,7 +32,7 @@ class WidgetCollection
                 $urls[] = $url;
             }
         }
-        return $urls;
+        return array_unique( $urls , SORT_STRING );
     }
 
     public function getStylesheets()
