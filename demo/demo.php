@@ -1,7 +1,6 @@
 <?php
-require 'tests/bootstrap.php';
-
-FormKit\FormKit::setAssetPath('static');
+require '../tests/bootstrap.php';
+FormKit\FormKit::setAssetPath('../static');
 
 $text = new FormKit\Widget\TextInput('username', array( 'label' => 'Username' ));
 $text->value( 'default' )
