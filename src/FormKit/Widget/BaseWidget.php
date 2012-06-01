@@ -4,6 +4,12 @@ use CascadingAttribute;
 
 abstract class BaseWidget extends \FormKit\Element
 {
+
+    /**
+     * @var string asset path
+     *
+     * @see setAssetPath method
+     */
     static $assetPath;
 
     /**
