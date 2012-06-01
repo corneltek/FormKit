@@ -60,11 +60,17 @@ class WidgetCollection
     public function remove($widget)
     {
         // get widget name
-        $widgetName = is_string($widget) ? $widget : $widget->name;
+        $widgetName = is_string($widget) 
+            ? $widget 
+            : $widget->name;
         if( isset($this->widgetsByName[$widgetName ] ) ) {
             unset($this->widgetsByName[$widgetName]);
             foreach( $this->widgets as $index => $w ) {
                 if( $w->name === $widgetName ) {
+                    array_splice( $this->widgets , $index , 1 );
+                    break;
+                }
+                elseif( is_object($widget) && $widget === $w ) {
                     array_splice( $this->widgets , $index , 1 );
                     break;
                 }

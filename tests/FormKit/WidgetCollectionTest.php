@@ -24,6 +24,12 @@ class WidgetCollectionTest extends PHPUnit_Framework_TestCase
         $widgets->add($remember);
 
         is(3,$widgets->size());
+
+        $widgets->remove($text);
+        is(2,$widgets->size());
+
+        $widgets->remove($password);
+        is(1,$widgets->size());
         
     }
 }
