@@ -5,8 +5,8 @@
          backupGlobals="false"
          verbose="true">
   <testsuites>
-    <testsuite name="PHPUnit">
-      <directory suffix="Test.php">tests</directory>
+    <testsuite name="FormKit">
+        <directory suffix="Test.php">tests/FormKit</directory>
     </testsuite>
   </testsuites>
 </phpunit>

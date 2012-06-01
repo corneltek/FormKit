@@ -24,9 +24,29 @@ abstract class Element extends CascadingAttribute
     public $id = array();
 
 
+
+
     public function addClass($class)
     {
-        $this->class[] = $class;
+        if( is_array($class) ) {
+            foreach( $class as $c ) {
+                $this->class[] = $c;
+            }
+        } else {
+            $this->class[] = $class;
+        }
+        return $this;
+    }
+
+    public function hasClass($class) 
+    {
+        return array_search($class,$this->class) !== false;
+    }
+
+    public function removeClass($class)
+    {
+        $index = array_search( $class, $this->class );
+        array_splice( $this->class, $index , 1 );
         return $this;
     }
 
