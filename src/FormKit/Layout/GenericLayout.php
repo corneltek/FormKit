@@ -32,7 +32,7 @@ class GenericLayout extends Element
 
     public function __construct()
     {
-        $this->widgets = new \FormKit\WidgetContainer;
+        $this->widgets = new \FormKit\WidgetCollection;
     }
 
 

@@ -48,7 +48,7 @@
       <file name="src/FormKit/Widget/SelectInput.php" role="php" md5sum="cd7cdf19c932f9be9547cb35e2b2605e"/>
       <file name="src/FormKit/Widget/Submit.php" role="php" md5sum="fd3c650479d1f4dcb3c137ee27876a37"/>
       <file name="src/FormKit/Widget/TextInput.php" role="php" md5sum="049b9eb4e049b5311bf8cd63fe0d8143"/>
-      <file name="src/FormKit/WidgetContainer.php" role="php" md5sum="fd1f3afef922a05f99fe77f2e920bae5"/>
+      <file name="src/FormKit/WidgetCollection.php" role="php" md5sum="fd1f3afef922a05f99fe77f2e920bae5"/>
     </dir>
   </contents>
   <dependencies>
@@ -91,7 +91,7 @@
       <install name="src/FormKit/Widget/SelectInput.php" as="FormKit/Widget/SelectInput.php"/>
       <install name="src/FormKit/Widget/Submit.php" as="FormKit/Widget/Submit.php"/>
       <install name="src/FormKit/Widget/TextInput.php" as="FormKit/Widget/TextInput.php"/>
-      <install name="src/FormKit/WidgetContainer.php" as="FormKit/WidgetContainer.php"/>
+      <install name="src/FormKit/WidgetCollection.php" as="FormKit/WidgetCollection.php"/>
     </filelist>
   </phprelease>
 </package>

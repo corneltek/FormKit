@@ -4,13 +4,13 @@ use ArrayAccess;
 use FormKit\FormKit;
 
 /**
- * WidgetContainer class is a simple container,
+ * WidgetCollection class is a simple container,
  * contains widgets and their sequence.
  *
  * WidgetContains provides a better way to retrieve widget by names or by 
  * sequence.
  */
-class WidgetContainer
+class WidgetCollection
     implements ArrayAccess
 {
     public $widgets = array();
@@ -22,9 +22,10 @@ class WidgetContainer
             return array();
 
         $urls = array();
+        $path = FormKit::$assetPath;
         foreach( $this->widgets as $widget ) {
             foreach( $widget->getJavascripts() as $url ) {
-                $urls[] = FormKit::$baseUrl . $url;
+                $urls[] = $url;
             }
         }
         return $urls;
@@ -35,10 +36,12 @@ class WidgetContainer
         if( false === FormKit::$useCss )
             return array();
 
+        $path = FormKit::$assetPath;
         $urls = array();
         foreach( $this->widgets as $widget ) {
-            foreach( $widget->getStylesheets() as $url )
-                $urls[] = FormKit::$baseUrl . $url;
+            foreach( $widget->getStylesheets() as $url ) {
+                $urls[] = $url;
+            }
         }
         return $urls;
     }

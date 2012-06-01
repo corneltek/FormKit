@@ -1,16 +1,11 @@
 <?php
 namespace FormKit\Widget;
 use CascadingAttribute;
+use FormKit\FormKit;
 
 abstract class BaseWidget extends \FormKit\Element
 {
 
-    /**
-     * @var string asset path
-     *
-     * @see setAssetPath method
-     */
-    static $assetPath;
 
     /**
      * @var string field name
@@ -77,27 +72,12 @@ abstract class BaseWidget extends \FormKit\Element
     }
 
 
-    /**
-     * Configure global asset path
-     *
-     * FormKit\Widget\BaseWidget::setAssetPath('/public/assets');
-     *
-     * @param string $path
-     */
-    static function setAssetPath($path) 
-    {
-        static::$assetPath = $path;
-    }
-
     public function getStylesheets()
     {
-        $path = static::$assetPath;
-        $files = (array) $this->css;
-        return array_map(function($file) use($path) {
-            if( $path )
-                return $path . '/' . $file;
-            return $file;
-        }, $files);
+        $path = FormKit::$assetPath;
+        return array_map(function($file) use($path) { 
+                return $path ? $path . '/' . $file : $file;
+            }, (array) $this->css );
     }
 
     public function addStylesheet($css) {
@@ -107,13 +87,10 @@ abstract class BaseWidget extends \FormKit\Element
 
     public function getJavascripts()
     {
-        $path = static::$assetPath;
-        $files = (array) $this->js;
-        return array_map(function($file) use($path) {
-            if( $path )
-                return $path . '/' . $file;
-            return $file;
-        }, $files);
+        $path = FormKit::$assetPath;
+        return array_map(function($file) use($path) { 
+                return $path ? $path . '/' . $file : $file;
+            }, (array) $this->js );
     }
 
     public function addJavascript($js) {
