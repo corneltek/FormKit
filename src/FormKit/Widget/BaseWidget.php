@@ -18,7 +18,6 @@ abstract class BaseWidget extends \FormKit\Element
     public $name;
 
 
-
     /**
      * @var array css style sheets
      */
@@ -82,6 +81,11 @@ abstract class BaseWidget extends \FormKit\Element
         }, $files);
     }
 
+    public function addStylesheet($css) {
+        $this->css[] = $css;
+        return $this;
+    }
+
     public function getJavascripts()
     {
         $path = static::$assetPath;
@@ -91,6 +95,11 @@ abstract class BaseWidget extends \FormKit\Element
                 return $path . '/' . $file;
             return $file;
         }, $files);
+    }
+
+    public function addJavascript($js) {
+        $this->js[] = $js;
+        return $this;
     }
 
     public function init()
