@@ -14,7 +14,6 @@ class LabelTest extends PHPUnit_Framework_TestCase
         $label->removeClass('class1');
 
         ok( ! $label->hasClass('class1') );
-
     }
 }
 

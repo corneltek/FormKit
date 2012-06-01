@@ -4,7 +4,7 @@ use CascadingAttribute;
 
 abstract class BaseWidget extends \FormKit\Element
 {
-
+    static $assetPath;
 
     /**
      * @var string field name
@@ -52,14 +52,39 @@ abstract class BaseWidget extends \FormKit\Element
         }
     }
 
+
+    /**
+     * Configure global asset path
+     *
+     * FormKit\Widget\BaseWidget::setAssetPath('/public/assets');
+     *
+     * @param string $path
+     */
+    static function setAssetPath($path) 
+    {
+        static::$assetPath = $path;
+    }
+
     public function getStylesheets()
     {
-        return $this->css;
+        $path = static::$assetPath;
+        $files = (array) $this->css;
+        return array_map(function($file) use($path) {
+            if( $path )
+                return $path . '/' . $file;
+            return $file;
+        }, $files);
     }
 
     public function getJavascripts()
     {
-        return $this->js;
+        $path = static::$assetPath;
+        $files = (array) $this->js;
+        return array_map(function($file) use($path) {
+            if( $path )
+                return $path . '/' . $file;
+            return $file;
+        }, $files);
     }
 
     public function init()

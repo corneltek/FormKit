@@ -4,6 +4,7 @@ namespace FormKit\Widget;
 class CanvasInput extends BaseWidget
 {
     public $js = array( 'js/jscanvas/jscanvas.js' );
+
     public function render( $attributes = array() )
     {
         $this->setAttributes( $attributes );
