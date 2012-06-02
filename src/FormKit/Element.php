@@ -40,10 +40,15 @@ abstract class Element extends CascadingAttribute
 
     public $customAttributes = array();
 
+
+
     public function __construct($tagName = null)
     {
         if( $tagName )
             $this->tagName = $tagName;
+
+        $this->setAttributeType( 'class', self::ATTR_ARRAY );
+        $this->setAttributeType( 'id', self::ATTR_ARRAY );
     }
 
 

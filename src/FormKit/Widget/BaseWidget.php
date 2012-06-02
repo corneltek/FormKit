@@ -39,11 +39,8 @@ abstract class BaseWidget extends \FormKit\Element
         $this->init();
     }
 
-
     public function init()
     {
-        $this->setAttributeType( 'class', self::ATTR_ARRAY );
-        $this->setAttributeType( 'id', self::ATTR_ARRAY );
         $this->setAttributeType( 'name', self::ATTR_STRING );
         $this->setAttributeType( 'type', self::ATTR_STRING );
         $this->setAttributeType( 'value', self::ATTR_STRING );
