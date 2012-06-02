@@ -20,7 +20,7 @@ $remember->value(12);
 $remember->check();
 
 // For the syntax of 'format', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
-$birthday = new FormKit\Widget\DateInput('birthday', array( 'label' => 'Birthday' ));
+$birthday = new FormKit\Widget\DateInput('birthday', array( 'label' => 'Birthday', 'format' => 'yy.m.d' ));
 
 $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 
     'label' => 'names',
