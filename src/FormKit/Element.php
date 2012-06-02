@@ -5,7 +5,7 @@ use DOMDocument;
 use DOMNode;
 use DOMText;
 
-abstract class Element extends CascadingAttribute
+class Element extends CascadingAttribute
 {
     public $tagName;
 
