@@ -11,7 +11,7 @@ class Legend extends Element
             $textNode = new DOMText($text);
             $this->addChild($textNode);
         }
-        parent::__construct();
+        parent::__construct('legend');
     }
 
 

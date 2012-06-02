@@ -4,6 +4,7 @@ use FormKit\Element;
 
 class TableRow extends Element
 {
+    public $tagName = 'tr';
 
     public function addCell( $element )
     {
@@ -17,9 +18,20 @@ class TableRow extends Element
     public function render( $attributes = array() ) 
     {
         $this->setAttributes( $attributes );
-        return '<tr' . $this->_renderAttributes(array('id','class','width','height')) . '>'
-            . $this->_renderChildren()
-            . '</tr>';
+        $html = '<' . $this->tagName
+                . $this->_renderStandardAttributes()
+                . $this->_renderAttributes(array('width','height'));
+
+        if( $this->hasChildren() ) {
+            $html .= '>';
+            $html .= $this->_renderChildren();
+
+            // close tag
+            $html .= '</' . $this->tagName . '>';
+        } else {
+            $html .= '/>';
+        }
+        return $html;
     }
 
 }

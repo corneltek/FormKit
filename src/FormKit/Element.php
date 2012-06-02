@@ -7,6 +7,7 @@ use DOMText;
 
 abstract class Element extends CascadingAttribute
 {
+    public $tagName;
 
     /**
      * @var array class name
@@ -36,6 +37,14 @@ abstract class Element extends CascadingAttribute
         /* keyboard attributes */
         'accesskey', 'tabindex',
     );
+
+
+    public function __construct($tagName = null)
+    {
+        if( $tagName )
+            $this->tagName = $tagName;
+    }
+
 
     public function addClass($class)
     {
@@ -71,6 +80,11 @@ abstract class Element extends CascadingAttribute
     {
         $this->children[] = $child;
         return $this;
+    }
+
+    public function hasChildren()
+    {
+        return ! empty($this->children);
     }
 
     protected function _renderChildren()
@@ -152,7 +166,6 @@ abstract class Element extends CascadingAttribute
 
     public function __toString()
     {
-
         return $this->render();
     }
 }
