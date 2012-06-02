@@ -1,6 +1,9 @@
 <?php
 namespace FormKit;
 use CascadingAttribute;
+use DOMDocument;
+use DOMNode;
+use DOMText;
 
 abstract class Element extends CascadingAttribute
 {
@@ -64,8 +67,16 @@ abstract class Element extends CascadingAttribute
 
     protected function _renderChildren()
     {
-        return join("\n",array_map(function($item) { 
-            return $item->render() . PHP_EOL;
+        return join("\n",array_map(function($child) { 
+
+            if( $child instanceof DOMText || $child instanceof DOMNode ) {
+                // to use C14N(), the DOMNode must be belongs to an instance of DOMDocument.
+                $dom = new DOMDocument;
+                $dom->appendChild($child);
+                return $child->C14N() . PHP_EOL;
+            } else {
+                return $child->render() . PHP_EOL;
+            }
         }, $this->children ));
     }
 
