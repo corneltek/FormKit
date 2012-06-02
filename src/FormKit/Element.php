@@ -95,7 +95,7 @@ abstract class Element extends CascadingAttribute
      *
      * @return string Standard Attribute string
      */
-    public function renderStandardAttributes()
+    public function _renderStandardAttributes()
     {
         return $this->_renderAttributes($this->standardAttributes);
     }

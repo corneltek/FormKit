@@ -11,17 +11,11 @@ class CanvasInput extends BaseWidget
         $this->_setAttribute('data-value', $this->value);
         $this->_setAttribute('data-name', $this->name);
         return '<span class="formkit-canvas"'
-            . $this->_renderAttributes(array(
-                'class', 'style'
-            ))
+            . $this->_renderStandardAttributes()
             . '><input type="hidden"'
-            . $this->_renderAttributes(array(
-                'id','name','value'
-            ))
+            . $this->_renderAttributes(array('id','name','value'))
             . '/><input class="color" value="ff0000"/><canvas style="background:url('.htmlspecialchars($this->background).') no-repeat"'
-            . $this->_renderAttributes(array(
-                'width','height'
-            ))
+            . $this->_renderAttributes(array('width','height'))
             . '/></span>'
             . $this->renderHint();
     }

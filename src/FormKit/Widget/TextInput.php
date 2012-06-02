@@ -23,11 +23,11 @@ class TextInput extends BaseWidget
     {
         $this->setAttributes( $attributes );
         return '<input' 
+            . $this->_renderStandardAttributes()
             . $this->_renderAttributes(array(
-                'class','id','type',
-                'name','value','size','maxlength',
+                'type','name','value','size','maxlength',
                 'minlength','align','src','alt','accept',
-                'readonly','style',
+                'readonly',
                 'placeholder',
                 'disabled',
 

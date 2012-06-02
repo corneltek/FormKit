@@ -23,11 +23,11 @@ class TextareaInput extends BaseWidget
     {
         $this->setAttributes( $attributes );
         return '<textarea' 
+            . $this->_renderStandardAttributes()
             . $this->_renderAttributes(array(
-                'class','id','type',
+                'type',
                 'name','cols','rows',
-                'readonly','style',
-                'disabled',
+                'readonly','disabled',
 
                 /* Event Attributes */
                 'onblur',
