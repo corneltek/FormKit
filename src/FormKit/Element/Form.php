@@ -4,13 +4,17 @@ use FormKit\Element;
 
 class Form extends Element
 {
-	/**
-	 * application/x-www-form-urlencoded
+    /**
+     * application/x-www-form-urlencoded
      * multipart/form-data
      * text/plain
-	 */
-	public $class = array('formkit-form');
-	public $enctype = 'multipart/form-data';
+     *
+     *     $form->enctype('multipart/form-data');
+     *     $form->enctype('application/x-www-form-urlencoded');
+     *     $form->enctype('text/plain');
+     */
+    public $class = array('formkit-form');
+    public $enctype = 'multipart/form-data';
 
     public function render( $attributes = array() ) 
     {

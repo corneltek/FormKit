@@ -21,4 +21,5 @@ class TableRow extends Element
             . $this->_renderChildren()
             . '</tr>';
     }
+
 }
