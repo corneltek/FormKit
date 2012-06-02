@@ -14,7 +14,7 @@ class Element extends CascadingAttribute
      */
     public $class = array();
 
-
+    public $closeEmpty = false;
 
     /**
      * Children elements
@@ -49,6 +49,11 @@ class Element extends CascadingAttribute
 
         $this->setAttributeType( 'class', self::ATTR_ARRAY );
         $this->setAttributeType( 'id', self::ATTR_ARRAY );
+        $this->init();
+    }
+
+    public function init() {
+
     }
 
 
@@ -196,7 +201,7 @@ class Element extends CascadingAttribute
                     . $this->_renderCustomAttributes()
                 ;
 
-        if( $this->hasChildren() ) {
+        if( $this->closeEmpty || $this->hasChildren() ) {
             $html .= '>';
             $html .= $this->_renderChildren();
 
