@@ -57,21 +57,6 @@ abstract class BaseWidget extends \FormKit\Element
         $this->setAttributeType( 'placeholder', self::ATTR_STRING );
     }
 
-
-
-    /**
-     * Set attributes from array
-     *
-     * @param array $attributes
-     */
-    public function setAttributes($attributes = array())
-    {
-        foreach( $attributes as $k => $val ) {
-            $this->_setAttribute($k,$val);
-        }
-    }
-
-
     public function getStylesheets()
     {
         $path = FormKit::$assetPath;

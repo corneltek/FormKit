@@ -15,6 +15,8 @@ class TableRowTest extends PHPUnit_Framework_TestCase
 
         $html = $tableRow->render();
         select_ok('tr td',1,$html);
+
+        var_dump( $tableRow->attributes ); 
     }
 }
 

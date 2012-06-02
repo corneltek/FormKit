@@ -102,6 +102,18 @@ abstract class Element extends CascadingAttribute
         }, $this->children ));
     }
 
+    /**
+     * Set attributes from array
+     *
+     * @param array $attributes
+     */
+    public function setAttributes($attributes = array())
+    {
+        foreach( $attributes as $k => $val ) {
+            $this->_setAttribute($k,$val);
+        }
+    }
+
 
 
     /**
