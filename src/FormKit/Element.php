@@ -95,15 +95,15 @@ class Element extends CascadingAttribute
 
     protected function _renderChildren()
     {
-        return join("\n",array_map(function($child) { 
+        return join('',array_map(function($child) { 
 
             if( $child instanceof DOMText || $child instanceof DOMNode ) {
                 // to use C14N(), the DOMNode must be belongs to an instance of DOMDocument.
                 $dom = new DOMDocument;
                 $dom->appendChild($child);
-                return $child->C14N() . PHP_EOL;
+                return $child->C14N();
             } else {
-                return $child->render() . PHP_EOL;
+                return $child->render();
             }
         }, $this->children ));
     }
