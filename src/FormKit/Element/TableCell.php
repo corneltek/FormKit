@@ -4,13 +4,7 @@ use FormKit\Element;
 
 class TableCell extends Element
 {
-    public function render( $attributes = array() ) 
-    {
-        $this->setAttributes( $attributes );
-        return '<td' . $this->_renderAttributes(
-                    array('id','class','width','height','align','colspan','valign')) . '>'
-            . $this->_renderChildren()
-            . '</td>';
-    }
+    public $tagName = 'td';
+    public $customAttributes = array('width','height','align','colspan','valign');
 }
 

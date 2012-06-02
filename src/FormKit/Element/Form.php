@@ -13,16 +13,9 @@ class Form extends Element
      *     $form->enctype('application/x-www-form-urlencoded');
      *     $form->enctype('text/plain');
      */
+    public $tagName = 'form';
     public $class = array('formkit-form');
     public $enctype = 'multipart/form-data';
-
-    public function render( $attributes = array() ) 
-    {
-        $this->setAttributes( $attributes );
-        return '<form' . $this->_renderAttributes(
-                    array('id','class','action','name','method','enctype','target')) . '>'
-            . $this->_renderChildren()
-            . '</form>';
-    }
+    public $customAttributes = array('method','enctype','target','action','name');
 }
 
