@@ -5,6 +5,7 @@ use DOMText;
 
 class Legend extends Element
 {
+    public $customAttribute = array('align');
 
     function __construct($text = null) {
         if( $text && is_string($text) ) {
@@ -12,14 +13,6 @@ class Legend extends Element
             $this->addChild($textNode);
         }
         parent::__construct('legend');
-    }
-
-
-    function render($attributes = array() ) {
-        $this->setAttributes( $attributes );
-        return '<legend' . $this->_renderAttributes(array('id','class','style','align','title')) . '>'
-                . $this->_renderChildren()
-                . '</legend>';
     }
 }
 
