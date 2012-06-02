@@ -19,6 +19,9 @@ $remember = new FormKit\Widget\CheckboxInput('remember', array( 'label' => 'Reme
 $remember->value(12);
 $remember->check();
 
+// For the syntax of 'format', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
+$birthday = new FormKit\Widget\DateInput('birthday', array( 'label' => 'Birthday' ));
+
 $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 
     'label' => 'names',
     'source' => 'tests/ajax_complete.php',
@@ -89,6 +92,7 @@ $layout->width(400);
 $layout->addWidget( $text )
     ->addWidget( $password )
     ->addWidget( $remember )
+    ->addWidget( $birthday )
     ->addWidget( $role )
     ->addWidget( $size )
     ->addWidget( $countries )
