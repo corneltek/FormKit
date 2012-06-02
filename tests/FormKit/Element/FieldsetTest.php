@@ -13,8 +13,7 @@ class FieldsetTest extends PHPUnit_Framework_TestCase
 
         $fieldset->addChild( $legend );
         $html = $fieldset->render();
-
-        echo $html;
+        select_ok('fieldset legend',1 , $html);
     }
 }
 
