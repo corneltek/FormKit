@@ -8,6 +8,11 @@ $text->value( 'default' )
     ->minlength(3)
     ->size(20);
 
+$textarea = new FormKit\Widget\TextareaInput('description', array( 'label' => _('Description') ));
+$textarea->value( '說明文字' )
+    ->cols(50)
+    ->rows(5);
+
 $password = new FormKit\Widget\PasswordInput('password', array( 'label' => 'Password' ));
 
 $remember = new FormKit\Widget\CheckboxInput('remember', array( 'label' => 'Remember me' ));
@@ -96,6 +101,7 @@ $layout->addWidget( $ajaxComplete );
 $layout->addWidget( $radio );
 $layout->addWidget( $file );
 $layout->addWidget( $canvas );
+$layout->addWidget( $textarea );
 $layout->addWidget( $submit );
 ?>
 <!Doctype html>
