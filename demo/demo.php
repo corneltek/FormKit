@@ -19,15 +19,16 @@ $remember = new FormKit\Widget\CheckboxInput('remember', array( 'label' => 'Reme
 $remember->value(12);
 $remember->check();
 
-// For the syntax of 'format', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
-$birthday = new FormKit\Widget\DateInput('birthday', array( 'label' => 'Birthday', 'format' => 'yy.m.d' ));
+$birthday = new FormKit\Widget\DateInput('birthday', array(
+    'label' => 'Birthday',
+    'format' => 'Y.n.j',
+    'value' => new DateTime('now', new DateTimeZone('Asia/Taipei'))
+));
 
-// For the syntax of 'dateFormat', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
-// For the syntax of 'timeFormat', please refer to http://trentrichardson.com/examples/timepicker/
 $best_time = new FormKit\Widget\DatetimeInput('best_time', array(
     'label' => 'Best Time',
-    'dateFormat' => 'yy.m.d',
-    'timeFormat' => 'hh:mm:ss',
+    'format' => 'Y.n.j g:i:s a',
+    'value' => new DateTime('now', new DateTimeZone('Asia/Taipei')),
 ));
 
 $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 

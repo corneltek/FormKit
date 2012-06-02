@@ -1,9 +1,6 @@
 <?php
 namespace FormKit\Widget;
 
-// For the syntax of 'dateFormat', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
-// For the syntax of 'timeFormat', please refer to http://trentrichardson.com/examples/timepicker/
-
 class DatetimeInput extends TextInput
 {
     public $type = 'text';
@@ -13,15 +10,103 @@ class DatetimeInput extends TextInput
     public function render( $attributes = array() )
     {
         $this->setAttributes($attributes);
-        if( $this->dateFormat )
-            $this->dataFormat = $this->dateFormat;
-        else
-            $this->dataFormat = 'yy.m.d';
-            
-        if( $this->timeFormat )
-            $this->dataTimeFormat = $this->timeFormat;
-        else
-            $this->dataTimeFormat = 'hh:mm:ss';
+
+        $dateFormat = '';
+        $timeFormat = '';
+        $cursor = &$dateFormat;
+
+        $format = $this->format ?: 'y-m-d H:i:s';
+        $this->dataAmpm = false;
+        for($i=0; $i<strlen($format); ++$i)
+            switch($format[$i]) {
+                case 'd':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'dd';
+                    break;
+                case 'j':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'd';
+                    break;
+                case 'D':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'D';
+                    break;
+                case 'l':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'DD';
+                    break;
+                case 'z':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'o';
+                    break;
+                case 'F':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'MM';
+                    break;
+                case 'M':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'M';
+                    break;
+                case 'm':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'mm';
+                    break;
+                case 'n':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'm';
+                    break;
+                case 'Y':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'yy';
+                    break;
+                case 'y':
+                    $cursor = &$dateFormat;
+                    $cursor .= 'y';
+                    break;
+
+                case 'a':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'tt';
+                    break;
+                case 'A':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'TT';
+                    break;
+                case 'g':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'h';
+                    $this->dataAmpm = true;
+                    break;
+                case 'h':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'hh';
+                    $this->dataAmpm = true;
+                    break;
+                case 'G':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'h';
+                    break;
+                case 'H':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'hh';
+                    break;
+                case 'i':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'mm';
+                    break;
+                case 's':
+                    $cursor = &$timeFormat;
+                    $cursor .= 'ss';
+                    break;
+                default:
+                    $cursor .= $format[$i];
+            }
+
+        $this->dataDateFormat = $dateFormat;
+        $this->dataTimeFormat = $timeFormat;
+
+        if( $this->value instanceof \DateTime )
+            $this->value = $this->value->format($format);
         return parent::render();
     }
 }

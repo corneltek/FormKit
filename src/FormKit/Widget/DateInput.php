@@ -1,8 +1,6 @@
 <?php
 namespace FormKit\Widget;
 
-// For the syntax of 'format', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
-
 class DateInput extends TextInput
 {
     public $type = 'text';
@@ -12,10 +10,52 @@ class DateInput extends TextInput
     public function render( $attributes = array() )
     {
         $this->setAttributes($attributes);
-        if( $this->format )
-            $this->dataFormat = $this->format;
-        else
-            $this->dataFormat = 'yy.m.d';
+        $dateFormat = '';
+
+        $format = $this->format ?: 'y-m-d';
+        for($i=0; $i<strlen($format); ++$i)
+            switch($format[$i]) {
+                case 'd':
+                    $dateFormat .= 'dd';
+                    break;
+                case 'j':
+                    $dateFormat .= 'd';
+                    break;
+                case 'D':
+                    $dateFormat .= 'D';
+                    break;
+                case 'l':
+                    $dateFormat .= 'DD';
+                    break;
+                case 'z':
+                    $dateFormat .= 'o';
+                    break;
+                case 'F':
+                    $dateFormat .= 'MM';
+                    break;
+                case 'M':
+                    $dateFormat .= 'M';
+                    break;
+                case 'm':
+                    $dateFormat .= 'mm';
+                    break;
+                case 'n':
+                    $dateFormat .= 'm';
+                    break;
+                case 'Y':
+                    $dateFormat .= 'yy';
+                    break;
+                case 'y':
+                    $dateFormat .= 'y';
+                    break;
+                default:
+                    $dateFormat .= $format[$i];
+            }
+
+        $this->dataDateFormat = $dateFormat;
+
+        if( $this->value instanceof \DateTime )
+            $this->value = $this->value->format($format);
         return parent::render();
     }
 }
