@@ -26,8 +26,16 @@ abstract class Element extends CascadingAttribute
      */
     public $id = array();
 
+    public $standardAttributes = array( 
+        /* core attributes */
+        'class','id','style','title',
 
+        /* language attributes */
+        'dir', 'lang', 'xml:lang',
 
+        /* keyboard attributes */
+        'accesskey', 'tabindex',
+    );
 
     public function addClass($class)
     {
@@ -80,6 +88,25 @@ abstract class Element extends CascadingAttribute
         }, $this->children ));
     }
 
+
+
+    /**
+     * Render standard attributes
+     *
+     * @return string Standard Attribute string
+     */
+    public function renderStandardAttributes()
+    {
+        return $this->_renderAttributes($this->standardAttributes);
+    }
+
+
+    /**
+     * Render attributes
+     *
+     * @param array $keys
+     * @return string 
+     */
     protected function _renderAttributes($keys) 
     {
         $html = '';
