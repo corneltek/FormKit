@@ -36,6 +36,7 @@ abstract class BaseWidget extends \FormKit\Element
         if( $attributes ) {
             $this->setAttributes( $attributes );
         }
+        parent::__construct();
         $this->init();
     }
 
