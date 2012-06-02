@@ -21,20 +21,23 @@ class FormKitTest extends PHPUnit_Framework_TestCase
 
     function testOutput()
     {
-		$html = '';
+        $html = '';
 
-		// generate forms
-		$widget = FormKit\FormKit::text( 'username' );
-		$html .= $widget->render();
+        // generate forms
+        $widget = FormKit\FormKit::text( 'username' );
+        $html .= $widget->render();
 
-		$widget = FormKit\FormKit::checkbox( 'confirmed' );
-		$html .= $widget->render();
+        $widget = FormKit\FormKit::checkbox( 'confirmed' );
+        $html .= $widget->render();
 
-		$widget = FormKit\FormKit::select( 'country' );
+        $widget = FormKit\FormKit::select( 'country' );
         // $widget->choices(array(  ));
-		$html .= $widget->render();
+        $html .= $widget->render();
 
-		file_put_contents( 'tests/index.html', $html );
+        // FIXME:
+        // select_ok('select',true,$html);
+        // select_ok('input[type="checkbox"]',true,$html);
+        # file_put_contents( 'tests/index.html', $html );
     }
 
 }

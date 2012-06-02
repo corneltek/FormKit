@@ -10,7 +10,6 @@ class TableRow extends Element
     {
         $cell = new TableCell;
         $cell->addChild($element);
-
         $this->addChild($cell);
         return $this;
     }
