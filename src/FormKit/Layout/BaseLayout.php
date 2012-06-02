@@ -19,8 +19,9 @@ class BaseLayout
      */
     public function addWidgets(array $widgets)
     {
-        foreach( $widgets as $widget )
+        foreach( $widgets as $widget ) {
             $this->addWidget( $widget );
+        }
         return $this;
     }
 
@@ -29,9 +30,30 @@ class BaseLayout
      */
     public function addWidget($widget)
     {
-        $this->widgets[ $widget->name ] = $widget;
+        $this->widgets->add($widget); 
         return $this;
     }
+
+    public function getWidget($name) {
+        return $this->widgets->get($name);
+    }
+
+    public function renderLabel($name, $attributes = array() )
+    {
+        if( $widget = $this->widgets->get($name) ) {
+            $label = new Label($widget->label);
+            return $label->render( $attributes );
+        }
+    }
+
+    public function renderWidget($name, $attributes = array() )
+    {
+        if( $widget = $this->widgets->get($name) ) {
+            return $widget->render( $attributes );
+        }
+    }
+
+
 
     public function offsetSet($name,$value)
     {
