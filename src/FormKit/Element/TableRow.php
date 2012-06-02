@@ -6,6 +6,8 @@ class TableRow extends Element
 {
     public $tagName = 'tr';
 
+    public $customAttributes = array('width','height');
+
     public function addCell( $element )
     {
         $cell = new TableCell;
@@ -14,23 +16,5 @@ class TableRow extends Element
         return $this;
     }
 
-    public function render( $attributes = array() ) 
-    {
-        $this->setAttributes( $attributes );
-        $html = '<' . $this->tagName
-                . $this->_renderStandardAttributes()
-                . $this->_renderAttributes(array('width','height'));
-
-        if( $this->hasChildren() ) {
-            $html .= '>';
-            $html .= $this->_renderChildren();
-
-            // close tag
-            $html .= '</' . $this->tagName . '>';
-        } else {
-            $html .= '/>';
-        }
-        return $html;
-    }
 
 }

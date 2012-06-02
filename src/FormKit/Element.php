@@ -38,6 +38,7 @@ abstract class Element extends CascadingAttribute
         'accesskey', 'tabindex',
     );
 
+    public $customAttributes = array();
 
     public function __construct($tagName = null)
     {
@@ -115,7 +116,6 @@ abstract class Element extends CascadingAttribute
     }
 
 
-
     /**
      * Render standard attributes
      *
@@ -124,6 +124,11 @@ abstract class Element extends CascadingAttribute
     public function _renderStandardAttributes()
     {
         return $this->_renderAttributes($this->standardAttributes);
+    }
+
+    public function _renderCustomAttributes()
+    {
+        return $this->_renderAttributes($this->customAttributes);
     }
 
 
@@ -174,7 +179,29 @@ abstract class Element extends CascadingAttribute
         return $html;
     }
 
-    abstract public function render( $attributes = array() );
+    public function render( $attributes = array() ) 
+    {
+        if( ! $this->tagName ) {
+            throw new Exception('tagName is not defined.');
+        }
+
+        $this->setAttributes( $attributes );
+        $html = '<' . $this->tagName
+                    . $this->_renderStandardAttributes()
+                    . $this->_renderCustomAttributes()
+                ;
+
+        if( $this->hasChildren() ) {
+            $html .= '>';
+            $html .= $this->_renderChildren();
+
+            // close tag
+            $html .= '</' . $this->tagName . '>';
+        } else {
+            $html .= '/>';
+        }
+        return $html;
+    }
 
     public function __toString()
     {
