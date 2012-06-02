@@ -22,6 +22,14 @@ $remember->check();
 // For the syntax of 'format', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
 $birthday = new FormKit\Widget\DateInput('birthday', array( 'label' => 'Birthday', 'format' => 'yy.m.d' ));
 
+// For the syntax of 'dateFormat', please refer to http://docs.jquery.com/UI/Datepicker/formatDate
+// For the syntax of 'timeFormat', please refer to http://trentrichardson.com/examples/timepicker/
+$best_time = new FormKit\Widget\DatetimeInput('best_time', array(
+    'label' => 'Best Time',
+    'dateFormat' => 'yy.m.d',
+    'timeFormat' => 'hh:mm:ss',
+));
+
 $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 
     'label' => 'names',
     'source' => 'tests/ajax_complete.php',
@@ -93,6 +101,7 @@ $layout->addWidget( $text )
     ->addWidget( $password )
     ->addWidget( $remember )
     ->addWidget( $birthday )
+    ->addWidget( $best_time )
     ->addWidget( $role )
     ->addWidget( $size )
     ->addWidget( $countries )
