@@ -7,12 +7,12 @@ use FormKit\Element\TableCell;
 use FormKit\Element\TableRow;
 use FormKit\WidgetCollection;
 use ArrayAccess;
+use RuntimeException;
 
 /**
  * @class Generic table layout, 2 columns
  */
-class GenericLayout extends Table
-    implements ArrayAccess
+class GenericLayout extends BaseLayout
 {
     public $labelColumnAlign = 'right';
 
@@ -29,23 +29,13 @@ class GenericLayout extends Table
      */
     public $widgetColumnWidth;
 
+    public $table;
 
-    public function __construct()
-    {
+
+    public function __construct() { 
+        $this->table = new \FormKit\Element\Table;
         parent::__construct();
-        $this->widgets = new WidgetCollection;
     }
-
-    /**
-     * @param array $widget
-     */
-    public function addWidgets(array $widgets)
-    {
-        foreach( $widgets as $widget )
-            $this->addWidget( $widget );
-    }
-
-
 
     /**
      * Add Widget into a new row , two cells
@@ -68,15 +58,14 @@ class GenericLayout extends Table
         $row->addChild($cell);
         $row->addChild($cell2);
 
-        $this->widgets[ $widget->name ] = $widget;
-
         $this->addChild( $row );
+        parent::addWidget($widget);
         return $this;
     }
 
     public function renderLabel($name, $attributes = array() )
     {
-        if( isset($this->widgets[ $name ]) ) {
+        if( $widget = $this->widgets->get($name) ) {
             $label = new Label($widget->label);
             return $label->render( $attributes );
         }
@@ -84,28 +73,21 @@ class GenericLayout extends Table
 
     public function renderWidget($name, $attributes = array() )
     {
-        if( isset($this->widgets[ $name ]) )
-            return $this->widgets[ $name ]->render( $attributes );
+        if( $widget = $this->widgets->get($name) ) {
+            return $widget->render( $attributes );
+        }
     }
 
-    public function offsetSet($name,$value)
-    {
-        $this->widgets[ $name ] = $value;
-    }
-    
-    public function offsetExists($name)
-    {
-        return isset($this->widgets[ $name ]);
-    }
-    
-    public function offsetGet($name)
-    {
-        return $this->widgets[ $name ];
-    }
-    
-    public function offsetUnset($name)
-    {
-        unset($this->widgets[$name]);
+    public function __call($method,$arguments) { 
+        if( method_exists($this->table,$method) ) {
+            return call_user_func_array( array($this->table,$method), $arguments );
+        }
+        elseif( method_exists($this->widgets,$method) ) {
+            return call_user_func_array( array($this->widgets,$method), $arguments ); 
+        }
+        else {
+            throw new RuntimeException("method $method not found.");
+        }
     }
 }
 
