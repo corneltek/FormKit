@@ -3,7 +3,7 @@ namespace FormKit\Widget;
 
 class TextInput extends BaseWidget
 {
-    public $tag;
+    public $tagName = 'input';
     public $class = array('formkit-widget','formkit-text');
     public $type = 'text';
     public $value;
@@ -11,6 +11,30 @@ class TextInput extends BaseWidget
     public $alt;
     public $readonly;
     public $style;
+
+    public $customAttributes = array(
+        'type','name','value','size','maxlength',
+        'minlength','align','src','alt','accept',
+        'readonly',
+        'placeholder',
+        'disabled',
+
+        /* Event Attributes */
+        'onblur',
+        'onchange',
+        'onclick',
+        'ondblclick',
+        'onfocus',
+        'onmousedown',
+        'onmousemove',
+        'onmouseout',
+        'onmouseover',
+        'onmouseup',
+        'onkeydown',
+        'onkeypress',
+        'onkeyup',
+        'onselect',
+    );
 
 
     /**
@@ -21,34 +45,9 @@ class TextInput extends BaseWidget
      */
     public function render( $attributes = array() )
     {
-        $this->setAttributes( $attributes );
-        return '<input' 
-            . $this->_renderStandardAttributes()
-            . $this->_renderAttributes(array(
-                'type','name','value','size','maxlength',
-                'minlength','align','src','alt','accept',
-                'readonly',
-                'placeholder',
-                'disabled',
-
-                /* Event Attributes */
-                'onblur',
-                'onchange',
-                'onclick',
-                'ondblclick',
-                'onfocus',
-                'onmousedown',
-                'onmousemove',
-                'onmouseout',
-                'onmouseover',
-                'onmouseup',
-                'onkeydown',
-                'onkeypress',
-                'onkeyup',
-                'onselect',
-            ))
-            . '/>' 
-            . $this->renderHint();
+        return parent::render( $attributes )
+            . $this->renderHint()
+            ;
     }
 
 }
