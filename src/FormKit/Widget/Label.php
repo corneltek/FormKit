@@ -1,24 +1,18 @@
 <?php
 namespace FormKit\Widget;
 use FormKit\Element;
+use DOMText;
 
 class Label extends Element
 {
+    public $tagName = 'label';
     public $class = array('formkit-widget','formkit-label');
-    public $for;
-    public $text;
+    public $customAttributes = array('for');
 
     public function __construct($text)
     {
-        $this->text = $text;
-    }
-
-    public function render( $attributes = array() ) 
-    {
-        $this->setAttributes( $attributes );
-        return '<label' . $this->_renderAttributes(array('id','class','for','style')) . '>'
-            . $this->text
-            . '</label>';
+        $this->addChild( new DOMText($text) );
+        parent::__construct();
     }
 }
 

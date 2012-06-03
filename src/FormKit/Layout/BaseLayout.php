@@ -5,9 +5,13 @@ use ArrayAccess;
 use Exception;
 use FormKit\FormKit;
 
-class BaseLayout
+abstract class BaseLayout
     implements ArrayAccess
 {
+
+    /**
+     * @var WidgetCollection
+     */
     public $widgets;
 
     function __construct() { 
@@ -31,8 +35,11 @@ class BaseLayout
     public function addWidget($widget)
     {
         $this->widgets->add($widget); 
+        $this->layoutWidget($widget);
         return $this;
     }
+
+    abstract public function layoutWidget($widget);
 
     public function getWidget($name) {
         return $this->widgets->get($name);
@@ -55,23 +62,19 @@ class BaseLayout
 
 
 
-    public function offsetSet($name,$value)
-    {
+    public function offsetSet($name,$value) {
         $this->widgets[ $name ] = $value;
     }
     
-    public function offsetExists($name)
-    {
+    public function offsetExists($name) {
         return isset($this->widgets[ $name ]);
     }
     
-    public function offsetGet($name)
-    {
+    public function offsetGet($name) {
         return $this->widgets[ $name ];
     }
     
-    public function offsetUnset($name)
-    {
+    public function offsetUnset($name) {
         unset($this->widgets[$name]);
     }
 

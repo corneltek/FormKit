@@ -19,6 +19,18 @@ $remember = new FormKit\Widget\CheckboxInput('remember', array( 'label' => 'Reme
 $remember->value(12);
 $remember->check();
 
+$birthday = new FormKit\Widget\DateInput('birthday', array(
+    'label' => 'Birthday',
+    'format' => 'Y.n.j',
+    'value' => new DateTime('now', new DateTimeZone('Asia/Taipei'))
+));
+
+$best_time = new FormKit\Widget\DatetimeInput('best_time', array(
+    'label' => 'Best Time',
+    'format' => 'Y.n.j g:i:s a',
+    'value' => new DateTime('now', new DateTimeZone('Asia/Taipei')),
+));
+
 $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 
     'label' => 'names',
     'source' => 'tests/ajax_complete.php',
@@ -89,6 +101,8 @@ $layout->width(400);
 $layout->addWidget( $text )
     ->addWidget( $password )
     ->addWidget( $remember )
+    ->addWidget( $birthday )
+    ->addWidget( $best_time )
     ->addWidget( $role )
     ->addWidget( $size )
     ->addWidget( $countries )

@@ -1,6 +1,7 @@
 <?php
 namespace FormKit;
 use CascadingAttribute;
+use Exception;
 use DOMDocument;
 use DOMNode;
 use DOMText;
@@ -181,7 +182,7 @@ class Element extends CascadingAttribute
                 // for boolean values like readonly attribute, 
                 // we render it as readonly="readonly".
                 $html .= sprintf(' %s="%s"', 
-                        $key, 
+                        strtolower(preg_replace('/[A-Z]/', '-$0', $key)),
                         htmlspecialchars( $val )
                 );
             }

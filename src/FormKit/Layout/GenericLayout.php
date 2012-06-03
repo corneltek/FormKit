@@ -31,16 +31,16 @@ class GenericLayout extends BaseLayout
 
     public $table;
 
-
     public function __construct() { 
         $this->table = new \FormKit\Element\Table;
+        $this->table->addClass('formkit-layout-generic');
         parent::__construct();
     }
 
     /**
      * Add Widget into a new row , two cells
      */
-    public function addWidget($widget)
+    public function layoutWidget($widget)
     {
         $cell = new TableCell;
         $cell->align( $this->labelColumnAlign );
@@ -59,21 +59,12 @@ class GenericLayout extends BaseLayout
         $row->addChild($cell2);
 
         $this->addChild( $row );
-        parent::addWidget($widget);
         return $this;
     }
 
-
     public function __call($method,$arguments) { 
-        if( method_exists($this->table,$method) ) {
-            return call_user_func_array( array($this->table,$method), $arguments );
-        }
-        elseif( method_exists($this->widgets,$method) ) {
-            return call_user_func_array( array($this->widgets,$method), $arguments ); 
-        }
-        else {
-            throw new RuntimeException("method $method not found.");
-        }
+        // mix-in
+        return call_user_func_array( array($this->table,$method), $arguments );
     }
 }
 
