@@ -143,7 +143,6 @@ $layout->addWidget( $submit );
 <body>
 <?php
 
-
 /*
 echo $layout->renderWidget( 'size' );
 echo $layout->widgets->render( 'size' );
@@ -162,6 +161,27 @@ echo $form;
 #  echo $remember;
 #  $layout->renderRow( 'username' );
 #  $layout->renderRow( 'password' );
+?>
+
+
+<h2>FieldsetLayout Demo</h2>
+<style>
+fieldset.formkit-layout-fieldset { width: 100%; }
+fieldset.formkit-layout-fieldset label { 
+	float:left;
+	text-align:right;
+	width: 20%;
+	margin-right:0.5em;
+	padding-top:0.2em;
+}
+</style>
+<?php
+
+$layout = new FormKit\Layout\FieldsetLayout('Legend text');
+$layout->addWidget($text);
+$layout->addWidget($textarea);
+$layout->addChild( $submit );
+echo $layout->render();
 ?>
 </body>
 </html>
