@@ -51,7 +51,7 @@ class SelectInput extends BaseWidget
         ?><select 
             <?=$this->_renderStandardAttributes() ?>
             <?=$this->_renderAttributes(array('multiple','name','readonly','disabled')); ?>>
-            <? echo $this->renderOptions($this->options); ?>
+            <?=$this->renderOptions($this->options); ?>
         </select>
         <?php
         $html = ob_get_contents();
