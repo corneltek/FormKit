@@ -57,6 +57,28 @@ class Element extends CascadingAttribute
 
     }
 
+    public function addAttribute($attribute)
+    {
+        $this->customAttributes[] = $attribute;
+        return $this;
+    }
+
+
+    /**
+     * Add attribute to customAttribute list
+     *
+     * @param string|array $attributes
+     *
+     *    $this->addAttributes('id class for');
+     */
+    public function addAttributes($attributes) {
+        if( is_string($attributes) ) {
+            $attributes = explode(' ',$attributes);
+        }
+        $this->customAttributes = array_merge( $this->customAttributes , (array) $attributes );
+        return $this;
+    }
+
 
     public function addClass($class)
     {
@@ -99,7 +121,7 @@ class Element extends CascadingAttribute
         return ! empty($this->children);
     }
 
-    protected function _renderChildren()
+    protected function renderChildren()
     {
         return join('',array_map(function($child) { 
 
@@ -204,7 +226,7 @@ class Element extends CascadingAttribute
 
         if( $this->closeEmpty || $this->hasChildren() ) {
             $html .= '>';
-            $html .= $this->_renderChildren();
+            $html .= $this->renderChildren();
 
             // close tag
             $html .= '</' . $this->tagName . '>';
