@@ -63,17 +63,9 @@ class GenericLayout extends BaseLayout
         return $this;
     }
 
-
     public function __call($method,$arguments) { 
-        if( method_exists($this->table,$method) ) {
-            return call_user_func_array( array($this->table,$method), $arguments );
-        }
-        elseif( method_exists($this->widgets,$method) ) {
-            return call_user_func_array( array($this->widgets,$method), $arguments ); 
-        }
-        else {
-            throw new RuntimeException("method $method not found.");
-        }
+        // mix-in
+        return call_user_func_array( array($this->table,$method), $arguments );
     }
 }
 
