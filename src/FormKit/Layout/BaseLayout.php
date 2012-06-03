@@ -5,7 +5,7 @@ use ArrayAccess;
 use Exception;
 use FormKit\FormKit;
 
-class BaseLayout
+abstract class BaseLayout
     implements ArrayAccess
 {
     public $widgets;
@@ -31,8 +31,11 @@ class BaseLayout
     public function addWidget($widget)
     {
         $this->widgets->add($widget); 
+        $this->layoutWidget($widget);
         return $this;
     }
+
+    abstract public function layoutWidget($widget);
 
     public function getWidget($name) {
         return $this->widgets->get($name);

@@ -23,7 +23,7 @@ class FieldsetLayout extends BaseLayout
         return call_user_func_array(array($this->fieldset,$method),$arguments);
     }
 
-    function addWidget($widget)
+    function layoutWidget($widget)
     {
         $label = new \FormKit\Widget\Label( $widget->label );
         $clear = new \FormKit\Element\ClearDiv;
@@ -31,7 +31,6 @@ class FieldsetLayout extends BaseLayout
         $this->fieldset->addChild( $label );
         $this->fieldset->addChild( $widget );
         $this->fieldset->addChild( $clear );
-        return parent::addWidget($widget);
     }
 
     function __toString() {

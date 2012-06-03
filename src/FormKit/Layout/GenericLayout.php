@@ -39,7 +39,7 @@ class GenericLayout extends BaseLayout
     /**
      * Add Widget into a new row , two cells
      */
-    public function addWidget($widget)
+    public function layoutWidget($widget)
     {
         $cell = new TableCell;
         $cell->align( $this->labelColumnAlign );
@@ -58,7 +58,6 @@ class GenericLayout extends BaseLayout
         $row->addChild($cell2);
 
         $this->addChild( $row );
-        parent::addWidget($widget);
         return $this;
     }
 
