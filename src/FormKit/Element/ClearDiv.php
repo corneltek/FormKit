@@ -1,8 +1,9 @@
 <?php
 namespace FormKit\Element;
 use FormKit\Element;
+use FormKit\Element\Div;
 
-class ClearDiv extends Element
+class ClearDiv extends Div
 {
     public $tagName = 'div';
 
