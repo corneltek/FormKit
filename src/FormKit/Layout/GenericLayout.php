@@ -75,7 +75,9 @@ class GenericLayout extends BaseLayout
         $cell->align( $this->labelColumnAlign );
         $cell->width( $this->labelColumnWidth );
         $cell->addClass( 'formkit-column-label' );
-        $cell->addChild( new Label($widget->label) );
+        if( $widget->label ) {
+            $cell->addChild( new Label($widget->label) );
+        }
 
         $cell2 = new TableCell;
         $cell2->align( $this->widgetColumnAlign );
