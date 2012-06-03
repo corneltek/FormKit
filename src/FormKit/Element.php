@@ -110,6 +110,12 @@ class Element extends CascadingAttribute
         return $this;
     }
 
+    public function insertChild($child)
+    {
+        array_splice($this->children,0,0,$child);
+        return $this;
+    }
+
     public function addChild($child)
     {
         $this->children[] = $child;
@@ -144,7 +150,7 @@ class Element extends CascadingAttribute
     public function setAttributes($attributes = array())
     {
         foreach( $attributes as $k => $val ) {
-            $this->setAttributeValue($k,$val);
+            $this->setAttributeValue($k, $val);
         }
     }
 

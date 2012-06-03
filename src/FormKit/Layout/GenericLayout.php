@@ -31,10 +31,39 @@ class GenericLayout extends BaseLayout
 
     public $table;
 
+
+    /* tbody */
+    public $body;
+
+    /* thead */
+    public $header;
+
+    /* footer */
+    public $footer;
+
     public function __construct() { 
         $this->table = new \FormKit\Element\Table;
         $this->table->addClass('formkit-layout-generic');
+        $this->body = new Element('tbody');
+
+        $this->table->addChild($this->body);
         parent::__construct();
+    }
+
+    public function getHeader() {
+        if( ! $this->header ) {
+            $this->header = new Element('thead');
+            $this->table->insert($this->header);
+        }
+        return $this->header;
+    }
+
+    public function getFooter() {
+        if( ! $this->footer ) {
+            $this->footer = new Element('tfoot');
+            $this->table->addChild( $this->footer );
+        }
+        return $this->footer;
     }
 
     /**
@@ -58,7 +87,7 @@ class GenericLayout extends BaseLayout
         $row->addChild($cell);
         $row->addChild($cell2);
 
-        $this->addChild( $row );
+        $this->body->addChild( $row );
         return $this;
     }
 

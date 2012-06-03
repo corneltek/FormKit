@@ -171,7 +171,6 @@ echo $form;
 
 <h2>FieldsetLayout Demo</h2>
 <?php
-
 $layout = new FormKit\Layout\FieldsetLayout('Legend text');
 $layout->addWidget($text);
 $layout->addWidget($textarea);
