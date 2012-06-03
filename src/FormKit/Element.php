@@ -144,7 +144,7 @@ class Element extends CascadingAttribute
     public function setAttributes($attributes = array())
     {
         foreach( $attributes as $k => $val ) {
-            $this->_setAttribute($k,$val);
+            $this->setAttributeValue($k,$val);
         }
     }
 

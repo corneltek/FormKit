@@ -8,8 +8,8 @@ class CanvasInput extends BaseWidget
     public function render( $attributes = array() )
     {
         $this->setAttributes( $attributes );
-        $this->_setAttribute('data-value', $this->value);
-        $this->_setAttribute('data-name', $this->name);
+        $this->setAttributeValue('data-value', $this->value);
+        $this->setAttributeValue('data-name', $this->name);
         return '<span class="formkit-canvas"'
             . $this->_renderStandardAttributes()
             . '><input type="hidden"'
