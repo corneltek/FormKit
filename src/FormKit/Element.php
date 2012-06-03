@@ -156,14 +156,19 @@ class Element extends CascadingAttribute
      */
     public function _renderStandardAttributes()
     {
-        return $this->renderAttributes($this->standardAttributes);
+        return $this->_renderAttributes($this->standardAttributes);
     }
 
     public function _renderCustomAttributes()
     {
-        return $this->renderAttributes($this->customAttributes);
+        return $this->_renderAttributes($this->customAttributes);
     }
 
+
+    public function renderAttributes() {
+        return    $this->_renderStandardAttributes()
+                . $this->_renderCustomAttributes();
+    }
 
     /**
      * Render attributes
@@ -171,7 +176,7 @@ class Element extends CascadingAttribute
      * @param array $keys
      * @return string 
      */
-    protected function renderAttributes($keys) 
+    protected function _renderAttributes($keys) 
     {
         $html = '';
         foreach( $keys as $key ) {

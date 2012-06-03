@@ -49,7 +49,7 @@ class CheckboxInput extends BaseWidget
         ?><input id="<?= $fieldId ?>" type="hidden" 
             name="<?=$this->name?>" 
             value="<?= ($this->value) ? $this->value : ''; ?>"/>
-        <input <?=$this->renderAttributes(array('type','class','id')); ?> 
+        <input <?=$this->_renderAttributes(array('type','class','id')); ?> 
             <?php if( $this->checked ): ?>checked<?php endif ?> onclick=" 
                 var el = document.getElementById('<?= $fieldId ?>');
                     el.value = (el.value == '<?= $this->value ?>') ? '' : '<?= $this->value ?>';
