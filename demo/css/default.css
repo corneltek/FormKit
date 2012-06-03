@@ -8,6 +8,18 @@
     font-size: 12px;
 }
 
+
+/**
+ * For generic table layout 
+ */
+table.formkit-layout-generic {  }
+table.formkit-layout-generic thead {  }
+table.formkit-layout-generic tbody {  }
+table.formkit-layout-generic tfoot {  }
+
+/** 
+ * For Fieldset Layout
+ */
 fieldset.formkit-layout-fieldset { width: 80%; }
 fieldset.formkit-layout-fieldset label { 
     float:left;
