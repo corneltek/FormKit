@@ -100,7 +100,7 @@ abstract class BaseWidget extends \FormKit\Element
     public function getSerial()
     {
         if( function_exists('uniqid') )
-            return uniqid( $this->name );
+            return $this->name . '-' . uniqid( $this->name );
         return $this->name . '-' . microtime(true);
     }
 
