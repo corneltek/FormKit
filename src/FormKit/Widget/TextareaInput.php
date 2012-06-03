@@ -25,7 +25,6 @@ class TextareaInput extends BaseWidget
         return '<textarea' 
             . $this->_renderStandardAttributes()
             . $this->_renderAttributes(array(
-                'type',
                 'name','cols','rows',
                 'readonly','disabled',
 
