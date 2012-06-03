@@ -1,6 +1,7 @@
 <?php
 namespace FormKit;
 use CascadingAttribute;
+use Exception;
 use DOMDocument;
 use DOMNode;
 use DOMText;
