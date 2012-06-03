@@ -2,7 +2,10 @@
 require '../tests/bootstrap.php';
 FormKit\FormKit::setAssetPath('../static');
 
-$text = new FormKit\Widget\TextInput('username', array( 'label' => 'Username' ));
+$text = new FormKit\Widget\TextInput('username', array( 
+	'label' => 'Username',
+	'hint'  => 'Please enter 6 characters for your username',
+));
 $text->value( 'default' )
     ->maxlength(10)
     ->minlength(3)
@@ -127,6 +130,8 @@ $layout->addWidget( $submit );
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/black-tie/jquery-ui.css" type="text/css" />
 
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+
     <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
         <script src="<?= $url ?>"> </script>
     <?php endforeach ?>
@@ -165,16 +170,6 @@ echo $form;
 
 
 <h2>FieldsetLayout Demo</h2>
-<style>
-fieldset.formkit-layout-fieldset { width: 100%; }
-fieldset.formkit-layout-fieldset label { 
-	float:left;
-	text-align:right;
-	width: 20%;
-	margin-right:0.5em;
-	padding-top:0.2em;
-}
-</style>
 <?php
 
 $layout = new FormKit\Layout\FieldsetLayout('Legend text');

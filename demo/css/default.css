@@ -1,0 +1,22 @@
+.formkit-label { 
+    font-weight: bold; 
+}
+.formkit-hint { 
+    background-color: #eee;
+    padding: 3px;
+    color: #555;
+    font-size: 12px;
+}
+
+fieldset.formkit-layout-fieldset { width: 80%; }
+fieldset.formkit-layout-fieldset label { 
+    float:left;
+    text-align:right;
+    width: 20%;
+    margin-right:0.5em;
+    padding-top:0.2em;
+}
+fieldset.formkit-layout-fieldset .formkit-hint { 
+    margin-left: 21%;
+    margin-bottom: 10px;
+}
