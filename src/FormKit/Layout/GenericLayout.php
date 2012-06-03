@@ -31,7 +31,6 @@ class GenericLayout extends BaseLayout
 
     public $table;
 
-
     public function __construct() { 
         $this->table = new \FormKit\Element\Table;
         parent::__construct();
