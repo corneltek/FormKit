@@ -24,7 +24,7 @@ class GenericLayoutTest extends PHPUnit_Framework_TestCase
 
         select_ok('input[name="username"]',1,$html);
         select_ok('.formkit-widget',true,$html);
-        select_ok('.formkit-text',true,$html);
+        select_ok('.formkit-widget-text',true,$html);
         select_ok('.formkit-table',true,$html);
     }
 }
