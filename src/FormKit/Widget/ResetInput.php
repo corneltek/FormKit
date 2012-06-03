@@ -6,6 +6,7 @@ class ResetInput extends TextInput
 {
 
     public $class = array('formkit-widget','formkit-widget-reset');
+
     public $type = 'reset';
 
     /**

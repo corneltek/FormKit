@@ -29,6 +29,16 @@ abstract class BaseWidget extends \FormKit\Element
      *
      * @param string $name
      * @param array $attributes
+     *
+     *    valid attributes:
+     *      - name
+     *      - type
+     *      - value
+     *      - hint
+     *      - tooltip
+     *      - disabled
+     *      - readonly
+     *      - placeholder
      */
     public function __construct($name, $attributes = null )
     {
