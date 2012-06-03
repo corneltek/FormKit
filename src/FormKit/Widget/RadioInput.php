@@ -3,7 +3,7 @@ namespace FormKit\Widget;
 
 class RadioInput extends BaseWidget
 {
-    public $class = array('formkit-widget','formkit-radio');
+    public $class = array('formkit-widget','formkit-widget-radio');
 
     public $options = array();
 

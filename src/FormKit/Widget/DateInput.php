@@ -5,7 +5,7 @@ class DateInput extends TextInput
 {
     public $type = 'text';
     public $js = array( 'js/jsdate/jsdate.js' );
-    public $class = array('formkit-widget','formkit-date');
+    public $class = array('formkit-widget','formkit-widget-date');
 
     public function render( $attributes = array() )
     {

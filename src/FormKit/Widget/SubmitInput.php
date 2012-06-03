@@ -5,7 +5,7 @@ use FormKit\Widget\TextInput;
 class SubmitInput extends TextInput
 {
 
-    public $class = array('formkit-widget','formkit-submit');
+    public $class = array('formkit-widget','formkit-widget-submit');
     public $type = 'submit';
 
     /**

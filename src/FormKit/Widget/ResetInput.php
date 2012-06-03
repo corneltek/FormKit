@@ -5,7 +5,7 @@ use FormKit\Widget\TextInput;
 class ResetInput extends TextInput
 {
 
-    public $class = array('formkit-widget','formkit-reset');
+    public $class = array('formkit-widget','formkit-widget-reset');
     public $type = 'reset';
 
     /**

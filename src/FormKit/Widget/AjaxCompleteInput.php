@@ -15,7 +15,7 @@ namespace FormKit\Widget;
  */
 class AjaxCompleteInput extends TextInput
 {
-    public $class = array('formkit-widget','formkit-text','formkit-ajax-complete');
+    public $class = array('formkit-widget','formkit-widget-text','formkit-widget-ajax-complete-text');
 
     public $source;
 

@@ -4,7 +4,7 @@ use FormKit\Widget\TextInput;
 
 class ButtonInput extends TextInput
 {
-    public $class = array('formkit-widget','formkit-button');
+    public $class = array('formkit-widget','formkit-widget-button');
     public $type = 'button';
 
     /**

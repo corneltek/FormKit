@@ -4,7 +4,7 @@ namespace FormKit\Widget;
 class TextInput extends BaseWidget
 {
     public $tagName = 'input';
-    public $class = array('formkit-widget','formkit-text');
+    public $class = array('formkit-widget','formkit-widget-text');
     public $type = 'text';
     public $value;
     public $size;

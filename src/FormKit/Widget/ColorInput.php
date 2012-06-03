@@ -4,7 +4,7 @@ namespace FormKit\Widget;
 class ColorInput extends TextInput
 {
     public $js = array( 'js/jscolor/jscolor.js' );
-    public $class = array( 'formkit-widget', 'formkit-color' , 'color' );
+    public $class = array( 'formkit-widget', 'formkit-widget-color' , 'color' );
 
     public function render( $attributes = array() )
     {

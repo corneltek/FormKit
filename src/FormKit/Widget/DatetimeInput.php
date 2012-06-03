@@ -5,7 +5,7 @@ class DatetimeInput extends TextInput
 {
     public $type = 'text';
     public $js = array( 'js/jsdatetime/jquery-ui-timepicker-addon.js', 'js/jsdatetime/jsdatetime.js' );
-    public $class = array('formkit-widget','formkit-datetime');
+    public $class = array('formkit-widget','formkit-widget-datetime');
 
     public function render( $attributes = array() )
     {

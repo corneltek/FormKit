@@ -3,7 +3,7 @@ namespace FormKit\Widget;
 
 class SelectInput extends BaseWidget
 {
-    public $class = array('formkit-widget','formkit-select');
+    public $class = array('formkit-widget','formkit-widget-select');
     public $options = array();
     public $multiple;
 
