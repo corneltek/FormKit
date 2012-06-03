@@ -10,11 +10,11 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-06-01</date>
-  <time>15:28:35</time>
+  <date>2012-06-03</date>
+  <time>15:58:05</time>
   <version>
-    <release>1.0.2</release>
-    <api>1.0.2</api>
+    <release>1.2.2</release>
+    <api>1.2.2</api>
   </version>
   <stability>
     <release>alpha</release>
@@ -25,35 +25,50 @@
   <contents>
     <dir name="/">
       <file name="doc/FormKit.md" role="doc" md5sum="792c94333cd8cbb11813207b40f713bb"/>
-      <file name="tests/ajax_complete.php" role="test" md5sum="50a857cc929da2d75e3c1c42d0a44f49"/>
-      <file name="tests/bootstrap.php" role="test" md5sum="9e6044c4147426fb95e07aa0ef0f121d"/>
-      <file name="tests/FormKit/FormKitTest.php" role="test" md5sum="639488e060e84f44c2e53bfc7e4b929d"/>
+      <file name="tests/bootstrap.php" role="test" md5sum="48b0af49ba708e30bbda2a097e6c8882"/>
+      <file name="tests/FormKit/Element/ClearDivTest.php" role="test" md5sum="801882630117d974c725dac1b4a819ff"/>
+      <file name="tests/FormKit/Element/FieldsetTest.php" role="test" md5sum="38a8384fd4bdd3708440d16f6631384f"/>
+      <file name="tests/FormKit/Element/TableRowTest.php" role="test" md5sum="e3951b1c0502a5c32417a4a31edb8cf3"/>
+      <file name="tests/FormKit/ElementTest.php" role="test" md5sum="edc22369f1771ddd2ec53afa895ed5a8"/>
+      <file name="tests/FormKit/FormKitTest.php" role="test" md5sum="f3263e63d811987280c0bffd09108ee5"/>
+      <file name="tests/FormKit/Layout/FieldsetLayoutTest.php" role="test" md5sum="209063457aa8cf260bcec2591daab500"/>
+      <file name="tests/FormKit/Layout/GenericLayoutTest.php" role="test" md5sum="4f83da84b362dcf195244db9edae2106"/>
       <file name="tests/FormKit/Widget/LabelTest.php" role="test" md5sum="81a3fb8a89fe374a7e1aad8f7506ef97"/>
-      <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
-      <file name="tests/index.html" role="test" md5sum="25ac345c7870e47aadffcd0613e282ec"/>
+      <file name="tests/FormKit/Widget/SelectInputTest.php" role="test" md5sum="cb321a546a5866856c9c2fcdff924186"/>
+      <file name="tests/FormKit/WidgetCollectionTest.php" role="test" md5sum="1c6818e363c6f65dc063f95992509572"/>
       <file name="tests/SeleniumTest.php" role="test" md5sum="2c225bd86a383154f75fe26f0b12e45f"/>
-      <file name="src/FormKit/Element/Form.php" role="php" md5sum="47d0216fef0e4bfa468a0e09cd233c67"/>
-      <file name="src/FormKit/Element/TableCell.php" role="php" md5sum="8806b77d9708cd15dadd6342b665d90a"/>
-      <file name="src/FormKit/Element/TableRow.php" role="php" md5sum="e3daabfaad4373fe619f1f4bad1a67fe"/>
-      <file name="src/FormKit/Element.php" role="php" md5sum="2411d273ece0c44a882a356de8a623b5"/>
-      <file name="src/FormKit/FormKit.php" role="php" md5sum="ab778e348af9514b256fea25ba2001fa"/>
-      <file name="src/FormKit/Layout/GenericLayout.php" role="php" md5sum="3571d5000e09a903b213e1f87ad311fd"/>
-      <file name="src/FormKit/Widget/AjaxCompleteInput.php" role="php" md5sum="b0d2831e27eb5b3c0d1777766702d804"/>
-      <file name="src/FormKit/Widget/BaseWidget.php" role="php" md5sum="0cfa61b41b1a41610fe06619cf20eb38"/>
-      <file name="src/FormKit/Widget/ButtonInput.php" role="php" md5sum="24a4f96c4488d5bbd9b68bc5ed466d06"/>
-      <file name="src/FormKit/Widget/CanvasInput.php" role="php" md5sum="55506bedce8adf4663fc0c3c27a025ee"/>
-      <file name="src/FormKit/Widget/CheckboxInput.php" role="php" md5sum="20b800b8e132b27eca307c19a15a1720"/>
-      <file name="src/FormKit/Widget/ColorInput.php" role="php" md5sum="9b7423ae6fb82d613ed1b5f4cbf3d444"/>
-      <file name="src/FormKit/Widget/FileInput.php" role="php" md5sum="2cb8b051afbd6f77928601786a485040"/>
-      <file name="src/FormKit/Widget/HiddenInput.php" role="php" md5sum="4f3b875ffa57c541826d5731e0f47edd"/>
-      <file name="src/FormKit/Widget/Label.php" role="php" md5sum="b0e23b404ea5460dd8e3a76de8b412b5"/>
-      <file name="src/FormKit/Widget/PasswordInput.php" role="php" md5sum="282b22af7d876420762bb62fcd6e8c75"/>
-      <file name="src/FormKit/Widget/RadioInput.php" role="php" md5sum="a308da6438dbed01bfd24b143e539e09"/>
-      <file name="src/FormKit/Widget/ResetInput.php" role="php" md5sum="49d81a53c86eb4d95cca18a6f5911f7d"/>
-      <file name="src/FormKit/Widget/SelectInput.php" role="php" md5sum="1eb70fcb5e629ba257b0d94710d2e9ad"/>
-      <file name="src/FormKit/Widget/SubmitInput.php" role="php" md5sum="71635af2319c376c783a84f9f1765f49"/>
-      <file name="src/FormKit/Widget/TextInput.php" role="php" md5sum="ff133a2fcaf8f4952879f5f9ef484a08"/>
-      <file name="src/FormKit/WidgetCollection.php" role="php" md5sum="791a187b643ae36cbccc0da87780eaf2"/>
+      <file name="src/FormKit/Element/ClearDiv.php" role="php" md5sum="cbc29db7b2cf2306bab4732fd55f98b8"/>
+      <file name="src/FormKit/Element/Div.php" role="php" md5sum="7a03342a2ad1962f3497d9e38b3b475a"/>
+      <file name="src/FormKit/Element/Fieldset.php" role="php" md5sum="b666102b0722518556044e0a2b237579"/>
+      <file name="src/FormKit/Element/Form.php" role="php" md5sum="a43f5a52236e8ddd8bc60652b1f7ea22"/>
+      <file name="src/FormKit/Element/Legend.php" role="php" md5sum="d05e27c2caece49abe7b2c298e2d967b"/>
+      <file name="src/FormKit/Element/Table.php" role="php" md5sum="a7667b339edd7591769ac70757b1bdd6"/>
+      <file name="src/FormKit/Element/TableCell.php" role="php" md5sum="1b49a2c561d0ea7d79b3a9e9e0f303b1"/>
+      <file name="src/FormKit/Element/TableRow.php" role="php" md5sum="0664329e00c6cf5e34a27d1de39c4d49"/>
+      <file name="src/FormKit/Element.php" role="php" md5sum="9d7e5de6ccd336725aad2489b2262716"/>
+      <file name="src/FormKit/FormKit.php" role="php" md5sum="c8940486b4bb5b3a64bc7efcb4e9e497"/>
+      <file name="src/FormKit/Layout/BaseLayout.php" role="php" md5sum="b042a97f631dc1252d7c55f5da0eaa0e"/>
+      <file name="src/FormKit/Layout/FieldsetLayout.php" role="php" md5sum="06cbc7aa5e4e3a225e0cc1d854f0beaf"/>
+      <file name="src/FormKit/Layout/GenericLayout.php" role="php" md5sum="79ed81b704f9648fef7facdb9af8585b"/>
+      <file name="src/FormKit/Widget/AjaxCompleteInput.php" role="php" md5sum="9fb4dc8d3c593701e8dc155feb31dd68"/>
+      <file name="src/FormKit/Widget/BaseWidget.php" role="php" md5sum="9668e076cc9765bdfa9cb07cb2e42b4f"/>
+      <file name="src/FormKit/Widget/ButtonInput.php" role="php" md5sum="69b99edbcf573824530831ec481f69d2"/>
+      <file name="src/FormKit/Widget/CanvasInput.php" role="php" md5sum="2ec051ad2761fba5f90611c3b51b9a8f"/>
+      <file name="src/FormKit/Widget/CheckboxInput.php" role="php" md5sum="757662a4b832cf0a95e9328ccd97e734"/>
+      <file name="src/FormKit/Widget/ColorInput.php" role="php" md5sum="4cc940307973c87283363d2778bd604f"/>
+      <file name="src/FormKit/Widget/DateInput.php" role="php" md5sum="3854363e27d159fecaa211f44476c6b6"/>
+      <file name="src/FormKit/Widget/DatetimeInput.php" role="php" md5sum="30c1163b326b5d6c1d30a66b9609d741"/>
+      <file name="src/FormKit/Widget/FileInput.php" role="php" md5sum="bd48f23c842e70e5254453a8805091d9"/>
+      <file name="src/FormKit/Widget/HiddenInput.php" role="php" md5sum="6ec9a7efaa0b48f4a5ff2e0b66736e21"/>
+      <file name="src/FormKit/Widget/Label.php" role="php" md5sum="c9b1fdd68164abfe3216de6940433628"/>
+      <file name="src/FormKit/Widget/PasswordInput.php" role="php" md5sum="8743ea1b5b0c52da8769cd06770f59da"/>
+      <file name="src/FormKit/Widget/RadioInput.php" role="php" md5sum="9b2fedaf7d16d279a9298960f647da5d"/>
+      <file name="src/FormKit/Widget/ResetInput.php" role="php" md5sum="35d2aceda6e34160cbe816a0731ede22"/>
+      <file name="src/FormKit/Widget/SelectInput.php" role="php" md5sum="662675609e3c6f2763c27aa006f68dfe"/>
+      <file name="src/FormKit/Widget/SubmitInput.php" role="php" md5sum="a105ba545ccde4492070b5d8268a91df"/>
+      <file name="src/FormKit/Widget/TextareaInput.php" role="php" md5sum="1a3a2e384ad6430b9e9591172615d487"/>
+      <file name="src/FormKit/Widget/TextInput.php" role="php" md5sum="452f4349c80f165c998b53cd223ac5e9"/>
+      <file name="src/FormKit/WidgetCollection.php" role="php" md5sum="171c7335390257f6508c8b9b0727c044"/>
     </dir>
   </contents>
   <dependencies>
@@ -67,29 +82,37 @@
       <package>
         <name>CascadingAttribute</name>
         <channel>pear.corneltek.com</channel>
-      </package>
-      <package>
-        <name>AssetKit</name>
-        <channel>pear.corneltek.com</channel>
-        <min>1.0.0</min>
+        <min>1.1.0</min>
       </package>
     </required>
   </dependencies>
   <phprelease>
     <filelist>
       <install name="doc/FormKit.md" as="FormKit.md"/>
-      <install name="tests/ajax_complete.php" as="ajax_complete.php"/>
       <install name="tests/bootstrap.php" as="bootstrap.php"/>
+      <install name="tests/FormKit/Element/ClearDivTest.php" as="FormKit/Element/ClearDivTest.php"/>
+      <install name="tests/FormKit/Element/FieldsetTest.php" as="FormKit/Element/FieldsetTest.php"/>
+      <install name="tests/FormKit/Element/TableRowTest.php" as="FormKit/Element/TableRowTest.php"/>
+      <install name="tests/FormKit/ElementTest.php" as="FormKit/ElementTest.php"/>
       <install name="tests/FormKit/FormKitTest.php" as="FormKit/FormKitTest.php"/>
+      <install name="tests/FormKit/Layout/FieldsetLayoutTest.php" as="FormKit/Layout/FieldsetLayoutTest.php"/>
+      <install name="tests/FormKit/Layout/GenericLayoutTest.php" as="FormKit/Layout/GenericLayoutTest.php"/>
       <install name="tests/FormKit/Widget/LabelTest.php" as="FormKit/Widget/LabelTest.php"/>
-      <install name="tests/helpers.php" as="helpers.php"/>
-      <install name="tests/index.html" as="index.html"/>
+      <install name="tests/FormKit/Widget/SelectInputTest.php" as="FormKit/Widget/SelectInputTest.php"/>
+      <install name="tests/FormKit/WidgetCollectionTest.php" as="FormKit/WidgetCollectionTest.php"/>
       <install name="tests/SeleniumTest.php" as="SeleniumTest.php"/>
+      <install name="src/FormKit/Element/ClearDiv.php" as="FormKit/Element/ClearDiv.php"/>
+      <install name="src/FormKit/Element/Div.php" as="FormKit/Element/Div.php"/>
+      <install name="src/FormKit/Element/Fieldset.php" as="FormKit/Element/Fieldset.php"/>
       <install name="src/FormKit/Element/Form.php" as="FormKit/Element/Form.php"/>
+      <install name="src/FormKit/Element/Legend.php" as="FormKit/Element/Legend.php"/>
+      <install name="src/FormKit/Element/Table.php" as="FormKit/Element/Table.php"/>
       <install name="src/FormKit/Element/TableCell.php" as="FormKit/Element/TableCell.php"/>
       <install name="src/FormKit/Element/TableRow.php" as="FormKit/Element/TableRow.php"/>
       <install name="src/FormKit/Element.php" as="FormKit/Element.php"/>
       <install name="src/FormKit/FormKit.php" as="FormKit/FormKit.php"/>
+      <install name="src/FormKit/Layout/BaseLayout.php" as="FormKit/Layout/BaseLayout.php"/>
+      <install name="src/FormKit/Layout/FieldsetLayout.php" as="FormKit/Layout/FieldsetLayout.php"/>
       <install name="src/FormKit/Layout/GenericLayout.php" as="FormKit/Layout/GenericLayout.php"/>
       <install name="src/FormKit/Widget/AjaxCompleteInput.php" as="FormKit/Widget/AjaxCompleteInput.php"/>
       <install name="src/FormKit/Widget/BaseWidget.php" as="FormKit/Widget/BaseWidget.php"/>
@@ -97,6 +120,8 @@
       <install name="src/FormKit/Widget/CanvasInput.php" as="FormKit/Widget/CanvasInput.php"/>
       <install name="src/FormKit/Widget/CheckboxInput.php" as="FormKit/Widget/CheckboxInput.php"/>
       <install name="src/FormKit/Widget/ColorInput.php" as="FormKit/Widget/ColorInput.php"/>
+      <install name="src/FormKit/Widget/DateInput.php" as="FormKit/Widget/DateInput.php"/>
+      <install name="src/FormKit/Widget/DatetimeInput.php" as="FormKit/Widget/DatetimeInput.php"/>
       <install name="src/FormKit/Widget/FileInput.php" as="FormKit/Widget/FileInput.php"/>
       <install name="src/FormKit/Widget/HiddenInput.php" as="FormKit/Widget/HiddenInput.php"/>
       <install name="src/FormKit/Widget/Label.php" as="FormKit/Widget/Label.php"/>
@@ -105,6 +130,7 @@
       <install name="src/FormKit/Widget/ResetInput.php" as="FormKit/Widget/ResetInput.php"/>
       <install name="src/FormKit/Widget/SelectInput.php" as="FormKit/Widget/SelectInput.php"/>
       <install name="src/FormKit/Widget/SubmitInput.php" as="FormKit/Widget/SubmitInput.php"/>
+      <install name="src/FormKit/Widget/TextareaInput.php" as="FormKit/Widget/TextareaInput.php"/>
       <install name="src/FormKit/Widget/TextInput.php" as="FormKit/Widget/TextInput.php"/>
       <install name="src/FormKit/WidgetCollection.php" as="FormKit/WidgetCollection.php"/>
     </filelist>
