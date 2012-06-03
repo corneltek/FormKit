@@ -33,6 +33,7 @@ class GenericLayout extends BaseLayout
 
     public function __construct() { 
         $this->table = new \FormKit\Element\Table;
+        $this->table->addClass('formkit-layout-generic');
         parent::__construct();
     }
 

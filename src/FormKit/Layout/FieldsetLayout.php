@@ -11,6 +11,7 @@ class FieldsetLayout extends BaseLayout
 
     function __construct( $legendText = null ) {
         $this->fieldset = new Fieldset;
+        $this->fieldset->addClass('formkit-layout-fieldset');
         if( $legendText ) {
             $legend   = new Legend( $legendText );
             $this->fieldset->addChild( $legend );
