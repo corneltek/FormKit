@@ -1,5 +1,5 @@
 $(function(){
-    $('.formkit-datetime').each(function(){
+    $('.formkit-widget-datetime').each(function(){
         $(this).datetimepicker({
             'showSecond': true,
             'ampm': $(this).data('ampm'),
