@@ -27,6 +27,26 @@ For example:
     echo $text; // render 
 ```
 
+Availabel Form Widgets
+----------------------
+* TextareaInput
+* TextInput
+* ButtonInput
+* CheckboxInput
+* ColorInput
+* DateInput
+* DatetimeInput
+* FileInput
+* HiddenInput
+* Label
+* PasswordInput
+* RadioInput
+* ResetInput
+* SelectInput
+* SubmitInput
+* AjaxCompleteInput
+* CanvasInput
+
 License
 -------
 
