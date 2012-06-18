@@ -53,6 +53,11 @@ Availabel Form Widgets
 * AjaxCompleteInput
 * CanvasInput
 
+Installation
+------------
+
+    $ pear install -f package.xml
+
 License
 -------
 
