@@ -5,7 +5,7 @@ With FormKit library, you can integrate form widgets with your own frameworks,
 
 And of course, you can define your own form widgets for your applications easily.
 
-Found hard to render form widgets ? There are some widget layout engines that
+Tired with HTML forms ? There are some widget layout engines that
 can render widget into HTML with HTML table or fieldsets/legends. Of course you can
 define your own layout engine too!
 
