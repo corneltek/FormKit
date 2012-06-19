@@ -10,7 +10,7 @@ can render widget into HTML with HTML table or fieldsets/legends. Of course you 
 define your own layout engine too!
 
 
-For example:
+For example, to use a text input widget:
 
 ```php
 <?php
@@ -32,6 +32,50 @@ Which outputs:
 <input type="text" name="username" value="default" placeholder="Your name please" size="20"/>
 <div class="formkit-hint">Please enter 6 characters for your username</div>
 ```
+
+SelectInput:
+
+```php
+<?php
+/* selector with group options */
+$countries = new FormKit\Widget\SelectInput( 'country' , array(
+    'label' => 'Country',
+    'options' => array(
+        'Test' => 'Test',
+        'Asia' => array( 
+            'Taiwan',
+            'Taipei',
+            'Tainan',
+            'Tokyo',
+            'Korea',
+        )
+    )
+));
+```
+
+
+Layout
+------
+To use generic layout:
+
+```php
+<?php
+$layout = new FormKit\Layout\GenericLayout;
+$layout->width(400);
+$layout->addWidget( $text )
+    ->addWidget( $password )
+    ->addWidget( $remember )
+    ->addWidget( $birthday )
+    ->addWidget( $best_time )
+    ->addWidget( $role )
+    ->addWidget( $size )
+    ->addWidget( $countries )
+    ->cellpadding(6)
+    ->cellspacing(6)
+    ->border(0);
+echo $layout;
+```
+
 
 Availabel Form Widgets
 ----------------------
