@@ -179,6 +179,8 @@ class Element extends CascadingAttribute
                 $dom = new DOMDocument;
                 $dom->appendChild($child);
                 return $child->C14N();
+            } elseif( is_string($child) ) {
+                return $child;
             } else {
                 return $child->render();
             }
