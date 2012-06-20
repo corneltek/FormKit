@@ -103,6 +103,7 @@ Open Tag & Close Tag
 --------------------
 
 ```php
+<?php
     $form = new FormKit\Element\Form(array(
         'class' => 'blah blah'
     ));
