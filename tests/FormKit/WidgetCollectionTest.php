@@ -4,8 +4,8 @@ class WidgetCollectionTest extends PHPUnit_Framework_TestCase
 {
     function test()
     {
-        $text = new FormKit\Widget\TextInput('username', array( 'label' => 'Username' ));
-        $text->value( 'default' )
+        $username = new FormKit\Widget\TextInput('username', array( 'label' => 'Username' ));
+        $username->value( 'default' )
             ->maxlength(10)
             ->minlength(3)
             ->size(20);
@@ -19,17 +19,30 @@ class WidgetCollectionTest extends PHPUnit_Framework_TestCase
         $widgets = new FormKit\WidgetCollection;
         ok($widgets);
 
-        $widgets->add($text);
+        $widgets->add($username);
         $widgets->add($password);
         $widgets->add($remember);
 
+        // get __get method
+        is( $username , $widgets->username );
+        is( $password , $widgets->password );
+
+        is( $username , $widgets->get('username') );
+        ok( $widgets->render('username') );
+
+        ok( is_array($widgets->getJavascripts()) );
+        ok( is_array($widgets->getStylesheets()) );
+
         is(3,$widgets->size());
 
-        $widgets->remove($text);
+
+        $widgets->remove($username);
         is(2,$widgets->size());
 
-        $widgets->remove($password);
+
+        unset($widgets['password']);
         is(1,$widgets->size());
+
         
     }
 }

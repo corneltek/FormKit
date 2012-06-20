@@ -7,12 +7,12 @@ class Legend extends Element
 {
     public $customAttribute = array('align');
 
-    function __construct($text = null) {
+    function __construct($text = null, $attributes = array() ) {
         if( $text && is_string($text) ) {
             $textNode = new DOMText($text);
             $this->addChild($textNode);
         }
-        parent::__construct('legend');
+        parent::__construct('legend', $attributes );
     }
 }
 

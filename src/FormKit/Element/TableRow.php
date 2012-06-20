@@ -8,6 +8,10 @@ class TableRow extends Element
 
     public $customAttributes = array('width','height');
 
+    public function __construct($attributes = array() ) { 
+        parent::__construct($this->tagName, $attributes);
+    }
+
     public function addCell( $element )
     {
         $cell = new TableCell;

@@ -9,8 +9,7 @@ class ClearDiv extends Div
 
     public $closeEmpty = true;
 
-    public function init() 
-    {
+    public function init() {
         $this->style = array('clear' => 'both');
     }
 }

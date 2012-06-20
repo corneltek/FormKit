@@ -77,6 +77,45 @@ echo $layout;
 ```
 
 
+Widget Factory
+--------------
+
+Form Widget Factory:
+
+```php
+<?php
+    use FormKit\FormKit;
+    $username = FormKit::text('username');
+    $password = FormKit::password('password',array( 
+        'class' => 'your-element-class-name',
+        'id' =>  'your-element-id',
+        'value' => 'default password',
+    ));
+
+    echo $username->render();
+    echo $password->render();
+```
+
+
+
+
+Open Tag & Close Tag
+--------------------
+
+```php
+    $form = new FormKit\Element\Form(array(
+        'class' => 'blah blah'
+    ));
+
+    // render elements manully
+    echo $form->open();
+    echo $form->renderChildren();
+    echo $form->close();
+
+    // which is equal to
+    echo $form->render();
+```
+
 Availabel Form Widgets
 ----------------------
 * TextareaInput

@@ -12,6 +12,16 @@
 
   </php>
 
+  <!-- ignore for code coverage report -->
+  <filter>
+    <blacklist>
+        <directory suffix=".php">vendor/</directory>
+        <!--
+        <directory suffix=".php">/usr</directory>
+        -->
+    </blacklist>
+  </filter>
+
   <testsuites>
     <testsuite name="PHPUnit">
       <directory suffix="Test.php">tests</directory>
