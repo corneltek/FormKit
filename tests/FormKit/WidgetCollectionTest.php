@@ -27,10 +27,14 @@ class WidgetCollectionTest extends PHPUnit_Framework_TestCase
         is( $username , $widgets->username );
         is( $password , $widgets->password );
 
+        is( $username , $widgets->get('username') );
+        ok( $widgets->render('username') );
+
         ok( is_array($widgets->getJavascripts()) );
         ok( is_array($widgets->getStylesheets()) );
 
         is(3,$widgets->size());
+
 
         $widgets->remove($username);
         is(2,$widgets->size());
@@ -38,6 +42,7 @@ class WidgetCollectionTest extends PHPUnit_Framework_TestCase
 
         unset($widgets['password']);
         is(1,$widgets->size());
+
         
     }
 }
