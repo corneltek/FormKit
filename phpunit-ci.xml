@@ -16,8 +16,9 @@
   <filter>
     <blacklist>
         <directory suffix=".php">vendor/</directory>
+        <!--
         <directory suffix=".php">/usr</directory>
-        <directory suffix=".php">/opt</directory>
+        -->
     </blacklist>
   </filter>
 
