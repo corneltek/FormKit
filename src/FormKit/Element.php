@@ -280,9 +280,8 @@ class Element extends CascadingAttribute
     public function open( $attributes = array() ) {
         $this->setAttributes( $attributes );
         $html = '<' . $this->tagName
-                    . $this->_renderStandardAttributes()
-                    . $this->_renderCustomAttributes()
-                ;
+                    . $this->renderAttributes()
+                    ;
         // should we close it ?
         if( $this->closeEmpty || $this->hasChildren() ) {
             $html .= '>';
