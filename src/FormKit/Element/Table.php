@@ -15,11 +15,14 @@ class Table extends Element
         'summary'
     );
 
+    public function __construct($attributes = array() ) { 
+        parent::__construct($this->tagName, $attributes);
+    }
+
     /**
      * @return TableRow
      */
-    public function addRow()
-    {
+    public function addRow() {
         $row = new TableRow;
         $this->addChild( $row );
         return $row;

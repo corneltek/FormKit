@@ -80,5 +80,4 @@ class FormKit
         static::$useJavascript = $bool;
     }
 
-
 }

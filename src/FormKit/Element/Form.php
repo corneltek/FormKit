@@ -16,6 +16,11 @@ class Form extends Element
     public $tagName = 'form';
     public $class = array('formkit-form');
     public $enctype = 'multipart/form-data';
+    public $closeEmpty = true;
     public $customAttributes = array('method','enctype','target','action','name');
+
+    public function __construct($attributes = array() ) { 
+        parent::__construct($this->tagName, $attributes);
+    }
 }
 
