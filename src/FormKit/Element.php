@@ -170,7 +170,7 @@ class Element extends CascadingAttribute
         return ! empty($this->children);
     }
 
-    protected function renderChildren()
+    public function renderChildren()
     {
         return join('',array_map(function($child) { 
 
