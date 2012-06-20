@@ -1,5 +1,7 @@
 <?php
 namespace FormKit;
+use InvalidArgumentException;
+use Exception;
 
 /**
  * Form Widget Factory class
@@ -49,14 +51,15 @@ class FormKit
      *
      */
     static function __callStatic($name,$arguments) {
-        $class = 'FormKit\\Widget\\' . ucfirst($name);
+        $class = 'FormKit\Widget\\' . ucfirst($name);
         if( class_exists($class,true) ) {
             return new $class($arguments[0],$arguments[1]);
         } 
-        $class .= $class . 'Input';
-        if( class_exists($class, true) ) {
-            return new $class($arguments[0],$arguments[1]);
+        $class2 = $class . 'Input';
+        if( class_exists($class2, true) ) {
+            return new $class2(@$arguments[0],@$arguments[1]);
         }
+        throw new InvalidArgumentException( "both $class or $class2 class not found." );
     }
 
     /**
