@@ -20,6 +20,11 @@ class Table extends Element
     }
 
     /**
+     * Add elements to a new row
+     *
+     *      $table->addRow( $element1, $element2 , $element3 );
+     *      $table->addRow( array( $element1, $element2 , $element3 ) );
+     *
      * @return TableRow
      */
     public function addRow($rows = null) {
