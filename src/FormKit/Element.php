@@ -15,10 +15,17 @@ class Element extends CascadingAttribute
      */
     public $class = array();
 
+
+    /**
+     * @var Use close tag with empty children, when this option is on, 
+     *      A tag with no children is rendered as "<foo> </foo>".
+     */
     public $closeEmpty = false;
 
     /**
      * Children elements
+     *
+     * @var array
      */
     public $children = array();
 
@@ -28,6 +35,10 @@ class Element extends CascadingAttribute
      */
     public $id = array();
 
+
+    /**
+     * @var array
+     */
     public $standardAttributes = array( 
         /* core attributes */
         'class','id','style','title',
@@ -39,10 +50,18 @@ class Element extends CascadingAttribute
         'accesskey', 'tabindex',
     );
 
+
+    /**
+     * @var array
+     */
     public $customAttributes = array();
 
 
 
+    /**
+     *
+     * @param string $tagName Tag name
+     */
     public function __construct($tagName = null)
     {
         if( $tagName )
@@ -57,6 +76,12 @@ class Element extends CascadingAttribute
 
     }
 
+
+    /**
+     * Add custom attribute name (will be rendered)
+     *
+     * @param string $attribute Attribute name
+     */
     public function addAttribute($attribute)
     {
         $this->customAttributes[] = $attribute;
@@ -80,6 +105,10 @@ class Element extends CascadingAttribute
     }
 
 
+    /**
+     *
+     * @param string $class class name
+     */
     public function addClass($class)
     {
         if( is_array($class) ) {
@@ -92,11 +121,19 @@ class Element extends CascadingAttribute
         return $this;
     }
 
+    /**
+     * @param string $class
+     * @return bool 
+     */
     public function hasClass($class) 
     {
         return array_search($class,$this->class) !== false;
     }
 
+
+    /**
+     * @param string $class class name
+     */
     public function removeClass($class)
     {
         $index = array_search( $class, $this->class );
@@ -104,6 +141,10 @@ class Element extends CascadingAttribute
         return $this;
     }
 
+
+    /**
+     * @param string $id add identifier attribute
+     */
     public function addId($id)
     {
         $this->id[] = $id;
@@ -223,27 +264,58 @@ class Element extends CascadingAttribute
         return $html;
     }
 
+
+    /**
+     * Render open tag
+     *
+     *
+     * $form->open();
+     *
+     * $form->renderChildren();
+     *
+     * $form->close();
+     */
+    public function open( $attributes = array() ) {
+        $this->setAttributes( $attributes );
+        $html = '<' . $this->tagName
+                    . $this->_renderStandardAttributes()
+                    . $this->_renderCustomAttributes()
+                ;
+        // should we close it ?
+        if( $this->closeEmpty || $this->hasChildren() ) {
+            $html .= '>';
+        } else {
+            $html .= '/>';
+        }
+        return $html;
+    }
+
+
+    /**
+     * Render close tag
+     */
+    public function close() {
+        $html = '';
+        if( $this->closeEmpty || $this->hasChildren() ) {
+            $html .= '</' . $this->tagName . '>';
+        }
+        return $html;
+    }
+
     public function render( $attributes = array() ) 
     {
         if( ! $this->tagName ) {
             throw new Exception('tagName is not defined.');
         }
 
-        $this->setAttributes( $attributes );
-        $html = '<' . $this->tagName
-                    . $this->_renderStandardAttributes()
-                    . $this->_renderCustomAttributes()
-                ;
+        $html = $this->open( $attributes );
 
-        if( $this->closeEmpty || $this->hasChildren() ) {
-            $html .= '>';
+        // render close tag
+        if( $this->hasChildren() ) {
             $html .= $this->renderChildren();
-
-            // close tag
-            $html .= '</' . $this->tagName . '>';
-        } else {
-            $html .= '/>';
         }
+
+        $html .= $this->close();
         return $html;
     }
 
