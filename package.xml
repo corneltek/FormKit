@@ -10,8 +10,8 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-06-03</date>
-  <time>15:58:05</time>
+  <date>2012-06-20</date>
+  <time>19:56:16</time>
   <version>
     <release>1.2.2</release>
     <api>1.2.2</api>
@@ -28,28 +28,30 @@
       <file name="tests/bootstrap.php" role="test" md5sum="48b0af49ba708e30bbda2a097e6c8882"/>
       <file name="tests/FormKit/Element/ClearDivTest.php" role="test" md5sum="801882630117d974c725dac1b4a819ff"/>
       <file name="tests/FormKit/Element/FieldsetTest.php" role="test" md5sum="38a8384fd4bdd3708440d16f6631384f"/>
+      <file name="tests/FormKit/Element/FormTest.php" role="test" md5sum="a5f013f7fcb6ddd7a17e37539186f42b"/>
       <file name="tests/FormKit/Element/TableRowTest.php" role="test" md5sum="e3951b1c0502a5c32417a4a31edb8cf3"/>
+      <file name="tests/FormKit/Element/TableTest.php" role="test" md5sum="22585f8a6be0259698891860b2a3bd9d"/>
       <file name="tests/FormKit/ElementTest.php" role="test" md5sum="edc22369f1771ddd2ec53afa895ed5a8"/>
-      <file name="tests/FormKit/FormKitTest.php" role="test" md5sum="f3263e63d811987280c0bffd09108ee5"/>
+      <file name="tests/FormKit/FormKitTest.php" role="test" md5sum="f6543d02a222a6fc67f2a1763786f863"/>
       <file name="tests/FormKit/Layout/FieldsetLayoutTest.php" role="test" md5sum="209063457aa8cf260bcec2591daab500"/>
       <file name="tests/FormKit/Layout/GenericLayoutTest.php" role="test" md5sum="4f83da84b362dcf195244db9edae2106"/>
       <file name="tests/FormKit/Widget/LabelTest.php" role="test" md5sum="81a3fb8a89fe374a7e1aad8f7506ef97"/>
       <file name="tests/FormKit/Widget/SelectInputTest.php" role="test" md5sum="cb321a546a5866856c9c2fcdff924186"/>
-      <file name="tests/FormKit/WidgetCollectionTest.php" role="test" md5sum="1c6818e363c6f65dc063f95992509572"/>
+      <file name="tests/FormKit/WidgetCollectionTest.php" role="test" md5sum="c9e571c1d7a6f5b474ab3ed0da49f539"/>
       <file name="tests/SeleniumTest.php" role="test" md5sum="2c225bd86a383154f75fe26f0b12e45f"/>
-      <file name="src/FormKit/Element/ClearDiv.php" role="php" md5sum="cbc29db7b2cf2306bab4732fd55f98b8"/>
-      <file name="src/FormKit/Element/Div.php" role="php" md5sum="7a03342a2ad1962f3497d9e38b3b475a"/>
-      <file name="src/FormKit/Element/Fieldset.php" role="php" md5sum="b666102b0722518556044e0a2b237579"/>
-      <file name="src/FormKit/Element/Form.php" role="php" md5sum="a43f5a52236e8ddd8bc60652b1f7ea22"/>
-      <file name="src/FormKit/Element/Legend.php" role="php" md5sum="d05e27c2caece49abe7b2c298e2d967b"/>
-      <file name="src/FormKit/Element/Table.php" role="php" md5sum="a7667b339edd7591769ac70757b1bdd6"/>
-      <file name="src/FormKit/Element/TableCell.php" role="php" md5sum="1b49a2c561d0ea7d79b3a9e9e0f303b1"/>
-      <file name="src/FormKit/Element/TableRow.php" role="php" md5sum="0664329e00c6cf5e34a27d1de39c4d49"/>
-      <file name="src/FormKit/Element.php" role="php" md5sum="9d7e5de6ccd336725aad2489b2262716"/>
-      <file name="src/FormKit/FormKit.php" role="php" md5sum="c8940486b4bb5b3a64bc7efcb4e9e497"/>
+      <file name="src/FormKit/Element/ClearDiv.php" role="php" md5sum="83d978d5412420cf18a2f0e2852fc1b8"/>
+      <file name="src/FormKit/Element/Div.php" role="php" md5sum="89ae419f9f2bbbdf074c71701b842528"/>
+      <file name="src/FormKit/Element/Fieldset.php" role="php" md5sum="89e3bddfb161cee8671b0b263fa8b29c"/>
+      <file name="src/FormKit/Element/Form.php" role="php" md5sum="5a325b6b3ad5d9a92d19a0a015ea04bd"/>
+      <file name="src/FormKit/Element/Legend.php" role="php" md5sum="880d0d7e0eda7fd741aca828541b092e"/>
+      <file name="src/FormKit/Element/Table.php" role="php" md5sum="adbddcded05a76179b00a9f7c668ddd3"/>
+      <file name="src/FormKit/Element/TableCell.php" role="php" md5sum="153ca8e7c5e391383ff1d8b96b17ad8d"/>
+      <file name="src/FormKit/Element/TableRow.php" role="php" md5sum="449bbee6ef8acc1ae3b3bee5e1d394d7"/>
+      <file name="src/FormKit/Element.php" role="php" md5sum="23e5fa544321b122af47aa41477f99f6"/>
+      <file name="src/FormKit/FormKit.php" role="php" md5sum="df69a2bfd03fc4a674f7b5592354e02a"/>
       <file name="src/FormKit/Layout/BaseLayout.php" role="php" md5sum="b042a97f631dc1252d7c55f5da0eaa0e"/>
       <file name="src/FormKit/Layout/FieldsetLayout.php" role="php" md5sum="06cbc7aa5e4e3a225e0cc1d854f0beaf"/>
-      <file name="src/FormKit/Layout/GenericLayout.php" role="php" md5sum="79ed81b704f9648fef7facdb9af8585b"/>
+      <file name="src/FormKit/Layout/GenericLayout.php" role="php" md5sum="906c2ebb9c9c61dd306624ce43384d33"/>
       <file name="src/FormKit/Widget/AjaxCompleteInput.php" role="php" md5sum="9fb4dc8d3c593701e8dc155feb31dd68"/>
       <file name="src/FormKit/Widget/BaseWidget.php" role="php" md5sum="9668e076cc9765bdfa9cb07cb2e42b4f"/>
       <file name="src/FormKit/Widget/ButtonInput.php" role="php" md5sum="69b99edbcf573824530831ec481f69d2"/>
@@ -92,7 +94,9 @@
       <install name="tests/bootstrap.php" as="bootstrap.php"/>
       <install name="tests/FormKit/Element/ClearDivTest.php" as="FormKit/Element/ClearDivTest.php"/>
       <install name="tests/FormKit/Element/FieldsetTest.php" as="FormKit/Element/FieldsetTest.php"/>
+      <install name="tests/FormKit/Element/FormTest.php" as="FormKit/Element/FormTest.php"/>
       <install name="tests/FormKit/Element/TableRowTest.php" as="FormKit/Element/TableRowTest.php"/>
+      <install name="tests/FormKit/Element/TableTest.php" as="FormKit/Element/TableTest.php"/>
       <install name="tests/FormKit/ElementTest.php" as="FormKit/ElementTest.php"/>
       <install name="tests/FormKit/FormKitTest.php" as="FormKit/FormKitTest.php"/>
       <install name="tests/FormKit/Layout/FieldsetLayoutTest.php" as="FormKit/Layout/FieldsetLayoutTest.php"/>
