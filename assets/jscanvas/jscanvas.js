@@ -1,7 +1,6 @@
-jQuery(function($){
-    $('.formkit-canvas').each(function(){
+(function($) {
+    jQuery.fn.canvasWidget = function(options) {
         var $container = $(this);
-
         var $input = $container.find('input:eq(0)');
         var $color = $container.find('input.color:eq(0)');
 
@@ -150,6 +149,12 @@ jQuery(function($){
             };
             img.setAttribute('src', $input.val());
         }
+    };
 
+    jQuery(function(){
+        $('.formkit-canvas').each(function(){
+            $(this).canvasWidget();
+        });
     });
-})
+})(jQuery);
+
