@@ -12,7 +12,7 @@ class DateInput extends TextInput
         $this->setAttributes($attributes);
         $dateFormat = '';
 
-        $format = $this->format ?: 'y-m-d';
+        $format = $this->format ?: 'Y-m-d';
         for($i=0; $i<strlen($format); ++$i)
             switch($format[$i]) {
                 case 'd':

@@ -1,3 +1,4 @@
+
 function formkit_init_date_widget() {
     $('.formkit-widget-date').each(function(){
         $(this).datepicker({
