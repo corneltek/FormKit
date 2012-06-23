@@ -1,3 +1,10 @@
+function formkit_init_canvas_widget() {
+    $('.formkit-canvas').each(function(){
+        $(this).canvasWidget();
+    });
+}
+
+
 (function($) {
     jQuery.fn.canvasWidget = function(options) {
         var $container = $(this);
@@ -157,10 +164,8 @@
         }
     };
 
-    jQuery(function(){
-        $('.formkit-canvas').each(function(){
-            $(this).canvasWidget();
-        });
+    $(function(){
+        formkit_init_canvas_widget();
     });
 })(jQuery);
 

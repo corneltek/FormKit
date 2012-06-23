@@ -930,5 +930,8 @@ var jscolor = {
 
 };
 
+function formkit_init_color_widget() {
+    jscolor.init();
+}
 
 jscolor.install();
