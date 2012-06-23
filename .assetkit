@@ -1,0 +1,80 @@
+{
+    "public": "demo",
+    "assets": {
+        "jscolor": {
+            "stash": {
+                "assets": [
+                    {
+                        "files": [
+                            "arrow.gif",
+                            "cross.gif",
+                            "hs.png",
+                            "hv.png"
+                        ]
+                    },
+                    {
+                        "css": 1,
+                        "files": [
+                            "jscolor.css"
+                        ]
+                    },
+                    {
+                        "js": 1,
+                        "files": [
+                            "jscolor.js"
+                        ]
+                    }
+                ]
+            },
+            "manifest": "assets\/jscolor\/manifest.yml",
+            "source_dir": "assets\/jscolor",
+            "name": "jscolor"
+        },
+        "jscanvas": {
+            "stash": {
+                "assets": [
+                    {
+                        "js": 1,
+                        "files": [
+                            "jscanvas.js"
+                        ]
+                    }
+                ]
+            },
+            "manifest": "assets\/jscanvas\/manifest.yml",
+            "source_dir": "assets\/jscanvas",
+            "name": "jscanvas"
+        },
+        "jsdate": {
+            "stash": {
+                "assets": [
+                    {
+                        "js": 1,
+                        "files": [
+                            "jsdate.js"
+                        ]
+                    }
+                ]
+            },
+            "manifest": "assets\/jsdate\/manifest.yml",
+            "source_dir": "assets\/jsdate",
+            "name": "jsdate"
+        },
+        "jsdatetime": {
+            "stash": {
+                "assets": [
+                    {
+                        "js": 1,
+                        "files": [
+                            "jsdatetime.js",
+                            "jquery-ui-timepicker-addon.js"
+                        ]
+                    }
+                ]
+            },
+            "manifest": "assets\/jsdatetime\/manifest.yml",
+            "source_dir": "assets\/jsdatetime",
+            "name": "jsdatetime"
+        }
+    }
+}
