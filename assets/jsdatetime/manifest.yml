@@ -1,0 +1,6 @@
+---
+assets:
+  - js: 1
+    files:
+      - jsdatetime.js
+      - jquery-ui-timepicker-addon.js

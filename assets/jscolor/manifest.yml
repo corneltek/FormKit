@@ -1,0 +1,10 @@
+---
+assets:
+  - files:
+      - arrow.gif
+      - cross.gif
+      - hs.png
+      - hv.png
+  - js: 1
+    files:
+      - jscolor.js
