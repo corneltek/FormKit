@@ -7,12 +7,11 @@ $loader = new \Universal\ClassLoader\BasePathClassLoader( array(
 ));
 $loader->register();
 
-
 FormKit\FormKit::setAssetPath('../static');
 
 $text = new FormKit\Widget\TextInput('username', array( 
-	'label' => 'Username',
-	'hint'  => 'Please enter 6 characters for your username',
+    'label' => 'Username',
+    'hint'  => 'Please enter 6 characters for your username',
 ));
 $text->value( 'default' )
     ->maxlength(10)
@@ -140,6 +139,30 @@ $layout->addWidget( $submit );
 
     <link rel="stylesheet" href="css/default.css" type="text/css" />
 
+    <?php
+    {
+        $assetConfig = new AssetKit\Config( '../.assetkit');
+        $assetLoader = new AssetKit\AssetLoader( $assetConfig );
+        $assets[]   = $assetLoader->load( 'jscolor' );
+        $assets[]   = $assetLoader->load( 'jscanvas' );
+
+        // initialize a cache (if you need one)
+        $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
+
+        $writer = new AssetKit\AssetWriter($assetConfig);
+        $manifest = $writer
+                ->cache($cache)
+                // ->production()          // generate for production code, (the alternative is `development`)
+                ->name('formkit')
+                ->write( $assets );
+        $includer = new AssetKit\IncludeRender;
+        $html = $includer->render( $manifest );
+        echo $html;
+    }
+    ?>
+
+<?php 
+/*
     <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
         <script src="<?= $url ?>"> </script>
     <?php endforeach ?>
@@ -147,6 +170,8 @@ $layout->addWidget( $submit );
     <?php foreach( $layout->widgets->getStylesheets() as $url ) : ?>
         <link rel="stylesheet" href="<?= $url ?>" type="text/css"/>
     <?php endforeach ?>
+ */
+?>
 
     <!--
     $_POST = <? print_r($_POST) ?>
