@@ -1,6 +1,12 @@
 (function($) {
     jQuery.fn.canvasWidget = function(options) {
         var $container = $(this);
+
+        if( $container.data('canvas') ) {
+            return;
+        }
+        $container.data('canvas',1);
+
         var $input = $container.find('input:eq(0)');
         var $color = $container.find('input.color:eq(0)');
 

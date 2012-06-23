@@ -829,7 +829,6 @@ var jscolor = {
             }
         }
 
-
         function blurValue() {
             if(valueElement !== target) {
                 THIS.importColor();
