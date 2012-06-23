@@ -2,6 +2,7 @@
 define('LIBROOT', dirname(__DIR__) );
 require LIBROOT . '/vendor/pear/Universal/ClassLoader/BasePathClassLoader.php';
 $loader = new \Universal\ClassLoader\BasePathClassLoader( array(
+    '../../AssetKit/src',
     LIBROOT . '/src',
     LIBROOT . '/vendor/pear'
 ));
@@ -143,15 +144,16 @@ $layout->addWidget( $submit );
     {
         $assetConfig = new AssetKit\Config( '../.assetkit');
         $assetLoader = new AssetKit\AssetLoader( $assetConfig );
-        $assets[]   = $assetLoader->load( 'jscolor' );
-        $assets[]   = $assetLoader->load( 'jscanvas' );
+        $assets   = array_map(function($n) use ($assetLoader) {
+                return $assetLoader->load($n);
+            }, array('jscolor','jscanvas','jsdate','jsdatetime'));
 
         // initialize a cache (if you need one)
         $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
 
         $writer = new AssetKit\AssetWriter($assetConfig);
         $manifest = $writer
-                ->cache($cache)
+                // ->cache($cache)
                 // ->production()          // generate for production code, (the alternative is `development`)
                 ->name('formkit')
                 ->write( $assets );

@@ -1,0 +1,21 @@
+
+
+.jscolor-padm { 
+    background-image: url(cross.gif);
+    background-repeat: no-repeat;
+}
+
+.jscolor-sldm {
+    background-image: url(arrow.gif);
+    background-repeat: no-repeat;
+}
+
+.jscolor-hv {
+    background-image: url(hv.png);
+    background-repeat: no-repeat;
+}
+.jscolor-hs {
+    background-image: url(hs.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}

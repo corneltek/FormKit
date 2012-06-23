@@ -5,6 +5,9 @@ assets:
       - cross.gif
       - hs.png
       - hv.png
+  - css: 1
+    files:
+      - jscolor.css
   - js: 1
     files:
       - jscolor.js
