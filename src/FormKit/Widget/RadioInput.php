@@ -26,7 +26,7 @@ class RadioInput extends BaseWidget
                 $value = $option;
             }
 
-            $id = $this->getSerial();
+            $id = $this->getSerialId();
             $radio = sprintf('<input type="radio" name="%s" value="%s" id="%s"', 
                     $this->name,
                     $value,

@@ -15,6 +15,9 @@ abstract class BaseWidget extends \FormKit\Element
     public $name;
 
 
+    public $useSerialId = false;
+
+
     /**
      * @var array css style sheets
      */
@@ -79,6 +82,10 @@ abstract class BaseWidget extends \FormKit\Element
         $this->setAttributeType( 'disabled'    , self::ATTR_FLAG );
         $this->setAttributeType( 'readonly'    , self::ATTR_FLAG );
         $this->setAttributeType( 'placeholder' , self::ATTR_STRING );
+
+        if( $this->useSerialId ) {
+            $this->addId( $this->getSerialId() );
+        }
     }
 
     public function getStylesheets()
@@ -113,7 +120,7 @@ abstract class BaseWidget extends \FormKit\Element
             return '<div class="formkit-hint">' . $this->hint . '</div>';
     }
 
-    public function getSerial()
+    public function getSerialId()
     {
         if( function_exists('uniqid') )
             return $this->name . '-' . uniqid( $this->name );
