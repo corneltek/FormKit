@@ -20,33 +20,46 @@ use FormKit\ResponseUtils;
 class DateSelectInput extends HiddenInput
 {
 
+    public $year_range = array();
+    public $month_range = array();
+    public $day_range = array();
+
+    public function init() {
+        parent::init();
+        $this->year_range = range(2000,2012);
+        $this->month_range = range(1,12);
+        $this->day_range = range(1,31);
+    }
+
     public function render( $attributes = array() )
     {
         $yearS = new SelectInput(array(
-            'options' => range(2000,2012)
+            'options' => $this->year_range,
         ));
         $yearS->addId( $yearId = $this->getSerialId() );
 
         $monthS = new SelectInput(array(
-            'options' => range(1,12)
+            'options' => $this->month_range
         ));
         $monthS->addId( $monthId = $this->getSerialId() );
 
         $dayS = new SelectInput(array(
-            'options' => range(1,31)
+            'options' => $this->day_range
         ));
         $dayS->addId( $dayId = $this->getSerialId() );
 
         spl_autoload_call('FormKit\ResponseUtils');
 
         block_start(); ?>
+        <script>
 
-        <?php block_end();
+        </script>
+        <?php $html = block_end();
 
         $this->append($yearS);
         $this->append($monthS);
         $this->append($dayS);
-        return parent::render( $attributes );
+        return parent::render( $attributes ) . $html;
     }
 }
 
