@@ -40,9 +40,11 @@ abstract class BaseWidget extends \FormKit\Element
      *      - readonly
      *      - placeholder
      */
-    public function __construct($name, $attributes = null )
+    public function __construct($name = null, $attributes = null )
     {
-        $this->name = $name;
+        if( $name ) {
+            $this->name = $name;
+        }
         if( $attributes ) {
             $this->setAttributes( $attributes );
         }
