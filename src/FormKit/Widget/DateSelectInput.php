@@ -3,10 +3,22 @@ namespace FormKit\Widget;
 use FormKit\Widget\SelectInput;
 use FormKit\ResponseUtils;
 
-class DateSelectInput extends TextInput
+
+/**
+ * TODO: not implemented
+ *
+ * DateSelectInput widget with pure Select widget
+ *
+ *     $selector = new DateSelectInput([
+ *         'name' => 'date',
+ *         'year_range' => range(2010,2012),
+ *         'value' => '2012-12-12',
+ *         'format' => 'yy-mm-dd',   // which means yy format in year selector, mm in month selector, dd in day selector.
+ *     ]);
+ *
+ */
+class DateSelectInput extends HiddenInput
 {
-    public $type = 'hidden';
-    public $class = array('formkit-widget','formkit-widget-date');
 
     public function render( $attributes = array() )
     {
