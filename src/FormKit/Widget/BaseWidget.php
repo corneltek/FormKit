@@ -2,6 +2,8 @@
 namespace FormKit\Widget;
 use CascadingAttribute;
 use FormKit\FormKit;
+use Exception;
+use InvalidArgumentException;
 
 abstract class BaseWidget extends \FormKit\Element
 {
@@ -40,15 +42,27 @@ abstract class BaseWidget extends \FormKit\Element
      *      - readonly
      *      - placeholder
      */
-    public function __construct($name = null, $attributes = null )
+    public function __construct()
     {
-        if( $name ) {
-            $this->name = $name;
+        $args = func_get_args();
+
+        if( 2 === count($args) ) {
+            $this->name = $args[0];
+            if( $args[1] && is_array($args[1]) ) {
+                $this->setAttributes($args[1]);
+            }
         }
-        if( $attributes ) {
-            $this->setAttributes( $attributes );
+        elseif( 1 === count($args) ) {
+            $arg = $args[0];
+            if ( is_string($arg) ) {
+                $this->name = $arg;
+            } elseif ( is_array($arg) ) {
+                $this->setAttributes( $arg );
+            } else {
+                throw new InvalidArgumentException('Unsupported argument type');
+            }
         }
-        parent::__construct();
+        parent::__construct(); // create element
         $this->init();
     }
 
