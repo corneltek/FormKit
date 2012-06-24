@@ -21,10 +21,10 @@ class AjaxCompleteInput extends TextInput
 
     public $min_length = 1;
 
-    public $useSerialId = true;
-
     public function render( $attributes = array() )
     {
+        $serial = $this->getSerialId();
+        $this->addId($serial);
         ob_start();
         /*
             <style>
