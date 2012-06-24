@@ -19,6 +19,8 @@ $text->value( 'default' )
     ->minlength(3)
     ->size(20);
 
+$dateSelect = new FormKit\Widget\DateSelectInput('my_date', array( 'label' => _('My Date') ));
+
 $textarea = new FormKit\Widget\TextareaInput('description', array( 'label' => _('Description') ));
 $textarea->value( '說明文字' )
     ->cols(50)
@@ -36,7 +38,7 @@ $birthday = new FormKit\Widget\DateInput('birthday', array(
     'value' => new DateTime('now', new DateTimeZone('Asia/Taipei'))
 ));
 
-$best_time = new FormKit\Widget\DatetimeInput('best_time', array(
+$bestTime = new FormKit\Widget\DatetimeInput('best_time', array(
     'label' => 'Best Time',
     'format' => 'Y.n.j g:i:s a',
     'value' => new DateTime('now', new DateTimeZone('Asia/Taipei')),
@@ -113,10 +115,11 @@ $layout->addWidget( $text )
     ->addWidget( $password )
     ->addWidget( $remember )
     ->addWidget( $birthday )
-    ->addWidget( $best_time )
+    ->addWidget( $bestTime )
     ->addWidget( $role )
     ->addWidget( $size )
     ->addWidget( $countries )
+    ->addWidget( $dateSelect )
     ->cellpadding(6)
     ->cellspacing(6)
     ->border(0);
