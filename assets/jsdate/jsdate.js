@@ -1,9 +1,10 @@
 
 function formkit_init_date_widget() {
     $('.formkit-widget-date').each(function(){
-        $(this).datepicker({
-            dateFormat: $(this).data('date-format')
-        });
+        if( !$(this).attr('readonly') )
+            $(this).datepicker({
+                dateFormat: $(this).data('date-format')
+            });
     });
 }
 
