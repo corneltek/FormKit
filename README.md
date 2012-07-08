@@ -10,6 +10,12 @@ can render widget into HTML with HTML table or fieldsets/legends. Of course you 
 define your own layout engine too!
 
 
+
+
+
+
+
+
 For example, to use a text input widget:
 
 ```php
@@ -137,8 +143,20 @@ Availabel Form Widgets
 * AjaxCompleteInput
 * CanvasInput
 
+
+Requirement
+-----------
+
+* AssetKit
+* Onion
+
 Installation
 ------------
+In our system, we use `onion` installer tool to install dependencies:
+
+    $ onion install
+
+Or install through:
 
     $ pear install -f package.xml
 
