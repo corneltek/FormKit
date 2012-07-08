@@ -1,11 +1,12 @@
 function formkit_init_datetime_widget() {
     $('.formkit-widget-datetime').each(function(){
-        $(this).datetimepicker({
-            'showSecond': true,
-            'ampm': $(this).data('ampm'),
-            'dateFormat': $(this).data('date-format'),
-            'timeFormat': $(this).data('time-format')
-        });
+        if( !$(this).attr('readonly') )
+            $(this).datetimepicker({
+                'showSecond': true,
+                'ampm': $(this).data('ampm'),
+                'dateFormat': $(this).data('date-format'),
+                'timeFormat': $(this).data('time-format')
+            });
     });
 }
 $(function(){
