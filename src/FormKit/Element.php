@@ -153,6 +153,12 @@ class Element extends CascadingAttribute
         return $this;
     }
 
+    public function setId($id)
+    {
+        $this->id = (array) $id;
+        return $this;
+    }
+
     public function prepend($child)
     {
         array_splice($this->children,0,0,$child);
