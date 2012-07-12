@@ -6,6 +6,7 @@ class SelectInput extends BaseWidget
     public $class = array('formkit-widget','formkit-widget-select');
     public $options = array();
     public $multiple;
+    public $allow_empty;
 
     public function renderGroup($label,$options)
     {
@@ -23,6 +24,11 @@ class SelectInput extends BaseWidget
             isset($options[$size-1]) ); 
 
         $html = '';
+
+        if( $this->allow_empty ) {
+            $html .= '<option></option>' . "\n";
+        }
+
         foreach( $options as $k => $option ) {
             if ( is_array($option) ) {
                 $html .= $this->renderGroup($k,$option);
