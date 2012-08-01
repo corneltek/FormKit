@@ -1,80 +1,56 @@
 {
     "public": "demo",
     "assets": {
-        "jscolor": {
+        "formkit": {
             "stash": {
                 "assets": [
                     {
+                        "js": 1,
                         "files": [
-                            "arrow.gif",
-                            "cross.gif",
-                            "hs.png",
-                            "hv.png"
+                            "formkit.js"
+                        ]
+                    },
+                    {
+                        "js": 1,
+                        "files": [
+                            "jscanvas\/jscanvas.js"
+                        ]
+                    },
+                    {
+                        "files": [
+                            "jscolor\/arrow.gif"
                         ]
                     },
                     {
                         "css": 1,
                         "files": [
-                            "jscolor.css"
+                            "jscolor\/jscolor.css"
                         ]
                     },
                     {
                         "js": 1,
                         "files": [
-                            "jscolor.js"
+                            "jscolor\/jscolor.js"
                         ]
-                    }
-                ]
-            },
-            "manifest": "assets\/jscolor\/manifest.yml",
-            "source_dir": "assets\/jscolor",
-            "name": "jscolor"
-        },
-        "jscanvas": {
-            "stash": {
-                "assets": [
+                    },
                     {
                         "js": 1,
                         "files": [
-                            "jscanvas.js"
+                            "jsdate\/jsdate.js"
                         ]
-                    }
-                ]
-            },
-            "manifest": "assets\/jscanvas\/manifest.yml",
-            "source_dir": "assets\/jscanvas",
-            "name": "jscanvas"
-        },
-        "jsdate": {
-            "stash": {
-                "assets": [
+                    },
                     {
                         "js": 1,
                         "files": [
-                            "jsdate.js"
+                            "jsdatetime\/jsdatetime.js",
+                            "jsdatetime\/jquery-ui-timepicker-addon.js"
                         ]
                     }
                 ]
             },
-            "manifest": "assets\/jsdate\/manifest.yml",
-            "source_dir": "assets\/jsdate",
-            "name": "jsdate"
-        },
-        "jsdatetime": {
-            "stash": {
-                "assets": [
-                    {
-                        "js": 1,
-                        "files": [
-                            "jsdatetime.js",
-                            "jquery-ui-timepicker-addon.js"
-                        ]
-                    }
-                ]
-            },
-            "manifest": "assets\/jsdatetime\/manifest.yml",
-            "source_dir": "assets\/jsdatetime",
-            "name": "jsdatetime"
+            "manifest": "assets\/formkit\/manifest.yml",
+            "source_dir": "assets\/formkit",
+            "name": "formkit"
         }
     }
 }
