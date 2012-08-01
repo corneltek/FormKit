@@ -2,7 +2,7 @@
 define('LIBROOT', dirname(__DIR__) );
 require LIBROOT . '/vendor/pear/Universal/ClassLoader/BasePathClassLoader.php';
 $loader = new \Universal\ClassLoader\BasePathClassLoader( array(
-    '../../AssetKit/src',
+    # '../../AssetKit/src',
     LIBROOT . '/src',
     LIBROOT . '/vendor/pear'
 ));
@@ -150,16 +150,20 @@ $layout->addWidget( $submit );
         $asset = $assetLoader->load('formkit');
 
         // initialize a cache (if you need one)
-        $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
-
-        $writer = new AssetKit\AssetWriter($assetConfig);
+        // $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
+        $writer   = new AssetKit\AssetWriter($assetConfig);
         $manifest = $writer
+                ->name('formkit')
                 // ->cache($cache)
                 // ->production()          // generate for production code, (the alternative is `development`)
-                ->name('formkit')
                 ->write( array($asset) );
         $includer = new AssetKit\IncludeRender;
         $html = $includer->render( $manifest );
+
+        # echo "<!--\n";
+        # print_r( $manifest ); 
+        # echo "-->\n";
+
         echo $html;
     }
     ?>

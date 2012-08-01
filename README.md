@@ -160,6 +160,10 @@ Or install through:
 
     $ pear install -f package.xml
 
+Install assets for demo:
+
+    $ assetkit install
+
 License
 -------
 
