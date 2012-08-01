@@ -1,10 +1,3 @@
-function formkit_init_canvas_widget() {
-    $('.formkit-canvas').each(function(){
-        $(this).canvasWidget();
-    });
-}
-
-
 (function($) {
     jQuery.fn.canvasWidget = function(options) {
         var $container = $(this);
@@ -164,8 +157,9 @@ function formkit_init_canvas_widget() {
         }
     };
 
-    $(function(){
-        formkit_init_canvas_widget();
+    FormKit.register(function(e,scopeEl) {
+        $(scopeEl).find('.formkit-canvas').each(function(){
+            $(this).canvasWidget();
+        });
     });
 })(jQuery);
-

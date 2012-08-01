@@ -1,5 +1,5 @@
-function formkit_init_datetime_widget() {
-    $('.formkit-widget-datetime').each(function(){
+FormKit.register(function(e,scopeEl) {
+    $(scopeEl).find('.formkit-widget-datetime').each(function(){
         if( !$(this).attr('readonly') )
             $(this).datetimepicker({
                 'showSecond': true,
@@ -7,11 +7,5 @@ function formkit_init_datetime_widget() {
                 'dateFormat': $(this).data('date-format'),
                 'timeFormat': $(this).data('time-format')
             });
-    });
-}
-$(function(){
-
-    $(document.body).ready(function() {
-        formkit_init_datetime_widget();
     });
 });

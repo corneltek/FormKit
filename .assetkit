@@ -18,7 +18,10 @@
                     },
                     {
                         "files": [
-                            "jscolor\/arrow.gif"
+                            "jscolor\/arrow.gif",
+                            "jscolor\/cross.gif",
+                            "jscolor\/hs.png",
+                            "jscolor\/hv.png"
                         ]
                     },
                     {

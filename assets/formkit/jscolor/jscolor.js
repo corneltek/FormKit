@@ -930,8 +930,8 @@ var jscolor = {
 
 };
 
-function formkit_init_color_widget() {
+FormKit.register(function(e,scopeEl) {
     jscolor.init();
-}
-
-jscolor.install();
+}, function() {
+    jscolor.install();
+});

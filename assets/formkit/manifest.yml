@@ -14,6 +14,9 @@ assets:
 # jscolor
   - files:
       - jscolor/arrow.gif
+      - jscolor/cross.gif
+      - jscolor/hs.png
+      - jscolor/hv.png
   - css: 1
     files:
       - jscolor/jscolor.css

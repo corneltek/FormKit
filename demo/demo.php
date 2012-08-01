@@ -183,6 +183,14 @@ $layout->addWidget( $submit );
     $_POST = <? print_r($_POST) ?>
     $_FILES = <? print_r($_FILES) ?>
     -->
+    <script>
+    // initialize formkit js
+    FormKit.install();
+    $(document.body).ready(function() {
+        FormKit.initialize(document.body);
+    });
+    </script>
+
 </head>
 <body>
 <?php
