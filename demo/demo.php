@@ -136,7 +136,7 @@ $layout->addWidget( $submit );
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/black-tie/jquery-ui.css" type="text/css" />
@@ -147,9 +147,7 @@ $layout->addWidget( $submit );
     {
         $assetConfig = new AssetKit\Config( '../.assetkit');
         $assetLoader = new AssetKit\AssetLoader( $assetConfig );
-        $assets   = array_map(function($n) use ($assetLoader) {
-                return $assetLoader->load($n);
-            }, array('jscolor','jscanvas','jsdate','jsdatetime'));
+        $asset = $assetLoader->load('formkit');
 
         // initialize a cache (if you need one)
         $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
@@ -159,13 +157,12 @@ $layout->addWidget( $submit );
                 // ->cache($cache)
                 // ->production()          // generate for production code, (the alternative is `development`)
                 ->name('formkit')
-                ->write( $assets );
+                ->write( array($asset) );
         $includer = new AssetKit\IncludeRender;
         $html = $includer->render( $manifest );
         echo $html;
     }
     ?>
-
 <?php 
 /*
     <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
