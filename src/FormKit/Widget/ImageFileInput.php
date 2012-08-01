@@ -7,4 +7,3 @@ class ImageFileInput extends FileInput
     public $class = array('formkit-widget','formkit-widget-imagefile');
 }
 
-
