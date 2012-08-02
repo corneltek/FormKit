@@ -37,26 +37,18 @@ class Element extends CascadingAttribute
 
 
     /**
-     * @var array
+     * @var array Standard attribute from element class member.
      */
     public $standardAttributes = array( 
         /* core attributes */
-        'class','id','style','title',
-
-        /* language attributes */
-        'dir', 'lang', 'xml:lang',
-
-        /* keyboard attributes */
-        'accesskey', 'tabindex',
+        'class','id' 
     );
 
-
     /**
-     * @var array
+     * @var array Custom attributes (append your attribute name to render class 
+     *            member as attribute)
      */
     public $customAttributes = array();
-
-
 
     /**
      *
@@ -66,15 +58,14 @@ class Element extends CascadingAttribute
     {
         if( $tagName )
             $this->tagName = $tagName;
-
-
         $this->setAttributeType( 'class', self::ATTR_ARRAY );
         $this->setAttributeType( 'id', self::ATTR_ARRAY );
         $this->setAttributes( $attributes );
         $this->init();
     }
 
-    public function init() {
+    public function init() 
+    {
 
     }
 
@@ -217,26 +208,15 @@ class Element extends CascadingAttribute
         }
     }
 
-
     /**
-     * Render standard attributes
+     * Render attributes string
      *
      * @return string Standard Attribute string
      */
-    public function _renderStandardAttributes()
-    {
-        return $this->_renderAttributes($this->standardAttributes);
-    }
-
-    public function _renderCustomAttributes()
-    {
-        return $this->_renderAttributes($this->customAttributes);
-    }
-
-
     public function renderAttributes() {
-        return    $this->_renderStandardAttributes()
-                . $this->_renderCustomAttributes();
+        return $this->_renderAttributes($this->standardAttributes)
+            . $this->_renderAttributes($this->customAttributes)
+            . $this->_renderAttributes($this->attributes);
     }
 
     /**

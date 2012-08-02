@@ -6,12 +6,6 @@ class TextareaInput extends BaseWidget
     public $tag;
     public $class = array('formkit-widget','formkit-widget-textarea');
     public $type = 'textarea';
-    public $value;
-    public $size;
-    public $alt;
-    public $readonly;
-    public $style;
-
 
     /**
      * Render Widget with attributes
@@ -23,27 +17,7 @@ class TextareaInput extends BaseWidget
     {
         $this->setAttributes( $attributes );
         return '<textarea' 
-            . $this->_renderStandardAttributes()
-            . $this->_renderAttributes(array(
-                'name','cols','rows',
-                'readonly','disabled',
-
-                /* Event Attributes */
-                'onblur',
-                'onchange',
-                'onclick',
-                'ondblclick',
-                'onfocus',
-                'onmousedown',
-                'onmousemove',
-                'onmouseout',
-                'onmouseover',
-                'onmouseup',
-                'onkeydown',
-                'onkeypress',
-                'onkeyup',
-                'onselect',
-            ))
+            . $this->renderAttributes()
             . '>'
             . htmlspecialchars($this->value, ENT_NOQUOTES, 'UTF-8')
             . '</textarea>' 

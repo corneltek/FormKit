@@ -8,7 +8,73 @@ $loader = new \Universal\ClassLoader\BasePathClassLoader( array(
 ));
 $loader->register();
 
-FormKit\FormKit::setAssetPath('../static');
+?>
+<!Doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/black-tie/jquery-ui.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+
+    <?php
+    {
+        $assetConfig = new AssetKit\Config( '../.assetkit');
+        $assetLoader = new AssetKit\AssetLoader( $assetConfig );
+        $asset = $assetLoader->load('formkit');
+
+        // initialize a cache (if you need one)
+        // $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
+        $writer   = new AssetKit\AssetWriter($assetConfig);
+        $manifest = $writer
+                ->name('formkit')
+                // ->cache($cache)
+                // ->production()          // generate for production code, (the alternative is `development`)
+                ->write( array($asset) );
+        $includer = new AssetKit\IncludeRender;
+        $html = $includer->render( $manifest );
+
+        # echo "<!--\n";
+        # print_r( $manifest ); 
+        # echo "-->\n";
+
+        echo $html;
+    }
+    ?>
+<?php 
+/*
+    <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
+        <script src="<?= $url ?>"> </script>
+    <?php endforeach ?>
+
+    <?php foreach( $layout->widgets->getStylesheets() as $url ) : ?>
+        <link rel="stylesheet" href="<?= $url ?>" type="text/css"/>
+    <?php endforeach ?>
+ */
+?>
+
+    <!--
+    $_POST = <? print_r($_POST) ?>
+    $_FILES = <? print_r($_FILES) ?>
+    -->
+    <script>
+    // initialize formkit js
+    FormKit.install();
+    $(document.body).ready(function() {
+        FormKit.initialize(document.body);
+    });
+    </script>
+
+</head>
+<body>
+<?php
+
+/**
+ * Initialize form widgets for demo
+ */
 
 $text = new FormKit\Widget\TextInput('username', array( 
     'label' => 'Username',
@@ -36,6 +102,11 @@ $birthday = new FormKit\Widget\DateInput('birthday', array(
     'label' => 'Birthday',
     'format' => 'Y.n.j',
     'value' => new DateTime('now', new DateTimeZone('Asia/Taipei'))
+));
+
+$imageInput = new FormKit\Widget\ImageFileInput('image', array( 
+    'label' => 'Image',
+    'value' => 'new-google-chrome-logo.jpg',
 ));
 
 $bestTime = new FormKit\Widget\DatetimeInput('best_time', array(
@@ -115,6 +186,7 @@ $layout->addWidget( $text )
     ->addWidget( $password )
     ->addWidget( $remember )
     ->addWidget( $birthday )
+    ->addWidget( $imageInput )
     ->addWidget( $bestTime )
     ->addWidget( $role )
     ->addWidget( $size )
@@ -131,69 +203,9 @@ $layout->addWidget( $file );
 $layout->addWidget( $canvas );
 $layout->addWidget( $textarea );
 $layout->addWidget( $submit );
-?>
-<!Doctype html>
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"> </script>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/black-tie/jquery-ui.css" type="text/css" />
 
-    <link rel="stylesheet" href="css/default.css" type="text/css" />
 
-    <?php
-    {
-        $assetConfig = new AssetKit\Config( '../.assetkit');
-        $assetLoader = new AssetKit\AssetLoader( $assetConfig );
-        $asset = $assetLoader->load('formkit');
 
-        // initialize a cache (if you need one)
-        // $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
-        $writer   = new AssetKit\AssetWriter($assetConfig);
-        $manifest = $writer
-                ->name('formkit')
-                // ->cache($cache)
-                // ->production()          // generate for production code, (the alternative is `development`)
-                ->write( array($asset) );
-        $includer = new AssetKit\IncludeRender;
-        $html = $includer->render( $manifest );
-
-        # echo "<!--\n";
-        # print_r( $manifest ); 
-        # echo "-->\n";
-
-        echo $html;
-    }
-    ?>
-<?php 
-/*
-    <?php foreach( $layout->widgets->getJavascripts() as $url ) : ?>
-        <script src="<?= $url ?>"> </script>
-    <?php endforeach ?>
-
-    <?php foreach( $layout->widgets->getStylesheets() as $url ) : ?>
-        <link rel="stylesheet" href="<?= $url ?>" type="text/css"/>
-    <?php endforeach ?>
- */
-?>
-
-    <!--
-    $_POST = <? print_r($_POST) ?>
-    $_FILES = <? print_r($_FILES) ?>
-    -->
-    <script>
-    // initialize formkit js
-    FormKit.install();
-    $(document.body).ready(function() {
-        FormKit.initialize(document.body);
-    });
-    </script>
-
-</head>
-<body>
-<?php
 
 /*
 echo $layout->renderWidget( 'size' );
