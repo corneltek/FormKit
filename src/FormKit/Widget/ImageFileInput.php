@@ -27,7 +27,9 @@ class ImageFileInput extends FileInput
             $this->image = new Element('img',array(
                 'src' => $this->value,
             ));
-            $this->imageWrapper->append($this->image);
+            $cutDiv = new Element('div',array('class' => 'cut') );
+            $cutDiv->append($this->image);
+            $this->imageWrapper->append($cutDiv);
         }
     }
 
