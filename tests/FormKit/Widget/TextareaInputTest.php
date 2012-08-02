@@ -9,7 +9,13 @@ class TextareaInputTest extends PHPUnit_Framework_TestCase
             'rows' => 30,
             'cols' => 45,
         ));
-        is('<textarea class="formkit-widget formkit-widget-textarea" name="address" cols="45" rows="30"></textarea>', $html );
+
+        $dom = new DOMDocument;
+        $dom->loadXml($html);
+        is('formkit-widget formkit-widget-textarea',$dom->documentElement->getAttribute('class'));
+        is('address',$dom->documentElement->getAttribute('name'));
+        is('45',$dom->documentElement->getAttribute('cols'));
+        is('30',$dom->documentElement->getAttribute('rows'));
     }
 }
 

@@ -6,8 +6,6 @@ class TableRow extends Element
 {
     public $tagName = 'tr';
 
-    public $customAttributes = array('width','height');
-
     public function __construct($attributes = array() ) { 
         parent::__construct($this->tagName, $attributes);
     }

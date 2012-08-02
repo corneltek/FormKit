@@ -214,7 +214,7 @@ class Element extends CascadingAttribute
     public function renderAttributes() {
         return $this->_renderAttributes($this->standardAttributes)
             . $this->_renderAttributes($this->customAttributes)
-            . $this->_renderAttributes($this->attributes);
+            . $this->_renderAttributes(array_keys($this->attributes));
     }
 
     /**

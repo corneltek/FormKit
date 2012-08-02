@@ -6,37 +6,8 @@ class TextInput extends BaseWidget
     public $tagName = 'input';
     public $class = array('formkit-widget','formkit-widget-text');
     public $type = 'text';
-    public $value;
-    public $size;
-    public $alt;
-    public $readonly;
-    public $style;
 
-    public $customAttributes = array(
-        'type','name','value','size','maxlength',
-        'minlength','align','src','alt','accept',
-        'readonly',
-        'placeholder',
-        'disabled',
-        'dataDateFormat', 'dataTimeFormat', 'dataAmpm',
-
-        /* Event Attributes */
-        'onblur',
-        'onchange',
-        'onclick',
-        'ondblclick',
-        'onfocus',
-        'onmousedown',
-        'onmousemove',
-        'onmouseout',
-        'onmouseover',
-        'onmouseup',
-        'onkeydown',
-        'onkeypress',
-        'onkeyup',
-        'onselect',
-    );
-
+    public $customAttributes = array('name','type');
 
     /**
      * Render Widget with attributes

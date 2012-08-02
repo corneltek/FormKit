@@ -29,6 +29,7 @@ abstract class BaseWidget extends \FormKit\Element
      */
     public $js = array();
 
+    public $customAttributes = array('name');
 
     /**
      *

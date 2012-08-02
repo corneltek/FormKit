@@ -8,7 +8,14 @@ class FormKitTest extends PHPUnit_Framework_TestCase
         ok($widget);
         $widget->label( 'Name' );
         $html = $widget->render();
-        is( '<input class="formkit-widget formkit-widget-text" type="text" name="name"/>', $html );
+
+        // is( '<input class="formkit-widget formkit-widget-text" type="text" name="name"/>', $html );
+
+        $dom = new DOMDocument;
+        $dom->loadXml($html);
+        is('formkit-widget formkit-widget-text',$dom->documentElement->getAttribute('class'));
+        is('name',$dom->documentElement->getAttribute('name'));
+        is('text',$dom->documentElement->getAttribute('type'));
     }
 
     function testCheckbox()

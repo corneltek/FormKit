@@ -15,8 +15,10 @@ class TextareaInput extends BaseWidget
      */
     public function render( $attributes = array() )
     {
-        $this->setAttributes( $attributes );
-        return '<textarea' 
+        if($attributes)
+            $this->setAttributes( $attributes );
+
+        return '<textarea'
             . $this->renderAttributes()
             . '>'
             . htmlspecialchars($this->value, ENT_NOQUOTES, 'UTF-8')
