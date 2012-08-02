@@ -105,9 +105,7 @@ class Element extends CascadingAttribute
     public function addClass($class)
     {
         if( is_array($class) ) {
-            foreach( $class as $c ) {
-                $this->class[] = $c;
-            }
+            $this->class = array_merge( $this->class , $class );
         } else {
             $this->class[] = $class;
         }
