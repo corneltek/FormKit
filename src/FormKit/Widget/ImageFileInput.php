@@ -33,12 +33,12 @@ class ImageFileInput extends FileInput
         }
     }
 
-    function render() 
+    function render($attributes = array() ) 
     {
         if( $this->image ) {
-            return $this->imageWrapper->render() . parent::render();
+            return $this->imageWrapper->render() . parent::render($attributes);
         }
-        return parent::render();
+        return parent::render($attributes);
     }
 
 }
