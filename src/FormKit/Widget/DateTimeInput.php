@@ -15,7 +15,7 @@ class DateTimeInput extends TextInput
         $timeFormat = '';
         $cursor = &$dateFormat;
 
-        $format = $this->format ?: 'y-m-d H:i:s';
+        $format = $this->format ?: 'Y-m-d H:i:s';
         $this->dataAmpm = false;
         for($i=0; $i<strlen($format); ++$i)
             switch($format[$i]) {
