@@ -19,6 +19,7 @@ class TextInput extends BaseWidget
         'placeholder',
         'disabled',
         'dataDateFormat', 'dataTimeFormat', 'dataAmpm',
+        'dataUrl', 'dataMaxWidth', 'dataMaxHeight',
 
         /* Event Attributes */
         'onblur',

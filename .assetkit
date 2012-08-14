@@ -45,6 +45,21 @@
             "source_dir": "assets\/jscanvas",
             "name": "jscanvas"
         },
+        "jsimagefile": {
+            "stash": {
+                "assets": [
+                    {
+                        "js": 1,
+                        "files": [
+                            "jsimagefile.js"
+                        ]
+                    }
+                ]
+            },
+            "manifest": "assets\/jsimagefile\/manifest.yml",
+            "source_dir": "assets\/jsimagefile",
+            "name": "jsimagefile"
+        },
         "jsdate": {
             "stash": {
                 "assets": [
