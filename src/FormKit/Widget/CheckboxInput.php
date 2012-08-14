@@ -16,7 +16,8 @@ class CheckboxInput extends BaseWidget
 
     public function init() 
     { 
-        $this->value = 1;
+        if( $this->value )
+            $this->checked = $this->value;
     }
 
     public function check( $value = null ) 
