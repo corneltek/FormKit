@@ -7,6 +7,8 @@ class TextInput extends BaseWidget
     public $class = array('formkit-widget','formkit-widget-text');
     public $type = 'text';
 
+    public $customAttributes = array('name','type','dataDateFormat', 'dataTimeFormat', 'dataAmpm');
+
     /**
      * Render Widget with attributes
      *
