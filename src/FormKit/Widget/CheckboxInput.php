@@ -16,7 +16,8 @@ class CheckboxInput extends BaseWidget
 
     public function init() 
     { 
-        $this->value = 1;
+        if( $this->value )
+            $this->checked = $this->value;
     }
 
     public function check( $value = null ) 
@@ -48,11 +49,15 @@ class CheckboxInput extends BaseWidget
         $fieldId = $this->getSerialId();
         ?><input id="<?= $fieldId ?>" type="hidden" 
             name="<?=$this->name?>" 
-            value="<?= ($this->value) ? $this->value : ''; ?>"/>
+            value="<?= ($this->value) ? $this->value : '0'; ?>"/>
         <input <?=$this->_renderAttributes(array('type','class','id')); ?> 
-            <?php if( $this->checked ): ?>checked<?php endif ?> onclick=" 
+        <?php 
+        if( $this->checked ): 
+            ?>checked<?php 
+        endif 
+        ?> onclick=" 
                 var el = document.getElementById('<?= $fieldId ?>');
-                    el.value = (el.value == '<?= $this->value ?>') ? '' : '<?= $this->value ?>';
+                    el.value = (el.value == '1') ? '0' : '1';
             "/>
         <?php
         $html = ob_get_contents();
