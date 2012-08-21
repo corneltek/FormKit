@@ -1,15 +1,15 @@
 ---
 assets:
 
-# main formkit js:
   - js: 1
     files:
       - formkit.js
-
-# jscanvas
-  - js: 1
-    files:
       - jscanvas/jscanvas.js
+      - jsimagefile/jsimagefile.js
+      - jsdate/jsdate.js
+      # jsdatetime
+      - jsdatetime/jsdatetime.js
+      - jsdatetime/jquery-ui-timepicker-addon.js
 
 # jscolor
   - files:
@@ -23,14 +23,3 @@ assets:
   - js: 1
     files:
       - jscolor/jscolor.js
-
-# jsdate
-  - js: 1
-    files:
-      - jsdate/jsdate.js
-
-# jsdatetime
-  - js: 1
-    files:
-      - jsdatetime/jsdatetime.js
-      - jsdatetime/jquery-ui-timepicker-addon.js
