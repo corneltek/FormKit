@@ -53,6 +53,15 @@ class SelectInput extends BaseWidget
     public function render( $attributes = array() )
     {
         $this->setAttributes( $attributes );
+        if( $this->readonly ) {
+            $first = null;
+            foreach( $this->options as $label => $value ) {
+                if( $value == $this->value )
+                    return $label;
+                $first = $first ?: $label;
+            }
+            return $first;
+        }
         ob_start();
         ?><select 
             <?=$this->renderAttributes(); ?>
