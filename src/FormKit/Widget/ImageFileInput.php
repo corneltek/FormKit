@@ -12,37 +12,15 @@ use FormKit\Element;
  * $input->render();
  *
  */
-
 class ImageFileInput extends TextInput
 {
     public $js = array( 'js/jsimagefile/jsimagefile.js' );
     public $type = 'file';
     public $class = array('formkit-widget','formkit-widget-imagefile');
-    /*
-    public $image;
-    public $imageWrapper;
 
-    function init() {
-        parent::init();
-        if( $this->value ) {
-            $this->imageWrapper = new Element('div',array('class' => 'formkit-image-cover'));
-            $this->image = new Element('img',array(
-                'src' => $this->value,
-            ));
-            $cutDiv = new Element('div',array('class' => 'cut') );
-            $cutDiv->append($this->image);
-            $this->imageWrapper->append($cutDiv);
-        }
-    }
-
-    function render($attributes = array() ) 
+    public function init()
     {
-        if( $this->image ) {
-            return $this->imageWrapper->render() . parent::render($attributes);
-        }
-        return parent::render($attributes);
+        $this->dataUrl = $this->value;
     }
-    */
-
 }
 
