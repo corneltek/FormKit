@@ -255,6 +255,9 @@ class Element extends CascadingAttribute
 
                 // for boolean values like readonly attribute, 
                 // we render it as readonly="readonly".
+                //
+                // for dataUrl attributes, render these attributes like data-url
+                // ( use dash separator)
                 $html .= sprintf(' %s="%s"', 
                         strtolower(preg_replace('/[A-Z]/', '-$0', $key)),
                         htmlspecialchars( $val )
