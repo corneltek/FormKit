@@ -50,6 +50,8 @@ abstract class BaseWidget extends \FormKit\Element
     {
         $args = func_get_args();
 
+
+        //  new FooInput('name',array( ...attributes ... ));
         if( 2 === count($args) ) {
             $this->name = $args[0];
             if( $args[1] && is_array($args[1]) ) {

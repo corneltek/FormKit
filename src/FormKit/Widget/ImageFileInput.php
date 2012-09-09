@@ -18,9 +18,14 @@ class ImageFileInput extends TextInput
     public $type = 'file';
     public $class = array('formkit-widget','formkit-widget-imagefile');
 
+    /**
+     * @var string prefix path for image source path.
+     */
+    public $prefix = '';
+
     public function init()
     {
-        $this->dataUrl = $this->value;
+        $this->dataUrl = $this->prefix . $this->value;
     }
 }
 

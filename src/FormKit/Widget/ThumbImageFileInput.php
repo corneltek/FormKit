@@ -18,13 +18,14 @@ class ThumbImageFileInput extends TextInput
 
     public $image;
     public $imageWrapper;
+    public $prefix = '';
 
     function init() {
         parent::init();
         if( $this->value ) {
             $this->imageWrapper = new Element('div',array('class' => 'formkit-image-cover'));
             $this->image = new Element('img',array(
-                'src' => $this->value,
+                'src' => $this->prefix . $this->value,
             ));
             $cutDiv = new Element('div',array('class' => 'cut') );
             $cutDiv->append($this->image);
