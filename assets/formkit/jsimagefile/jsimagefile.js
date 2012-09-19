@@ -20,7 +20,7 @@ FormKit.register(function(e,scopeEl) {
                     .attr('target', '_blank')
                     .append($(image))
                     .insertAfter($this))
-                .after('<br/>');
+                    .after('<br/>');
             };
             image.src = src;
         }

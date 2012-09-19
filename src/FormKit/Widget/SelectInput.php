@@ -8,6 +8,12 @@ class SelectInput extends BaseWidget
     public $multiple;
     public $allow_empty;
 
+
+    /**
+     * @var mixed sort flag
+     */
+    public $sort_by_label = true;
+
     public function renderGroup($label,$options)
     {
         $html = '<optgroup label="'.$label.'">';
@@ -20,7 +26,7 @@ class SelectInput extends BaseWidget
     {
         // is it start from index 0 ?
         $size = count($options);
-        $pair = isset($options[0]) && (
+        $indexed = isset($options[0]) && (
             isset($options[$size-1]) ); 
 
         $html = '';
@@ -29,18 +35,36 @@ class SelectInput extends BaseWidget
             $html .= '<option></option>';
         }
 
-        foreach( $options as $k => $option ) {
-            if ( is_array($option) ) {
-                $html .= $this->renderGroup($k,$option);
-            }
-            else {
-                if( $pair ) {
-                    $value = $label = $option;
-                } else {
-                    $label = $k;
-                    $value = $option;
-                }
+        $list = array();
 
+        if( $indexed ) {
+            foreach( $options as $i => $option ) {
+                $list[] = array(
+                    'label' => $option,
+                    'value' => $option,
+                );
+            }
+        } else {
+            foreach( $options as $label => $option ) {
+                $list[] = array(
+                    'label' => $label,
+                    'value' => $value,
+                );
+            }
+        }
+
+        if( $this->sort_by_label ) {
+            usort($list, function($a,$b) {
+                return strcmp($a["label"], $b["label"]);
+            });
+        }
+
+        foreach( $list as $option ) {
+            if( is_array($option['value']) ) {
+                $html .= $this->renderGroup($option['label'],$option['value']);
+            } else {
+                $value = $option['value'];
+                $label = $option['label'];
                 $html .= '<option value="' . $value . '"';
                 if( $this->value == $value )
                     $html .=' selected';
