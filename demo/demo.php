@@ -24,7 +24,8 @@ $loader->register();
     {
         $assetConfig = new AssetKit\Config( '../.assetkit');
         $assetLoader = new AssetKit\AssetLoader( $assetConfig );
-        $asset = $assetLoader->load('formkit');
+        # $asset = $assetLoader->load(array('formkit','datejs'));
+        $asset = $assetLoader->load(array('formkit'));
 
         // initialize a cache (if you need one)
         // $cache = new CacheKit\ApcCache( array('namespace' => 'demo') );
@@ -33,7 +34,7 @@ $loader->register();
                 ->name('formkit')
                 // ->cache($cache)
                 // ->production()          // generate for production code, (the alternative is `development`)
-                ->write( array($asset) );
+                ->write( $asset );
         $includer = new AssetKit\IncludeRender;
         $html = $includer->render( $manifest );
 
@@ -71,6 +72,10 @@ $loader->register();
 </head>
 <body>
 <?php
+$layout = new FormKit\Layout\GenericLayout;
+$layout->width(400);
+
+
 
 /**
  * Initialize form widgets for demo
@@ -85,13 +90,8 @@ $text->value( 'default' )
     ->minlength(3)
     ->size(20);
 
-$dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
-    'label'      => _('My Date'),
-    'format'     => 'Y/m/d',
-    'start_year' => '2000',
-    'end_year'   => '2012',
-    'value'      => '2010-09-03',
-));
+$layout->addWidget( $text );
+
 
 $textarea = new FormKit\Widget\TextareaInput('description', array( 'label' => _('Description') ));
 $textarea->value( '說明文字' )
@@ -99,28 +99,54 @@ $textarea->value( '說明文字' )
     ->rows(5);
 
 $password = new FormKit\Widget\PasswordInput('password', array( 'label' => 'Password' ));
+$layout->addWidget( $password );
 
 $remember = new FormKit\Widget\CheckboxInput('remember', array( 'label' => 'Remember me' ));
 $remember->value(12);
 $remember->check();
+$layout->addWidget( $remember );
 
-$birthday = new FormKit\Widget\DateInput('birthday', array(
-    'label' => 'Birthday',
-    'format' => 'Y.n.j',
-    'value' => new DateTime('now', new DateTimeZone('Asia/Taipei'))
-));
+
 
 $imageInput = new FormKit\Widget\ImageFileInput('image', array( 
     'label' => 'Image',
     'value' => 'new-google-chrome-logo.jpg',
 ));
 
+$dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
+    'label'      => _('My Date'),
+    'format'     => 'Y/m/d g:h:i.s',
+    'start_year' => '2000',
+    'end_year'   => '2012',
+    'value'      => '2010/09/03',
+));
+$layout->addWidget( $dateSelect );
+
+$dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
+    'label'      => _('My Date'),
+    'format'     => 'Y j M, G:H:i.s',
+    'start_year' => '2000',
+    'end_year'   => '2012',
+    'value'      => new DateTime(),
+));
+$layout->addWidget( $dateSelect );
+
+
+
+
+$birthday = new FormKit\Widget\DateInput('birthday', array(
+    'label' => 'Birthday',
+    'format' => 'Y.n.j',
+    'value' => new DateTime('now', new DateTimeZone('Asia/Taipei'))
+));
+$layout->addWidget( $birthday );
 
 $bestTime = new FormKit\Widget\DatetimeInput('best_time', array(
     'label' => 'Best Time',
     'format' => 'Y.n.j g:i:s a',
     'value' => new DateTime('now', new DateTimeZone('Asia/Taipei')),
 ));
+$layout->addWidget($bestTime);
 
 $ajaxComplete = new FormKit\Widget\AjaxCompleteInput('names', array( 
     'label' => 'names',
@@ -146,6 +172,7 @@ $role = new FormKit\Widget\SelectInput('role' , array(
         _('Anonymous') => 'anonymous',
     )
 ));
+$layout->addWidget( $role );
 
 
 /* selector with group options */
@@ -186,21 +213,11 @@ $size = new FormKit\Widget\SelectInput( 'size' , array(
         4 => 'zzz',
     )
 ));
+$layout->addWidget( $size );
 
 $submit = new FormKit\Widget\SubmitInput;
-
-$layout = new FormKit\Layout\GenericLayout;
-$layout->width(400);
-$layout->addWidget( $text )
-    ->addWidget( $password )
-    ->addWidget( $remember )
-    ->addWidget( $birthday )
-    ->addWidget( $bestTime )
-    ->addWidget( $role )
-    ->addWidget( $size )
-    ->addWidget( $imageInput )
+$layout->addWidget( $imageInput )
     ->addWidget( $countries )
-    ->addWidget( $dateSelect )
     ->cellpadding(6)
     ->cellspacing(6)
     ->border(0);
@@ -216,7 +233,7 @@ $layout->addWidget( $submit );
 $form = new FormKit\Element\Form;
 $form->method('post')->action('?');
 $form->addChild( $layout );
-echo $form;
+echo $form->render();
 ?>
 
 <h2>FieldsetLayout Demo</h2>

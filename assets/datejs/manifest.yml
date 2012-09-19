@@ -1,0 +1,8 @@
+---
+assets:
+  - js: 1
+    files:
+      - date.js
+      - core.js
+      - parser.js
+      - extras.js

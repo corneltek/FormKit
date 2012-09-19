@@ -188,8 +188,12 @@ class Element extends CascadingAttribute
                 $html .= $node->C14N();
             } elseif( is_string($node) ) {
                 $html .= $node;
-            } else {
+            } elseif( is_object($node) 
+                && ( $node instanceof \FormKit\Element
+                  || $node instanceof \FormKit\Layout\BaseLayout ) ) {
                 $html .= $node->render();
+            } else {
+                throw new Exception('Unknown node type.');
             }
         }
         return $html;

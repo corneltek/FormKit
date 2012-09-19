@@ -26,7 +26,7 @@ class SelectInput extends BaseWidget
         $html = '';
 
         if( $this->allow_empty ) {
-            $html .= '<option></option>' . "\n";
+            $html .= '<option></option>';
         }
 
         foreach( $options as $k => $option ) {

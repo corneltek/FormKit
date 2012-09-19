@@ -11,7 +11,7 @@ class DateSelectInputTest extends PHPUnit_Framework_TestCase
             'value' => '2010-09-03',
         ));
         ok($input);
-        echo $input->render();
+        echo $input;
     }
 }
 

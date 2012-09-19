@@ -54,6 +54,24 @@
             "manifest": "assets\/formkit\/manifest.yml",
             "source_dir": "assets\/formkit",
             "name": "formkit"
+        },
+        "datejs": {
+            "stash": {
+                "assets": [
+                    {
+                        "js": 1,
+                        "files": [
+                            "date.js",
+                            "core.js",
+                            "parser.js",
+                            "extras.js"
+                        ]
+                    }
+                ]
+            },
+            "manifest": "assets\/datejs\/manifest.yml",
+            "source_dir": "assets\/datejs",
+            "name": "datejs"
         }
     }
 }
