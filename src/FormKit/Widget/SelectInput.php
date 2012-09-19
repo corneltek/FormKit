@@ -44,7 +44,7 @@ class SelectInput extends BaseWidget
                 $html .= '<option value="' . $value . '"';
                 if( $this->value == $value )
                     $html .=' selected';
-                $html .= '>' . $label . '</option>' . PHP_EOL;
+                $html .= '>' . $label . '</option>';
             }
         }
         return $html;
@@ -56,12 +56,11 @@ class SelectInput extends BaseWidget
         if( $this->readonly )
             $this->disabled = true;
         ob_start();
-        ?><select 
-            <?=$this->renderAttributes(); ?>
-            <?=$this->_renderAttributes(array('multiple')); ?>>
-            <?=$this->renderOptions($this->options); ?>
-        </select>
-        <?php
+        ?><select <?php
+            echo $this->renderAttributes();
+            echo $this->_renderAttributes(array('multiple')); 
+            ?>><?=$this->renderOptions($this->options);?>
+        </select><?php
         $html = ob_get_contents();
         ob_end_clean();
         $html .= $this->renderHint();

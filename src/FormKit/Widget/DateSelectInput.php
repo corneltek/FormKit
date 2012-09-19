@@ -21,13 +21,13 @@ class DateSelectInput extends HiddenInput
      *  const string ISO8601 = "Y-m-d\TH:i:sO";
      *
      */
-    public $dataFormat = DateTime::ISO8601;
+    public $data_format = DateTime::ISO8601;
 
 
     /**
      * @var boolean Convert date value to standard format (for front-end)
      */
-    public $convert_format = true;
+    public $convert_format = false;
 
     public $start_year;
 
@@ -123,7 +123,7 @@ class DateSelectInput extends HiddenInput
         if( is_object($date) )
             return $date;
         if( is_string($date) ) {
-            $newDate = DateTime::createFromFormat($this->dataFormat,$date);
+            $newDate = DateTime::createFromFormat($this->data_format,$date);
             if($newDate === false)
                 $newDate = DateTime::createFromFormat($this->format,$date);
             return $newDate;
@@ -135,9 +135,9 @@ class DateSelectInput extends HiddenInput
     public function deflateDate($date)
     {
         if( is_object($date) ) 
-            return $date->format($this->dataFormat);
+            return $date->format($this->data_format);
         if( is_numeric($date) )
-            return date($this->dataFormat,(int)$date);
+            return date($this->data_format,(int)$date);
         return $date;
     }
 
@@ -178,6 +178,7 @@ class DateSelectInput extends HiddenInput
     var s = document.getElementById('<?=$selfId?>');
     var columns = <?=json_encode($formatIds)?>;
     var format = '<?=$this->format ?>';
+    var data_format = '<?=$this->data_format?>';
     function updater() {
         var datestr = '';
         for ( var i = 0; i < format.length ; i++ ) {
@@ -189,9 +190,6 @@ class DateSelectInput extends HiddenInput
                 datestr += c;
             }
         }
-
-        if( window.console )
-            console.log(datestr);
 
         // format date string
 <?php if ($this->convert_format): ?>
@@ -209,9 +207,7 @@ class DateSelectInput extends HiddenInput
 <?php else: ?>
         s.value = datestr;
 <?php endif ?>
-
-        if( window.console )
-            console.log(s.value);
+        if( window.console ) console.log(s.value);
     }
     for( var c in columns ) {
         var id = columns[c];
