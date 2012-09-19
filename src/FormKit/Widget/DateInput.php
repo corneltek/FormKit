@@ -7,6 +7,12 @@ class DateInput extends TextInput
     public $js = array( 'js/jsdate/jsdate.js' );
     public $class = array('formkit-widget','formkit-widget-date');
 
+    /**
+     * show change month option
+     */
+    public $change_month = true;
+    public $change_year = true;
+
     public function render( $attributes = array() )
     {
         $this->setAttributes($attributes);
@@ -53,6 +59,8 @@ class DateInput extends TextInput
             }
 
         $this->dataDateFormat = $dateFormat;
+        $this->dataChangeMonth = $this->change_month;
+        $this->dataChangeYear  = $this->change_year;
 
         if( $this->value instanceof \DateTime )
             $this->value = $this->value->format($format);
