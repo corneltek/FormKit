@@ -85,7 +85,13 @@ $text->value( 'default' )
     ->minlength(3)
     ->size(20);
 
-$dateSelect = new FormKit\Widget\DateSelectInput('my_date', array( 'label' => _('My Date') ));
+$dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
+    'label'      => _('My Date'),
+    'format'     => 'Y/m/d',
+    'start_year' => '2000',
+    'end_year'   => '2012',
+    'value'      => '2010-09-03',
+));
 
 $textarea = new FormKit\Widget\TextareaInput('description', array( 'label' => _('Description') ));
 $textarea->value( '說明文字' )
@@ -108,6 +114,7 @@ $imageInput = new FormKit\Widget\ImageFileInput('image', array(
     'label' => 'Image',
     'value' => 'new-google-chrome-logo.jpg',
 ));
+
 
 $bestTime = new FormKit\Widget\DatetimeInput('best_time', array(
     'label' => 'Best Time',
@@ -140,6 +147,7 @@ $role = new FormKit\Widget\SelectInput('role' , array(
     )
 ));
 
+
 /* selector with group options */
 $countries = new FormKit\Widget\SelectInput( 'country' , array(
     'label' => 'Country',
@@ -164,6 +172,7 @@ $radio = new FormKit\Widget\RadioInput('type' , array(
     'value' => 'Two',
     'options' => array( 'One', 'Two' , 'Three' ),
 ));
+
 
 
 $size = new FormKit\Widget\SelectInput( 'size' , array( 
@@ -204,29 +213,11 @@ $layout->addWidget( $canvas );
 $layout->addWidget( $textarea );
 $layout->addWidget( $submit );
 
-
-
-
-/*
-echo $layout->renderWidget( 'size' );
-echo $layout->widgets->render( 'size' );
-*/
-
 $form = new FormKit\Element\Form;
 $form->method('post')->action('?');
 $form->addChild( $layout );
-
-// $form->addChild( $submit );
-
 echo $form;
-
-#  echo $text;
-#  echo $password;
-#  echo $remember;
-#  $layout->renderRow( 'username' );
-#  $layout->renderRow( 'password' );
 ?>
-
 
 <h2>FieldsetLayout Demo</h2>
 <?php

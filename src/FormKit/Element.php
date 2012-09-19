@@ -177,21 +177,27 @@ class Element extends CascadingAttribute
         return ! empty($this->children);
     }
 
-    public function renderChildren()
+    public function renderNodes($nodes)
     {
-        return join('',array_map(function($child) { 
-
-            if( $child instanceof DOMText || $child instanceof DOMNode ) {
+        $html = '';
+        foreach( $nodes as $node ) {
+            if( $node instanceof DOMText || $node instanceof DOMNode ) {
                 // to use C14N(), the DOMNode must be belongs to an instance of DOMDocument.
                 $dom = new DOMDocument;
-                $dom->appendChild($child);
-                return $child->C14N();
-            } elseif( is_string($child) ) {
-                return $child;
+                $dom->appendChild($node);
+                $html .= $node->C14N();
+            } elseif( is_string($node) ) {
+                $html .= $node;
             } else {
-                return $child->render();
+                $html .= $node->render();
             }
-        }, $this->children ));
+        }
+        return $html;
+    }
+
+    public function renderChildren()
+    {
+        return $this->renderNodes($this->children);
     }
 
     /**
