@@ -28,9 +28,7 @@ class SelectInput extends BaseWidget
         $size = count($options);
         $indexed = isset($options[0]) && (
             isset($options[$size-1]) ); 
-
         $html = '';
-
         if( $this->allow_empty ) {
             $html .= '<option></option>';
         }
@@ -40,7 +38,7 @@ class SelectInput extends BaseWidget
         if( $indexed ) {
             foreach( $options as $i => $option ) {
                 $list[] = array(
-                    'label' => $option,
+                    'label' => is_array($option) ? $i : $option,
                     'value' => $option,
                 );
             }
