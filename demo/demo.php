@@ -114,7 +114,7 @@ $imageInput = new FormKit\Widget\ImageFileInput('image', array(
 ));
 
 $dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
-    'label'      => _('My Date'),
+    'label'      => _('DateSelectInput'),
     'format'     => 'Y/m/d g:h:i',
     'start_year' => '2000',
     'end_year'   => '2012',
@@ -122,8 +122,8 @@ $dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
 ));
 $layout->addWidget( $dateSelect );
 
-$dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
-    'label'      => _('My Date'),
+$dateSelect = new FormKit\Widget\DateSelectInput('my_date2', array(
+    'label'      => _('DateSelectInput'),
     'format'     => 'YMj, G:H:i',
     'data_format'=> 'Y-m-d G:H:i',
     'start_year' => '2000',
@@ -133,6 +133,13 @@ $dateSelect = new FormKit\Widget\DateSelectInput('my_date', array(
 $layout->addWidget( $dateSelect );
 
 
+$yearSelect = new FormKit\Widget\YearSelectInput('year', array(
+    'label'      => _('YearSelectInput'),
+    'start_year' => 2000,
+    'end_year'   => 2012,
+    'value'      => 2011,
+));
+$layout->addWidget( $yearSelect );
 
 
 $birthday = new FormKit\Widget\DateInput('birthday', array(

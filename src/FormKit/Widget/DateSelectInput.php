@@ -43,16 +43,11 @@ class DateSelectInput extends HiddenInput
     {
         parent::init();
 
-
-        if( $this->value ) {
-            $this->dateValue = $this->inflateDate($this->value);
-            // $this->timezone = $this->dateValue->getTimezone();
-            $this->value = $this->deflateDate($this->dateValue);
-        }
+        if( $this->value )
+            $this->loadValue();
 
         if( ! $this->timezone )
             $this->timezone = new DateTimeZone( ini_get('date.timezone') ?: 'Asia/Taipei' );
-
         
         if( ! $this->start_year )
             $this->start_year = 1980;
@@ -118,6 +113,13 @@ class DateSelectInput extends HiddenInput
             $this->formatOptions['s'][ sprintf('%02d',$s) ] = sprintf('%02d',$s);
     }
 
+    public function loadValue()
+    {
+        $this->dateValue = $this->inflateDate($this->value);
+        // $this->timezone = $this->dateValue->getTimezone();
+        $this->value = $this->deflateDate($this->dateValue);
+    }
+
     public function inflateDate($date)
     {
         if( is_object($date) )
@@ -155,6 +157,9 @@ class DateSelectInput extends HiddenInput
                 $value = null;
                 if( $this->dateValue )
                     $value = $this->dateValue->format($c);
+                elseif ( $this->value )
+                    $value = $this->value;
+
                 $select = new SelectInput(array(
                     'options' => $this->formatOptions[$c],
                     'value' => $value,
