@@ -46,7 +46,7 @@ class SelectInput extends BaseWidget
             foreach( $options as $label => $option ) {
                 $list[] = array(
                     'label' => $label,
-                    'value' => $value,
+                    'value' => $option,
                 );
             }
         }
