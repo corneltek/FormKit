@@ -2,10 +2,11 @@
 namespace FormKit\Widget;
 use CascadingAttribute;
 use FormKit\FormKit;
+use FormKit\Element;
 use Exception;
 use InvalidArgumentException;
 
-abstract class BaseWidget extends \FormKit\Element
+abstract class BaseWidget extends Element
 {
 
 

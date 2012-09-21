@@ -212,7 +212,13 @@ class Element extends CascadingAttribute
     public function setAttributes($attributes = array())
     {
         foreach( $attributes as $k => $val ) {
-            $this->setAttributeValue($k, $val);
+            // this is for adding new classes
+            if( strpos($val ,'+=') !== false ) {
+                $this->setAttributeValue($k,
+                    $this->getAttributeValue($k) . ' ' . $val );
+            } else {
+                $this->setAttributeValue($k, $val);
+            }
         }
     }
 
