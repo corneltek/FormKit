@@ -3,11 +3,29 @@ namespace FormKit\Widget;
 
 class TextInput extends BaseWidget
 {
+
+    /**
+     * @var string $tagName tag name for widget.
+     */
     public $tagName = 'input';
+
+    /**
+     * @var array class names.
+     */
     public $class = array('formkit-widget','formkit-widget-text');
+
+    /**
+     * @var string widget type
+     */
     public $type = 'text';
 
-    public $customAttributes = array('name','type',
+
+    /**
+     * @var array This attributes is for defined class members.
+     */
+    public $customAttributes = array(
+        'name',
+        'type',
         'dataDateFormat', 'dataTimeFormat', 'dataAmpm',
         'dataUrl', 'dataMaxWidth', 'dataMaxHeight'
     );

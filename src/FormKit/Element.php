@@ -213,9 +213,16 @@ class Element extends CascadingAttribute
     {
         foreach( $attributes as $k => $val ) {
             // this is for adding new classes
-            if( strpos($val ,'+=') !== false ) {
-                $this->setAttributeValue($k,
-                    $this->getAttributeValue($k) . ' ' . $val );
+            if( is_string($val) && strpos($val ,'+=') !== false ) {
+                $origValue = $this->getAttributeValue($k);
+                if( is_string($origValue) ) {
+                    $origValue .= ' ' . substr($val,2);
+                } elseif ( is_array($origValue) ) {
+                    $origValue[] = substr($val,2);
+                } else {
+                    throw new Exception('Unknown attribute value type');
+                }
+                $this->setAttributeValue($k,$origValue);
             } else {
                 $this->setAttributeValue($k, $val);
             }
