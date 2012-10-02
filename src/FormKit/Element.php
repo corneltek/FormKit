@@ -190,7 +190,10 @@ class Element extends CascadingAttribute
                 $html .= $node;
             } elseif( is_object($node) 
                 && ( $node instanceof \FormKit\Element
-                  || $node instanceof \FormKit\Layout\BaseLayout ) ) {
+                    || $node instanceof \FormKit\Layout\BaseLayout 
+                    || method_exists($node,'render')
+                ) )
+            {
                 $html .= $node->render();
             } else {
                 throw new Exception('Unknown node type.');
