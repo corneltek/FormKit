@@ -2,7 +2,7 @@
 
 class DateSelectInputTest extends PHPUnit_Framework_TestCase
 {
-    function test()
+    public function testDateSelectWithNormalFormat()
     {
         $input = new FormKit\Widget\DateSelectInput('created_on',array(
             'format' => 'Y/m/d',
@@ -11,7 +11,7 @@ class DateSelectInputTest extends PHPUnit_Framework_TestCase
             'value' => '2010-09-03',
         ));
         ok($input);
-        echo $input;
+        # echo $input;
     }
 }
 
