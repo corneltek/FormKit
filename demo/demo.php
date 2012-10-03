@@ -149,7 +149,7 @@ $birthday = new FormKit\Widget\DateInput('birthday', array(
 ));
 $layout->addWidget( $birthday );
 
-$bestTime = new FormKit\Widget\DatetimeInput('best_time', array(
+$bestTime = new FormKit\Widget\DateTimeInput('best_time', array(
     'label' => 'Best Time',
     'format' => 'Y.n.j g:i:s a',
     'value' => new DateTime('now', new DateTimeZone('Asia/Taipei')),
