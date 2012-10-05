@@ -26,7 +26,7 @@ class TextInput extends BaseWidget
     public $customAttributes = array(
         'name',
         'type',
-        'dataDateFormat', 'dataTimeFormat', 'dataAmpm',
+        // 'dataDateFormat', 'dataTimeFormat', 'dataAmpm',
         'dataUrl', 'dataMaxWidth', 'dataMaxHeight'
     );
 
