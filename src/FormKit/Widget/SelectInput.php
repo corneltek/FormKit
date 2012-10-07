@@ -8,7 +8,6 @@ class SelectInput extends BaseWidget
     public $multiple;
     public $allow_empty;
 
-
     /**
      * @var mixed sort flag
      */
@@ -29,16 +28,16 @@ class SelectInput extends BaseWidget
         $indexed = isset($options[0]) && (
             isset($options[$size-1]) ); 
         $html = '';
+
         if( $this->allow_empty ) {
             $html .= '<option></option>';
         }
 
         $list = array();
-
         if( $indexed ) {
             foreach( $options as $i => $option ) {
                 $list[] = array(
-                    'label' => is_array($option) ? $i : $option,
+                    'label' => (is_array($option) ? $i : $option),
                     'value' => $option,
                 );
             }
