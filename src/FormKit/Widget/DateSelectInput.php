@@ -5,8 +5,9 @@ use FormKit\ResponseUtils;
 use DateTime;
 use DateTimeZone;
 
-class DateSelectInput extends HiddenInput
+class DateSelectInput extends TextInput
 {
+    public $type = 'hidden';
 
     /**
      * @var string display display format
