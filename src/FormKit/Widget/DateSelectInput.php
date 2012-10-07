@@ -5,6 +5,11 @@ use FormKit\ResponseUtils;
 use DateTime;
 use DateTimeZone;
 
+/**
+ * DateHelper from Rails
+ *
+ * @see http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html
+ */
 class DateSelectInput extends TextInput
 {
     public $class = array('formkit-widget','formkit-widget-dateselect');
