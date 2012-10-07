@@ -165,6 +165,7 @@ class DateSelectInput extends TextInput
                 $select = new SelectInput(array(
                     'options' => $this->formatOptions[$c],
                     'value' => $value,
+                    'allow_empty' => $this->allow_empty,
                 ));
                 $id = $this->getSerialId();
                 $select->addId($id);
