@@ -29,8 +29,11 @@ class SelectInput extends BaseWidget
             isset($options[$size-1]) ); 
         $html = '';
 
-        if( $this->allow_empty ) {
-            $html .= '<option></option>';
+        if( $this->allow_empty !== null ) {
+            if( is_bool($this->allow_empty) )
+                $html .= '<option></option>';
+            else
+                $html .= "<option value=\"{$this->allow_empty}\"></option>";
         }
 
         $list = array();
