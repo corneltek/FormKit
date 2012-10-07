@@ -7,6 +7,7 @@ use DateTimeZone;
 
 class DateSelectInput extends TextInput
 {
+    public $class = array('formkit-widget','formkit-widget-dateselect');
     public $type = 'hidden';
 
     /**
