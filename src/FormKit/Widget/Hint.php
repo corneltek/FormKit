@@ -10,7 +10,7 @@ class Hint extends Element
 
     public function __construct($text)
     {
-        $this->append( new DOMText($text) );
+        $this->append($text);
         parent::__construct();
     }
 }
