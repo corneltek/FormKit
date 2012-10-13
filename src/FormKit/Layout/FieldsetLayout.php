@@ -9,7 +9,7 @@ class FieldsetLayout extends BaseLayout
 {
     public $fieldset;
 
-    function __construct( $legendText = null ) {
+    public function __construct( $legendText = null ) {
         $this->fieldset = new Fieldset;
         $this->fieldset->addClass('formkit-layout-fieldset');
         if( $legendText ) {
@@ -19,18 +19,23 @@ class FieldsetLayout extends BaseLayout
         parent::__construct();
     }
 
-    function __call($method,$arguments)
+    public function __call($method,$arguments)
     {
         return call_user_func_array(array($this->fieldset,$method),$arguments);
     }
 
-    function layoutWidget($widget)
+    public function layoutWidget($widget)
     {
         $label = new \FormKit\Widget\Label( $widget->label );
         $clear = new \FormKit\Element\ClearDiv;
         $newLine = new DOMText("\n");
         $this->fieldset->addChild( $label );
         $this->fieldset->addChild( $widget );
+
+        if($widget->hint) {
+            $hint  = new \FormKit\Widget\Hint( $widget->hint );
+            $this->fieldset->addChild( $hint );
+        }
         $this->fieldset->addChild( $clear );
     }
 
