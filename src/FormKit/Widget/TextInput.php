@@ -38,9 +38,7 @@ class TextInput extends BaseWidget
      */
     public function render( $attributes = array() )
     {
-        return parent::render( $attributes )
-            . $this->renderHint()
-            ;
+        return parent::render( $attributes );
     }
 
 }

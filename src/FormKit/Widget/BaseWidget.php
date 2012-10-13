@@ -118,13 +118,6 @@ abstract class BaseWidget extends Element
         return $this;
     }
 
-    public function renderHint()
-    {
-        if( $this->hint ) {
-            return '<div class="formkit-hint">' . $this->hint . '</div>';
-        }
-    }
-
     public function getSerialId()
     {
         if( function_exists('uniqid') )

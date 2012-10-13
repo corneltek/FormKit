@@ -22,8 +22,7 @@ class TextareaInput extends BaseWidget
             . $this->renderAttributes()
             . '>'
             . htmlspecialchars($this->value, ENT_NOQUOTES, 'UTF-8')
-            . '</textarea>' 
-            . $this->renderHint();
+            . '</textarea>';
     }
 
 }

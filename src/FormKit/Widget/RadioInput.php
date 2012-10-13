@@ -43,8 +43,7 @@ class RadioInput extends BaseWidget
     public function render( $attributes = array() )
     {
         $this->setAttributes( $attributes );
-        return $this->renderOptions( $this->options )
-            . $this->renderHint();
+        return $this->renderOptions( $this->options );
     }
 
 

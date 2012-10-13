@@ -16,8 +16,7 @@ class CanvasInput extends BaseWidget
             . $this->_renderAttributes(array('id','name','value'))
             . '/><input class="color" value="ff0000"/><canvas style="background:url('.htmlspecialchars($this->background).') no-repeat"'
             . $this->_renderAttributes(array('width','height'))
-            . '/></div>'
-            . $this->renderHint();
+            . '/></div>';
     }
 }
 

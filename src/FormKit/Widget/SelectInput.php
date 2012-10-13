@@ -84,7 +84,6 @@ class SelectInput extends BaseWidget
         </select><?php
         $html = ob_get_contents();
         ob_end_clean();
-        $html .= $this->renderHint();
         return $html;
     }
 
