@@ -25,12 +25,14 @@ class SelectInput extends BaseWidget
     {
         // is it start from index 0 ?
         $size = count($options);
-        $indexed = isset($options[0]) && (
-            isset($options[$size-1]) ); 
+        $indexed = isset($options[0]) && ( isset($options[ $size - 1 ]) );
         $html = '';
 
-        if( $this->allow_empty ) {
-            $html .= '<option></option>';
+        if( $this->allow_empty !== null ) {
+            if( is_bool($this->allow_empty) )
+                $html .= '<option></option>';
+            else
+                $html .= "<option value=\"{$this->allow_empty}\"></option>";
         }
 
         $list = array();
@@ -50,7 +52,7 @@ class SelectInput extends BaseWidget
             }
         }
 
-        if( $this->sort_by_label ) {
+        if( ! $indexed && $this->sort_by_label ) {
             usort($list, function($a,$b) {
                 return strcmp($a["label"], $b["label"]);
             });
@@ -76,11 +78,13 @@ class SelectInput extends BaseWidget
         $this->setAttributes( $attributes );
         if( $this->readonly )
             $this->disabled = true;
+
+        $optionsHtml = $this->renderOptions($this->options);
         ob_start();
         ?><select <?php
             echo $this->renderAttributes();
             echo $this->_renderAttributes(array('multiple')); 
-            ?>><?=$this->renderOptions($this->options);?>
+            ?>><?=$optionsHtml?>
         </select><?php
         $html = ob_get_contents();
         ob_end_clean();
