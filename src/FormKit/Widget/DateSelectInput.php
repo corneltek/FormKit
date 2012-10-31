@@ -224,7 +224,11 @@ class DateSelectInput extends TextInput
     }
     for( var c in columns ) {
         var id = columns[c];
-        document.getElementById(id).addEventListener('change',updater,false);
+        if( typeof jQuery !== 'undefined' ) {
+            $('#' + id).bind('change',updater);
+        } else {
+            document.getElementById(id).addEventListener('change',updater,false);
+        }
     }
 })();
 </script>
