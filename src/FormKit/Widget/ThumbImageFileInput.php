@@ -22,22 +22,30 @@ class ThumbImageFileInput extends TextInput
 
     function init() {
         parent::init();
-        if( $this->value ) {
-            $this->imageWrapper = new Element('div',array('class' => 'formkit-image-cover'));
+
+        $this->imageWrapper = new Element('div',array('class' => 'formkit-image-cover'));
+        $this->imageWrapper->setAttributeValue('data-width', $this->dataWidth);
+        $this->imageWrapper->setAttributeValue('data-height', $this->dataHeight);
+
+        $cutDiv = new Element('div',array('class' => 'cut formkit-dropzone') );
+        $cutDiv->setAttributeValue('data-width', $this->dataWidth);
+        $cutDiv->setAttributeValue('data-height', $this->dataHeight);
+
+        // if with value, then generate img
+        if ( $this->value ) {
+
             $this->image = new Element('img',array(
                 'src' => $this->prefix . $this->value,
             ));
-            $cutDiv = new Element('div',array('class' => 'cut') );
+
             $cutDiv->append($this->image);
-            $this->imageWrapper->append($cutDiv);
         }
+
+        $this->imageWrapper->append($cutDiv);
     }
 
     function render($attributes = array() ) 
     {
-        if( $this->image ) {
-            return $this->imageWrapper->render() . parent::render($attributes);
-        }
-        return parent::render($attributes);
+        return $this->imageWrapper->render() . parent::render($attributes);
     }
 }
