@@ -22,6 +22,19 @@ class ThumbImageFileInput extends TextInput
     public $fileInput;
     public $prefix = '';
 
+
+    /**
+     * HTML structure
+     *
+     * <div class="formkit-image-wrapper">
+     *    <div class="formkit-image-cover">
+     *      <img src="...."/>
+     *    </div>
+     *    <input type="file"...>
+     * </div>
+     *
+     */
+
     public function init() 
     {
         parent::init();
@@ -40,8 +53,7 @@ class ThumbImageFileInput extends TextInput
             $this->image = new Element('img',array(
                 'src' => $this->prefix . $this->value,
             ));
-
-            $this->inputWrapper->append($this->image);
+            $this->imageCover->append($this->image);
         }
 
         // TODO: c9, you can make exif button as a config, by EJ
