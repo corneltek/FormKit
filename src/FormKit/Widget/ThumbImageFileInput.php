@@ -18,17 +18,21 @@ class ThumbImageFileInput extends TextInput
 
     public $image;
     public $imageCover;
-    public $imageWrapper;
+    public $inputWrapper;
+    public $fileInput;
     public $prefix = '';
 
-    function init() {
+    public function init() 
+    {
         parent::init();
+
+        $this->fileInput = new FileInput( $this->name, $this->attributes );
 
         $this->imageCover = new Element('div',array('class' => 'formkit-image-cover'));
         $this->imageCover->setAttributeValue('data-width', $this->dataWidth);
         $this->imageCover->setAttributeValue('data-height', $this->dataHeight);
 
-        $this->imageWrapper = new Element('div', array('class' => 'formkit-image-wrapper'));
+        $this->inputWrapper = new Element('div', array('class' => 'formkit-image-wrapper'));
 
         // if with value, then generate img
         if ( $this->value ) {
@@ -37,19 +41,20 @@ class ThumbImageFileInput extends TextInput
                 'src' => $this->prefix . $this->value,
             ));
 
-            $this->imageWrapper->append($this->image);
+            $this->inputWrapper->append($this->image);
         }
 
         // TODO: c9, you can make exif button as a config, by EJ
         if ( true ) {
             $this->setAttributeValue('data-exif', 'true');
         }
-
-        $this->imageCover->append($this->imageWrapper);
+        $this->inputWrapper->append($this->imageCover);
+        $this->inputWrapper->append($this->fileInput);
     }
 
     function render($attributes = array() ) 
     {
-        return $this->imageCover->render() . parent::render($attributes);
+        return $this->inputWrapper->render();
+        // parent::render($attributes);
     }
 }
