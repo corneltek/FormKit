@@ -1,6 +1,7 @@
 <?php
 namespace FormKit\Widget;
 use FormKit\Element;
+use FormKit\Element\Div;
 
 /**
  *
@@ -41,11 +42,11 @@ class ThumbImageFileInput extends TextInput
 
         $this->fileInput = new FileInput( $this->name, $this->attributes );
 
-        $this->imageCover = new Element('div',array('class' => 'formkit-image-cover'));
+        $this->imageCover = new Div(array('class' => 'formkit-image-cover'));
         $this->imageCover->setAttributeValue('data-width', $this->dataWidth);
         $this->imageCover->setAttributeValue('data-height', $this->dataHeight);
 
-        $this->inputWrapper = new Element('div', array('class' => 'formkit-image-wrapper'));
+        $this->inputWrapper = new Div(array('class' => 'formkit-image-wrapper'));
 
         // if with value, then generate img
         if ( $this->value ) {
