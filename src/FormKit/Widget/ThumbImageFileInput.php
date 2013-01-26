@@ -15,8 +15,6 @@ use FormKit\Element\Div;
 class ThumbImageFileInput extends TextInput
 {
     public $type = 'file';
-    public $class = array('formkit-widget','formkit-widget-thumbimagefile');
-
     public $image;
     public $imageCover;
     public $inputWrapper;
@@ -27,7 +25,7 @@ class ThumbImageFileInput extends TextInput
     /**
      * HTML structure
      *
-     * <div class="formkit-image-wrapper">
+     * <div class="formkit-widget formkit-widget-thumbimagefile formkit-image-wrapper">
      *    <div class="formkit-image-cover">
      *      <img src="...."/>
      *    </div>
@@ -46,7 +44,9 @@ class ThumbImageFileInput extends TextInput
         $this->imageCover->setAttributeValue('data-width', $this->dataWidth);
         $this->imageCover->setAttributeValue('data-height', $this->dataHeight);
 
-        $this->inputWrapper = new Div(array('class' => 'formkit-image-wrapper'));
+        $this->inputWrapper = new Div;
+        $this->inputWrapper->addClass('formkit-widget-thumbimagefile')
+            ->addClass('formkit-image-wrapper');
 
         // if with value, then generate img
         if ( $this->value ) {
