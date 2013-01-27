@@ -50,7 +50,6 @@ class ThumbImageFileInput extends TextInput
 
         // if with value, then generate img
         if ( $this->value ) {
-
             $this->image = new Element('img',array(
                 'src' => $this->prefix . $this->value,
             ));
@@ -58,9 +57,8 @@ class ThumbImageFileInput extends TextInput
         }
 
         // TODO: c9, you can make exif button as a config, by EJ
-        if ( true ) {
-            $this->fileInput->setAttributeValue('data-exif', 'true');
-        }
+        $this->fileInput->setAttributeValue('data-exif', 'true');
+
         $this->inputWrapper->append($this->imageCover);
         $this->inputWrapper->append($this->fileInput);
     }
