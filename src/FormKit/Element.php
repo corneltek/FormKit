@@ -127,6 +127,9 @@ class Element
      */
     public function setAttribute($name,$args)
     {
+        if ( $this->isIgnoredAttribute($name) )
+            continue;
+
         if( isset($this->_supportedAttributes[ $name ]) ) 
         {
             $c = count($args);
@@ -517,6 +520,9 @@ class Element
     public function setAttributes($attributes = array())
     {
         foreach( $attributes as $k => $val ) {
+            if ( $this->isIgnoredAttribute($k) )
+                continue;
+
             // this is for adding new classes
             if( is_string($val) && strpos($val ,'+=') !== false ) {
                 $origValue = $this->getAttributeValue($k);
