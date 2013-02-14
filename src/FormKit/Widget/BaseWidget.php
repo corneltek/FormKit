@@ -1,6 +1,5 @@
 <?php
 namespace FormKit\Widget;
-use CascadingAttribute;
 use FormKit\FormKit;
 use FormKit\Element;
 use Exception;
