@@ -8,6 +8,6 @@ class FileInput extends TextInput
 
     // we need to ignore it, because browsers might change the value to 
     // something like 'C:\fakepath'
-    public $_ignoredAttributes = array('value');
+    public $_ignoredAttributes = array('value' => true );
 }
 
