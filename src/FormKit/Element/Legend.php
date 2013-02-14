@@ -5,7 +5,8 @@ use DOMText;
 
 class Legend extends Element
 {
-    function __construct($text = null, $attributes = array() ) {
+    function __construct($text = null, $attributes = array() ) 
+    {
         if( $text && is_string($text) ) {
             $textNode = new DOMText($text);
             $this->addChild($textNode);

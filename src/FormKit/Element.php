@@ -413,9 +413,26 @@ class Element
         return $this;
     }
 
+
+
+    /**
+     * Check if this node contains children.
+     *
+     * @return bool
+     */
     public function hasChildren()
     {
         return ! empty($this->_children);
+    }
+
+    /**
+     * Return children elements
+     *
+     * @return array FormKit\Element[]
+     */
+    public function getChildren()
+    {
+        return $this->_children;
     }
 
     public function renderNodes($nodes)
