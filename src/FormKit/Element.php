@@ -263,7 +263,7 @@ class Element
      *
      * @var array
      */
-    protected $children = array();
+    public $children = array();
 
 
     /**
@@ -385,24 +385,49 @@ class Element
         return $this;
     }
 
+
+    /**
+     * Prepend Child element.
+     *
+     * @param FormKit\Element
+     */
     public function prepend($child)
     {
         array_splice($this->children,0,0,$child);
         return $this;
     }
 
-    public function insertChild($child)
+
+    /**
+     * Insert child at index position.
+     *
+     * @param FormKit\Element $child
+     * @param integer $pos index position
+     */
+    public function insertChild($child, $pos = 0)
     {
-        array_splice($this->children,0,0,$child);
+        array_splice($this->children, $pos, 0, $child);
         return $this;
     }
 
+
+    /**
+     * Append child element at the end of list.
+     *
+     * @param FormKit\Element $child
+     */
     public function append($child)
     {
         $this->children[] = $child;
         return $this;
     }
 
+
+    /**
+     * As same as `append` method
+     *
+     * @param FormKit\Element $child
+     */
     public function addChild($child)
     {
         $this->children[] = $child;
@@ -457,6 +482,10 @@ class Element
         return $html;
     }
 
+
+    /**
+     * Render children nodes
+     */
     public function renderChildren()
     {
         return $this->_renderNodes($this->children);
