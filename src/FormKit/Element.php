@@ -250,6 +250,10 @@ class Element
      */
     protected $_customAttributes = array();
 
+
+
+
+
     /**
      *
      * @param string $tagName Tag name
@@ -275,7 +279,7 @@ class Element
      *
      * @param string $attribute Attribute name
      */
-    public function addAttribute($attribute)
+    public function registerCustomAttribute($attribute)
     {
         $this->_customAttributes[] = $attribute;
         return $this;
@@ -289,7 +293,8 @@ class Element
      *
      *    $this->addAttributes('id class for');
      */
-    public function addAttributes($attributes) {
+    public function registerCustomAttributes($attributes) 
+    {
         if( is_string($attributes) ) {
             $attributes = explode(' ',$attributes);
         }
