@@ -17,17 +17,24 @@ class Element
     const  ATTR_FLOAT = 4;
     const  ATTR_CALLABLE = 5;
     const  ATTR_FLAG = 6;
+
+
+    /**
+     * @var bool should we allow users to set undefined 
+     * attributes?
+     */
+    public $allowUndefinedAttribute = true;
+
     /**
      * @var array $supportedAttributes
      */
     protected $_supportedAttributes = array();
 
-    public $allowUndefinedAttribute = true;
-
     protected $_attributes = array();
 
     /**
-     * Setup new attribute with type
+     * Register new attribute with type,
+     * This creates accessors for objects.
      *
      * @param string $name  attribute name
      * @param integer $type  attribute type
@@ -70,8 +77,12 @@ class Element
     }
 
 
+
     /**
-     * Check property and set attribute value
+     * Check property and set attribute value without type 
+     * checking.
+     *
+     * This is for internal use.
      *
      * @param string $name
      * @param mixed $arg
@@ -85,6 +96,17 @@ class Element
         }
     }
 
+
+
+    /**
+     * Check if the attribute is registered 
+     * if it's registered, the type registered will 
+     * change the behavior of setting values.
+     *
+     *
+     * @param string $name
+     * @param array $args
+     */
     public function setAttribute($name,$args)
     {
         if( isset($this->_supportedAttributes[ $name ]) ) 
@@ -155,15 +177,14 @@ class Element
             }
             return $this;
         }
-
         // save unknown attribute by default
-        if( $this->allowUndefinedAttribute ) {
+        else if( $this->allowUndefinedAttribute ) 
+        {
             $this->setAttributeValue( $name, $args[0] );
         }
         else {
             throw new Exception("Undefined attribute $name, Do you want to use allowUndefinedAttribute option?");
         }
-
     }
 
 
@@ -172,6 +193,15 @@ class Element
         $this->setAttribute($method,$args);
         return $this;
     }
+
+
+
+    /**
+     * ==========================================
+     * Magic methods for convinence.
+     * ==========================================
+     */
+
 
     public function offsetSet($name,$value)
     {
