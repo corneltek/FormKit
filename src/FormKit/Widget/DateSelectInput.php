@@ -235,7 +235,7 @@ class DateSelectInput extends TextInput
 <?php
         $script = ob_get_contents();
         ob_end_clean();
-        return parent::render() . $this->renderNodes($nodes) . $script;
+        return parent::render() . $this->_renderNodes($nodes) . $script;
         /*
         $yearS = new SelectInput(array(
             'options' => $this->year_range,

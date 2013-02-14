@@ -431,7 +431,8 @@ class Element
         return $this->_children;
     }
 
-    public function renderNodes($nodes)
+
+    protected function _renderNodes($nodes)
     {
         $html = '';
         foreach( $nodes as $node ) {
@@ -458,7 +459,7 @@ class Element
 
     public function renderChildren()
     {
-        return $this->renderNodes($this->_children);
+        return $this->_renderNodes($this->_children);
     }
 
     /**
