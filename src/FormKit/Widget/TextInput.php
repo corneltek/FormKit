@@ -23,7 +23,7 @@ class TextInput extends BaseWidget
     /**
      * @var array This attributes is for defined class members.
      */
-    public $customAttributes = array(
+    public $_customAttributes = array(
         'name',
         'type',
         // 'dataDateFormat', 'dataTimeFormat', 'dataAmpm',

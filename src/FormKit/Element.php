@@ -248,7 +248,7 @@ class Element
      * @var array Custom attributes (append your attribute name to render class 
      *            member as attribute)
      */
-    public $customAttributes = array();
+    protected $_customAttributes = array();
 
     /**
      *
@@ -277,7 +277,7 @@ class Element
      */
     public function addAttribute($attribute)
     {
-        $this->customAttributes[] = $attribute;
+        $this->_customAttributes[] = $attribute;
         return $this;
     }
 
@@ -293,7 +293,7 @@ class Element
         if( is_string($attributes) ) {
             $attributes = explode(' ',$attributes);
         }
-        $this->customAttributes = array_merge( $this->customAttributes , (array) $attributes );
+        $this->_customAttributes = array_merge( $this->_customAttributes , (array) $attributes );
         return $this;
     }
 
@@ -437,9 +437,10 @@ class Element
      *
      * @return string Standard Attribute string
      */
-    public function renderAttributes() {
+    public function renderAttributes() 
+    {
         return $this->_renderAttributes($this->standardAttributes)
-            . $this->_renderAttributes($this->customAttributes)
+            . $this->_renderAttributes($this->_customAttributes)
             . $this->_renderAttributes(array_keys($this->_attributes));
     }
 

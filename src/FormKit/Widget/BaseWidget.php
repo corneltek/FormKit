@@ -29,7 +29,7 @@ abstract class BaseWidget extends Element
      */
     public $js = array();
 
-    public $customAttributes = array('name');
+    public $_customAttributes = array('name');
 
     /**
      *
