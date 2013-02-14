@@ -87,7 +87,7 @@ abstract class BaseWidget extends Element
         $this->setAttributeType( 'placeholder' , self::ATTR_STRING );
 
         if( $this->useSerialId ) {
-            $this->addId( $this->getSerialId() );
+            $this->setId( $this->getSerialId() );
         }
     }
 

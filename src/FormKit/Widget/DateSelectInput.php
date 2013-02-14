@@ -155,7 +155,7 @@ class DateSelectInput extends TextInput
         $this->setAttributes($attributes);
         $formatIds = array();
         $selfId = $this->getSerialId();
-        $this->addId($selfId);
+        $this->setId($selfId);
 
         $nodes = array();
         for ( $i = 0 ; $i < strlen($this->format) ; $i++ ) {
@@ -173,7 +173,7 @@ class DateSelectInput extends TextInput
                     'allow_empty' => $this->allow_empty,
                 ));
                 $id = $this->getSerialId();
-                $select->addId($id);
+                $select->setId($id);
                 $formatIds[ $c ] = $id;
                 $nodes[] = $select;
             } else {
@@ -240,17 +240,17 @@ class DateSelectInput extends TextInput
         $yearS = new SelectInput(array(
             'options' => $this->year_range,
         ));
-        $yearS->addId( $yearId = $this->getSerialId() );
+        $yearS->setId( $yearId = $this->getSerialId() );
 
         $monthS = new SelectInput(array(
             'options' => $this->month_range
         ));
-        $monthS->addId( $monthId = $this->getSerialId() );
+        $monthS->setId( $monthId = $this->getSerialId() );
 
         $dayS = new SelectInput(array(
             'options' => $this->day_range
         ));
-        $dayS->addId( $dayId = $this->getSerialId() );
+        $dayS->setId( $dayId = $this->getSerialId() );
 
         spl_autoload_call('FormKit\ResponseUtils');
         block_start(); ?>

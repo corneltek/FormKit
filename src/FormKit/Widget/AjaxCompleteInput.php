@@ -24,7 +24,7 @@ class AjaxCompleteInput extends TextInput
     public function render( $attributes = array() )
     {
         $serial = $this->getSerialId();
-        $this->addId($serial);
+        $this->setId($serial);
         ob_start();
         /*
             <style>

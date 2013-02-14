@@ -269,7 +269,7 @@ class Element
     /**
      * @var array id field
      */
-    public $id = array();
+    public $id;
 
 
     /**
@@ -375,17 +375,13 @@ class Element
 
 
     /**
+     * Set element id
+     *
      * @param string $id add identifier attribute
      */
-    public function addId($id)
-    {
-        $this->id[] = $id;
-        return $this;
-    }
-
     public function setId($id)
     {
-        $this->id = (array) $id;
+        $this->id = $id;
         return $this;
     }
 
