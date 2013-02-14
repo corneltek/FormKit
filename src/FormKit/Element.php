@@ -235,6 +235,12 @@ class Element
 
     // -------------------------- end of cascading attributes
 
+
+    // =================================
+    // Element methods and members
+    // =================================
+
+
     /**
      * element tag name
      */
@@ -269,7 +275,7 @@ class Element
     /**
      * @var array Standard attribute from element class member.
      */
-    public $standardAttributes = array( 
+    public $_standardAttributes = array( 
         /* core attributes */
         'class','id' 
     );
@@ -474,7 +480,7 @@ class Element
      */
     public function renderAttributes() 
     {
-        return $this->_renderAttributes($this->standardAttributes)
+        return $this->_renderAttributes($this->_standardAttributes)
             . $this->_renderAttributes($this->_customAttributes)
             . $this->_renderAttributes(array_keys($this->_attributes));
     }
