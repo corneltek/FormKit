@@ -32,6 +32,24 @@ class Element
 
     protected $_attributes = array();
 
+
+    public $_ignoredAttributes = array();
+
+    public function isIgnoredAttribute($name)
+    {
+        return isset($this->_ignoredAttributes[$name]);
+    }
+
+    public function addIgnoredAttribute($name)
+    {
+        $this->_ignoredAttributes[$name] = true;
+    }
+
+    public function removeIgnoredAttribute($name)
+    {
+        unset($this->_ignoredAttributes[$name]);
+    }
+
     /**
      * Register new attribute with type,
      * This creates accessors for objects.
