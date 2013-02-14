@@ -24,7 +24,7 @@ class Element
 
     public $allowUndefinedAttribute = true;
 
-    public $attributes = array();
+    protected $_attributes = array();
 
     /**
      * Setup new attribute with type
@@ -57,8 +57,8 @@ class Element
      */
     public function __get($name)
     {
-        if( isset( $this->attributes[ $name ] ) )
-            return $this->attributes[ $name ];
+        if( isset( $this->_attributes[ $name ] ) )
+            return $this->_attributes[ $name ];
     }
 
     /**
@@ -66,7 +66,7 @@ class Element
      */
     public function __set($name,$value)
     {
-        $this->attributes[ $name ] = $value;
+        $this->_attributes[ $name ] = $value;
     }
 
 
@@ -81,7 +81,7 @@ class Element
         if( property_exists($this,$name) ) {
             $this->$name = $arg;
         } else {
-            $this->attributes[ $name ] = $arg;
+            $this->_attributes[ $name ] = $arg;
         }
     }
 
@@ -180,25 +180,25 @@ class Element
     
     public function offsetExists($name)
     {
-        return isset($this->attributes[ $name ]);
+        return isset($this->_attributes[ $name ]);
     }
     
     public function offsetGet($name)
     {
-        if( ! isset( $this->attributes[ $name ] ) ) {
+        if( ! isset( $this->_attributes[ $name ] ) ) {
             // detect type for setting up default value.
             $type = @$this->_supportedAttributes[ $name ];
             if( $type == self::ATTR_ARRAY ) {
-                $this->attributes[ $name ] = array();
+                $this->_attributes[ $name ] = array();
             }
         }
-        $val =& $this->attributes[ $name ];
+        $val =& $this->_attributes[ $name ];
         return $val;
     }
     
     public function offsetUnset($name)
     {
-        unset($this->attributes[$name]);
+        unset($this->_attributes[$name]);
     }
 
 
@@ -440,7 +440,7 @@ class Element
     public function renderAttributes() {
         return $this->_renderAttributes($this->standardAttributes)
             . $this->_renderAttributes($this->customAttributes)
-            . $this->_renderAttributes(array_keys($this->attributes));
+            . $this->_renderAttributes(array_keys($this->_attributes));
     }
 
     /**
