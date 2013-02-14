@@ -275,7 +275,7 @@ class Element
     /**
      * @var array Standard attribute from element class member.
      */
-    public $_standardAttributes = array( 
+    protected $_standardAttributes = array( 
         /* core attributes */
         'class','id' 
     );
