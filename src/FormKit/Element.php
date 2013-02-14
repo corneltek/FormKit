@@ -20,7 +20,7 @@ class Element
     /**
      * @var array $supportedAttributes
      */
-    public $supportedAttributes = array();
+    protected $_supportedAttributes = array();
 
     public $allowUndefinedAttribute = true;
 
@@ -34,7 +34,7 @@ class Element
      */
     public function setAttributeType( $name , $type ) 
     {
-        $this->supportedAttributes[ $name ] = $type;
+        $this->_supportedAttributes[ $name ] = $type;
     }
 
 
@@ -45,7 +45,7 @@ class Element
      */
     public function removeAttributeType($name)
     {
-        unset( $this->supportedAttributes[ $name ] );
+        unset( $this->_supportedAttributes[ $name ] );
     }
 
 
@@ -87,10 +87,10 @@ class Element
 
     public function setAttribute($name,$args)
     {
-        if( isset($this->supportedAttributes[ $name ]) ) 
+        if( isset($this->_supportedAttributes[ $name ]) ) 
         {
             $c = count($args);
-            $t = $this->supportedAttributes[ $name ];
+            $t = $this->_supportedAttributes[ $name ];
 
             if( $t != self::ATTR_FLAG && $c == 0 ) {
                 throw new Exception( 'Attribute value is required.' );
@@ -187,7 +187,7 @@ class Element
     {
         if( ! isset( $this->attributes[ $name ] ) ) {
             // detect type for setting up default value.
-            $type = @$this->supportedAttributes[ $name ];
+            $type = @$this->_supportedAttributes[ $name ];
             if( $type == self::ATTR_ARRAY ) {
                 $this->attributes[ $name ] = array();
             }
