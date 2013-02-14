@@ -263,7 +263,7 @@ class Element
      *
      * @var array
      */
-    protected $_children = array();
+    protected $children = array();
 
 
     /**
@@ -387,25 +387,25 @@ class Element
 
     public function prepend($child)
     {
-        array_splice($this->_children,0,0,$child);
+        array_splice($this->children,0,0,$child);
         return $this;
     }
 
     public function insertChild($child)
     {
-        array_splice($this->_children,0,0,$child);
+        array_splice($this->children,0,0,$child);
         return $this;
     }
 
     public function append($child)
     {
-        $this->_children[] = $child;
+        $this->children[] = $child;
         return $this;
     }
 
     public function addChild($child)
     {
-        $this->_children[] = $child;
+        $this->children[] = $child;
         return $this;
     }
 
@@ -418,7 +418,7 @@ class Element
      */
     public function hasChildren()
     {
-        return ! empty($this->_children);
+        return ! empty($this->children);
     }
 
     /**
@@ -428,7 +428,7 @@ class Element
      */
     public function getChildren()
     {
-        return $this->_children;
+        return $this->children;
     }
 
 
@@ -459,7 +459,7 @@ class Element
 
     public function renderChildren()
     {
-        return $this->_renderNodes($this->_children);
+        return $this->_renderNodes($this->children);
     }
 
     /**
