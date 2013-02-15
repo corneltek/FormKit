@@ -406,6 +406,11 @@ class Element
         return $this;
     }
 
+    public function getId($id)
+    {
+        return $this->id;
+    }
+
 
     /**
      * Prepend Child element.

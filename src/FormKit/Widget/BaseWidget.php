@@ -137,5 +137,10 @@ abstract class BaseWidget extends Element
         return $this->name . '-' . microtime(true);
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
 }
 
