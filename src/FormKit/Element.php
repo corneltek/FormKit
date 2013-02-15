@@ -482,26 +482,37 @@ class Element
         return $this->children;
     }
 
+    public function getChildrenSize()
+    {
+        return count($this->children);
+    }
+
 
     protected function _renderNodes($nodes)
     {
         $html = '';
-        foreach( $nodes as $node ) {
+        foreach( $nodes as $node ) 
+        {
             if( $node instanceof DOMText || $node instanceof DOMNode ) {
                 // to use C14N(), the DOMNode must be belongs to an instance of DOMDocument.
                 $dom = new DOMDocument;
                 $dom->appendChild($node);
                 $html .= $node->C14N();
-            } elseif( is_string($node) ) {
+            }
+            elseif( is_string($node) ) 
+            {
                 $html .= $node;
-            } elseif( is_object($node) 
+            }
+            elseif( is_object($node) 
                 && ( $node instanceof \FormKit\Element
                     || $node instanceof \FormKit\Layout\BaseLayout 
                     || method_exists($node,'render')
                 ) )
             {
                 $html .= $node->render();
-            } else {
+            }
+            else 
+            {
                 throw new Exception('Unknown node type.');
             }
         }
