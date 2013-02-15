@@ -296,7 +296,7 @@ class Element
     /**
      * @var array Standard attribute from element class member.
      */
-    protected $_standardAttributes = array( 
+    protected $standardAttributes = array( 
         /* core attributes */
         'class','id' 
     );
@@ -563,7 +563,7 @@ class Element
      */
     public function renderAttributes() 
     {
-        return $this->_renderAttributes($this->_standardAttributes)
+        return $this->_renderAttributes($this->standardAttributes)
             . $this->_renderAttributes($this->customAttributes)
             . $this->_renderAttributes(array_keys($this->_attributes));
     }
