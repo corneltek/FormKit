@@ -54,7 +54,7 @@ abstract class BaseWidget extends Element
     protected $options = array();
 
 
-    public $customAttributes = array('name');
+    protected $customAttributes = array('name');
 
 
     /**
