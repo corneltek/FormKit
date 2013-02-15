@@ -21,6 +21,8 @@ class ThumbImageFileInput extends TextInput
     public $fileInput;
     public $prefix = '';
 
+    protected $_ignoredAttributes = array( 'value' => true );
+
 
     /**
      * HTML structure
@@ -37,7 +39,6 @@ class ThumbImageFileInput extends TextInput
     public function init() 
     {
         parent::init();
-
         $this->fileInput = new FileInput( $this->name, $this->attributes );
 
         $this->imageCover = new Div(array('class' => 'formkit-image-cover'));

@@ -5,6 +5,19 @@ use FormKit\Element;
 use Exception;
 use InvalidArgumentException;
 
+
+
+/**
+ * BaseWidget defines the basic features of a widget,
+ *
+ * Below is the widget construction flow:
+ *
+ * BaseWidget::__construct
+ *  (parent) Element::__construct
+ * BaseWidget::init
+ *  (parent) Element::init
+ *
+ */
 abstract class BaseWidget extends Element
 {
 
@@ -69,10 +82,9 @@ abstract class BaseWidget extends Element
             }
         }
         parent::__construct(); // create element
-        $this->init();
     }
 
-    public function init()
+    protected function init()
     {
         $this->setAttributeType( 'name', self::ATTR_STRING );
         $this->setAttributeType( 'type', self::ATTR_STRING );
@@ -89,6 +101,7 @@ abstract class BaseWidget extends Element
         if( $this->useSerialId ) {
             $this->setId( $this->getSerialId() );
         }
+        parent::init();
     }
 
     public function getStylesheets()
