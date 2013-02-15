@@ -13,7 +13,7 @@ class TextareaInput extends BaseWidget
      * @param array $attributes
      * @param string HTML string
      */
-    public function render( $attributes = array() )
+    public function render($attributes = null)
     {
         if($attributes)
             $this->setAttributes( $attributes );

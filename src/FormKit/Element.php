@@ -305,7 +305,7 @@ class Element
      * @var array Custom attributes (append your attribute name to render class 
      *            member as attribute)
      */
-    protected $_customAttributes = array();
+    protected $customAttributes = array();
 
 
 
@@ -338,7 +338,7 @@ class Element
      */
     public function registerCustomAttribute($attribute)
     {
-        $this->_customAttributes[] = $attribute;
+        $this->customAttributes[] = $attribute;
         return $this;
     }
 
@@ -355,7 +355,7 @@ class Element
         if( is_string($attributes) ) {
             $attributes = explode(' ',$attributes);
         }
-        $this->_customAttributes = array_merge( $this->_customAttributes , (array) $attributes );
+        $this->customAttributes = array_merge( $this->customAttributes , (array) $attributes );
         return $this;
     }
 
@@ -533,7 +533,7 @@ class Element
      *
      * @param array $attributes
      */
-    public function setAttributes($attributes = array())
+    public function setAttributes($attributes)
     {
         foreach( $attributes as $k => $val ) {
             if ( $this->isIgnoredAttribute($k) )
@@ -564,7 +564,7 @@ class Element
     public function renderAttributes() 
     {
         return $this->_renderAttributes($this->_standardAttributes)
-            . $this->_renderAttributes($this->_customAttributes)
+            . $this->_renderAttributes($this->customAttributes)
             . $this->_renderAttributes(array_keys($this->_attributes));
     }
 

@@ -51,6 +51,12 @@ abstract class BaseWidget extends Element
      */
     protected $js = array();
 
+
+    /**
+     * Widget options, widgets may declare its option names
+     * so that when setting attributes, these options won't be set into the 
+     * attributes.
+     */
     protected $options = array();
 
 
@@ -75,7 +81,6 @@ abstract class BaseWidget extends Element
     public function __construct()
     {
         $args = func_get_args();
-
 
         //  new FooInput('name',array( ...attributes ... ));
         if( 2 === count($args) ) {
@@ -115,6 +120,21 @@ abstract class BaseWidget extends Element
             $this->setId( $this->getSerialId() );
         }
         parent::init();
+    }
+
+
+    /**
+     * Set attributes
+     *
+     */
+    public function setAttributes($as)
+    {
+        // filter out options
+        $intersects = array_intersect(array_keys($as),array_keys($this->options));
+        foreach( $intersects as $k ) {
+            unset($as[$k]);
+        }
+        parent::setAttributes($as);
     }
 
     public function getStylesheets()
