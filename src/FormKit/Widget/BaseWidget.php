@@ -12,12 +12,60 @@ use InvalidArgumentException;
  *
  *
  * Synopsis
+ * ========
  *
  *     // create a widget with 'name'
  *     $widget = new FooInput('name');
  *
  *     // create a widget with 'name' and attributes or options
  *     $widget = new FooInput('name',array( ...attributes ... ));
+ *
+ * Attributes and Options
+ * ======================
+ *
+ * If the name is the same as the class property name,
+ * the value will be stored into the property.
+ *
+ * If the name is not a class property name, 
+ * the value will be stored into the $this->_attributes array.
+ *
+ *
+ * Attribute Value
+ * ======================
+ *
+ * Attribute value can be an associative-array, an indexed-array or 
+ * a boolean value.
+ *
+ * An associative-array contains key-value pair, which is treated as a style 
+ * property:
+ *
+ *    'style' => array( 'border' => '1px solid #ccc' );
+ * 
+ * Which is rendered as:
+ *
+ *    "style"="border: 1px solid #ccc;"
+ *
+ * An indexed-array contains values with index numbers:
+ *
+ *    "class" => array("class1", "class2", "class3")
+ *
+ * Which is rendered as:
+ *
+ *    "class"="class1 class2 class3"
+ *
+ * A boolean value is rendered as:
+ *
+ *    "readonly"="readonly"
+ *
+ *
+ * Attribute Rendering
+ * ======================
+ *
+ *
+ *
+ *
+ * Widget Initialization Flow
+ * ==========================
  *
  * Below is the widget construction flow:
  *
@@ -57,8 +105,7 @@ abstract class BaseWidget extends Element
      * so that when setting attributes, these options won't be set into the 
      * attributes.
      */
-    protected $options = array();
-
+    protected $optionNames = array();
 
     protected $customAttributes = array('name');
 
@@ -130,7 +177,7 @@ abstract class BaseWidget extends Element
     public function setAttributes($as)
     {
         // filter out options
-        $intersects = array_intersect(array_keys($as),array_keys($this->options));
+        $intersects = array_intersect(array_keys($as),$this->optionNames);
         foreach( $intersects as $k ) {
             unset($as[$k]);
         }

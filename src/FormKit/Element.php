@@ -100,6 +100,11 @@ class Element
      * Check property and set attribute value without type 
      * checking.
      *
+     * If there is a property with the same name
+     * Then the value will be set to the property.
+     *
+     * Or the value will be stored in $this->_attributes array.
+     *
      * This is for internal use.
      *
      * @param string $name
@@ -107,7 +112,7 @@ class Element
      */
     public function setAttributeValue($name,$arg)
     {
-        if( property_exists($this,$name) ) {
+        if( property_exists($this, $name) ) {
             $this->$name = $arg;
         } else {
             $this->_attributes[ $name ] = $arg;
@@ -130,6 +135,7 @@ class Element
         if ( $this->isIgnoredAttribute($name) )
             continue;
 
+        // check if it's registered.
         if( isset($this->_supportedAttributes[ $name ]) ) 
         {
             $c = count($args);
@@ -539,7 +545,8 @@ class Element
             if ( $this->isIgnoredAttribute($k) )
                 continue;
 
-            // this is for adding new classes
+            // this is for adding new class name with
+            //   +=newClass
             if( is_string($val) && strpos($val ,'+=') !== false ) {
                 $origValue = $this->getAttributeValue($k);
                 if( is_string($origValue) ) {
@@ -581,15 +588,25 @@ class Element
             if( $val = $this->$key ) {
                 if( is_array($val) ) {
 
-                    // check if array is a indexed array, check keys of array[0..cnt] 
+                    // check if the array is an indexed array, check keys of 
+                    // array[0..cnt] 
                     //
                     // if it's an indexed array
-                    // for attributes like "class", which the parameter can be array('class1','class2')
-                    // this render the attribute as "class1 class2"
+                    // for attributes key like "class", the value can be 
+                    //
+                    //     array('class1','class2')
+                    //
+                    // this renders the attribute as "class1 class2"
                     //
                     // if it's an associative array
-                    // for attribute "style", which the parameter can be array( 'border' => '1px solid #ccc' )
-                    // this render the attribute as "border: 1px solid #ccc;"
+                    // for attribute key like "style", the value can be 
+                    //
+                    //      array( 'border' => '1px solid #ccc' )
+                    //
+                    // this renders the attribute as 
+                    //
+                    //      "border: 1px solid #ccc;"
+                    //
                     if( array_keys($val) === range(0, count($val)-1) ) {
                         $val = join(' ', $val);
                     } else {
@@ -600,12 +617,13 @@ class Element
                         }
                     }
                 }
+                // for boolean type values like readonly attribute, 
+                // we render it as readonly="readonly".
                 elseif ( is_bool($val) ) {
                     $val = $key;
                 }
 
-                // for boolean values like readonly attribute, 
-                // we render it as readonly="readonly".
+                // Convert camalcase name to dash-separated name
                 //
                 // for dataUrl attributes, render these attributes like data-url
                 // ( use dash separator)
