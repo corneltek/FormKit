@@ -32,9 +32,9 @@ abstract class BaseWidget extends Element
 
 
     /**
-     * @var array css style sheets
+     * @var array Style sheet paths
      */
-    public $css = array();
+    public $stylesheets = array();
 
 
     /**
@@ -109,11 +109,11 @@ abstract class BaseWidget extends Element
         $path = FormKit::$assetPath;
         return array_map(function($file) use($path) { 
                 return $path ? $path . '/' . $file : $file;
-            }, (array) $this->css );
+            }, (array) $this->stylesheets );
     }
 
     public function addStylesheet($css) {
-        $this->css[] = $css;
+        $this->stylesheets[] = $css;
         return $this;
     }
 
