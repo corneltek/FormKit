@@ -24,6 +24,7 @@ class ThumbImageFileInput extends TextInput
     protected $_ignoredAttributes = array( 'value' => true );
 
 
+
     /**
      * HTML structure
      *

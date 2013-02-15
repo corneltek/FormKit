@@ -10,6 +10,15 @@ use InvalidArgumentException;
 /**
  * BaseWidget defines the basic features of a widget,
  *
+ *
+ * Synopsis
+ *
+ *     // create a widget with 'name'
+ *     $widget = new FooInput('name');
+ *
+ *     // create a widget with 'name' and attributes or options
+ *     $widget = new FooInput('name',array( ...attributes ... ));
+ *
  * Below is the widget construction flow:
  *
  * BaseWidget::__construct
@@ -34,15 +43,19 @@ abstract class BaseWidget extends Element
     /**
      * @var array Style sheet paths
      */
-    public $stylesheets = array();
+    protected $stylesheets = array();
 
 
     /**
      * @var array js files
      */
-    public $js = array();
+    protected $js = array();
 
-    public $_customAttributes = array('name');
+    protected $options = array();
+
+
+    public $customAttributes = array('name');
+
 
     /**
      *
