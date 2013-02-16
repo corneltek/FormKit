@@ -163,7 +163,7 @@ abstract class BaseWidget extends Element
         $this->setAttributeType( 'placeholder' , self::ATTR_STRING );
 
         if( $this->useSerialId ) {
-            $this->setId( $this->getSerialId() );
+            $id = $this->getSerialId();
         }
         parent::init();
     }
@@ -209,11 +209,19 @@ abstract class BaseWidget extends Element
         return $this;
     }
 
+
+    /**
+     * Get a new serial id, this will override previous id.
+     */
     public function getSerialId()
     {
+        $id = null;
         if( function_exists('uniqid') )
-            return $this->name . '-' . uniqid( $this->name );
-        return $this->name . '-' . microtime(true);
+            $id = $this->name . '-' . uniqid( $this->name );
+        else
+            $id = $this->name . '-' . microtime(true);
+        $this->setId( $id );
+        return $id;
     }
 
     public function getName()

@@ -112,8 +112,10 @@ class ThumbImageFileInput extends TextInput
         if ($this->autoresize_input) {
             $this->fileInput->setAttributeValue('data-autoresize-input','true');
             $checkbox = new CheckboxInput($this->name . '_autoresize');
+            $checkboxId = $checkbox->getSerialId();
+
             $label    = new Label(_("Auto-Resize"));
-            $label->for('123');
+            $label->for($checkboxId);
         }
 
         $this->inputWrapper->append($this->imageCover);
