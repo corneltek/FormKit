@@ -127,12 +127,13 @@ abstract class BaseWidget extends Element
     public function __construct()
     {
         $args = func_get_args();
+        $attributes = array();
 
         //  new FooInput('name',array( ...attributes ... ));
         if( 2 === count($args) ) {
             $this->name = $args[0];
             if( $args[1] && is_array($args[1]) ) {
-                $this->setAttributes($args[1]);
+                $attributes = $args[1];
             }
         }
         elseif( 1 === count($args) ) {
@@ -140,19 +141,18 @@ abstract class BaseWidget extends Element
             if ( is_string($arg) ) {
                 $this->name = $arg;
             } elseif ( is_array($arg) ) {
-                $this->setAttributes( $arg );
+                $attributes = $arg;
             } else {
                 throw new InvalidArgumentException('Unsupported argument type');
             }
         }
-        parent::__construct(); // create element
+        parent::__construct(null,$attributes); // create element
     }
 
-    protected function init()
+    protected function init($attributes)
     {
         $this->setAttributeType( 'name', self::ATTR_STRING );
         $this->setAttributeType( 'type', self::ATTR_STRING );
-        $this->setAttributeType( 'value', self::ATTR_STRING );
 
         // virtual attribute (not for rendering widget elements )
         $this->setAttributeType( 'label'       , self::ATTR_STRING );
@@ -165,7 +165,7 @@ abstract class BaseWidget extends Element
         if( $this->useSerialId ) {
             $id = $this->getSerialId();
         }
-        parent::init();
+        parent::init($attributes);
     }
 
 

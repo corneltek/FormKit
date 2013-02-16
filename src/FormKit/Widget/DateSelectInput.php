@@ -46,9 +46,9 @@ class DateSelectInput extends TextInput
 
     public $timezone;
 
-    public function init() 
+    public function init($a)
     {
-        parent::init();
+        parent::init($a);
 
         if( $this->value )
             $this->loadValue();

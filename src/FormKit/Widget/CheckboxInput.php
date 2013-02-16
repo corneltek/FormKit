@@ -23,10 +23,11 @@ class CheckboxInput extends BaseWidget
      */
     public $boolean_value = true;
 
-    public function init() 
+    public function init($a)
     { 
         if( $this->value )
             $this->checked = $this->value;
+        parent::init($a);
     }
 
     public function check( $value = null ) 

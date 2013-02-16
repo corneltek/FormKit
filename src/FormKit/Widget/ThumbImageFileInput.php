@@ -74,10 +74,10 @@ class ThumbImageFileInput extends TextInput
      *
      */
 
-    public function init() 
+    public function init($attributes) 
     {
-        parent::init();
-        $this->fileInput = new FileInput( $this->name, $this->attributes );
+        parent::init($attributes);
+        $this->fileInput = new FileInput( $this->name, $attributes );
 
         $this->imageCover = new Div(array('class' => 'formkit-image-cover'));
         $this->imageCover->setAttributeValue('data-width', $this->dataWidth);

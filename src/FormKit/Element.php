@@ -327,10 +327,10 @@ class Element
         $this->setAttributeType( 'class', self::ATTR_ARRAY );
         $this->setAttributeType( 'id', self::ATTR_ARRAY );
         $this->setAttributes( $attributes );
-        $this->init();
+        $this->init($attributes);
     }
 
-    protected function init() 
+    protected function init($attributes)
     {
 
     }

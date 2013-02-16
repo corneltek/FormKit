@@ -8,9 +8,9 @@ class DigitSelectInput extends SelectInput
     public $to = 10;
     public $interval = 1;
 
-    public function init()
+    public function init($a)
     {
-        parent::init();
+        parent::init($a);
         $this->options = range($this->from, $this->to, $this->interval);
     }
 }

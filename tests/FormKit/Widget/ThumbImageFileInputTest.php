@@ -9,12 +9,14 @@ class ThumbImageFileInputTest extends PHPUnit_Framework_TestCase
             'autoresize_input' => true,
             'droppreview' => true,
             'dropupload' => true,
+            'dataWidth' => 200,
+            'dataHeight' => 200,
             'exif' => true,
         ));
         ok($widget);
 
         $html = $widget->render();
-        // echo $html;
+        echo $html;
         select_ok('.formkit-widget-thumbimagefile',1,$html);
         select_ok('.formkit-widget-thumbimagefile img',0,$html);
         select_ok('.formkit-widget-thumbimagefile input[type="file"]',1,$html);
