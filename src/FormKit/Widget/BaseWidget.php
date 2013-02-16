@@ -211,10 +211,13 @@ abstract class BaseWidget extends Element
 
 
     /**
-     * Get a new serial id, this will override previous id.
+     * Get a new serial id
      */
     public function getSerialId()
     {
+        if($this->id)
+            return $this->id;
+
         $id = null;
         if( function_exists('uniqid') )
             $id = $this->name . '-' . uniqid( $this->name );
