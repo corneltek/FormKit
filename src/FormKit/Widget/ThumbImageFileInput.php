@@ -24,15 +24,14 @@ class ThumbImageFileInput extends TextInput
     protected $_ignoredAttributes = array( 'value' => true );
 
     /**
-     * To enable resize checkbox
+     * @var boolean Option to enable resize checkbox
      *
      * $widget = new FormKit\ThumbImageFileInput('image',array( 'resize' => true ))
-     *
      */
     public $resize = false;
 
     /**
-     * Option to disable/enable exif.
+     * @var boolean Option to disable/enable exif.
      */
     public $exif = false;
 
@@ -61,7 +60,7 @@ class ThumbImageFileInput extends TextInput
         $this->inputWrapper->addClass('formkit-widget-thumbimagefile')
             ->addClass('formkit-image-wrapper');
 
-        // if with value, then generate img
+        // if it has a value, generate img
         if ( $this->value ) {
             $this->image = new Element('img',array(
                 'src' => $this->prefix . $this->value,
