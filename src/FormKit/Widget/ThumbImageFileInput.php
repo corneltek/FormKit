@@ -44,7 +44,32 @@ class ThumbImageFileInput extends TextInput
     public $autoresize = false;
 
 
+    /**
+     * @var boolean Option to enable/disable render autoresize checkbox.
+     */
     public $autoresize_input = false;
+
+
+    /**
+     * @var boolean Option to enable/disable autoresize type selector.
+     */
+    public $autoresize_type_input = false;
+
+    /**
+     * @var string Option to decide the autoresize strategy.
+     *
+     * Valid values can be: 'max_width', 'max_height', 'scale'
+     */
+    public $autoresize_type;
+
+
+    public $autoresize_types = array(  
+        'max_width'      => _('Max Width'),
+        'max_height'     => _('Max Height'),
+        'scale'          => _('Scale'),
+        'crop_and_scale' => _('Crop and Scale'),
+    );
+
 
     /**
      * @var boolean Option to disable/enable exif.
