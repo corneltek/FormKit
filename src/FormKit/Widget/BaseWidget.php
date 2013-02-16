@@ -78,7 +78,6 @@ use InvalidArgumentException;
 abstract class BaseWidget extends Element
 {
 
-
     /**
      * @var string field name
      */

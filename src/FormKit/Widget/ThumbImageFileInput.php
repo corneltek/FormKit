@@ -23,7 +23,18 @@ class ThumbImageFileInput extends TextInput
 
     protected $_ignoredAttributes = array( 'value' => true );
 
+    /**
+     * To enable resize checkbox
+     *
+     * $widget = new FormKit\ThumbImageFileInput('image',array( 'resize' => true ))
+     *
+     */
+    public $resize = false;
 
+    /**
+     * Option to disable/enable exif.
+     */
+    public $exif = false;
 
     /**
      * HTML structure
@@ -59,13 +70,15 @@ class ThumbImageFileInput extends TextInput
         }
 
         // TODO: c9, you can make exif button as a config, by EJ
-        $this->fileInput->setAttributeValue('data-exif', 'true');
+        if($this->exif) {
+            $this->fileInput->setAttributeValue('data-exif', 'true');
+        }
 
         $this->inputWrapper->append($this->imageCover);
         $this->inputWrapper->append($this->fileInput);
     }
 
-    function render($attributes = array() ) 
+    public function render($attributes = array() ) 
     {
         return $this->inputWrapper->render();
         // parent::render($attributes);
