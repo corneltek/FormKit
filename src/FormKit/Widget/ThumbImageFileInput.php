@@ -30,7 +30,11 @@ class ThumbImageFileInput extends TextInput
     public $fileInput;
     public $prefix = '';
 
-    protected $_ignoredAttributes = array( 'value' => true );
+    // protected $_ignoredAttributes = array( 'value' => true );
+
+    // since we defined 'value', the value will be stored in the class property
+    // not in the attributes array.
+    public $value;
 
     /**
      * @var boolean Option to enable auto resize checkbox
