@@ -5,6 +5,15 @@ use FormKit\Element\Div;
 
 /**
  *
+ * Supported options:
+ *
+ *  dropupload (boolean)
+ *  droppreview (boolean)
+ *  autoresize (boolean)
+ *  autoresize_input
+ *
+ *
+ *
  * $input = new ImageFileInput('image');
  * $input->image->align = 'right';
  * $input->image->src = '.....';
@@ -24,11 +33,14 @@ class ThumbImageFileInput extends TextInput
     protected $_ignoredAttributes = array( 'value' => true );
 
     /**
-     * @var boolean Option to enable resize checkbox
+     * @var boolean Option to enable auto resize checkbox
      *
-     * $widget = new FormKit\ThumbImageFileInput('image',array( 'resize' => true ))
+     * $widget = new FormKit\ThumbImageFileInput('image',array( 'autoresize' => true ))
      */
-    public $resize = false;
+    public $autoresize = false;
+
+
+    public $autoresize_input = true;
 
     /**
      * @var boolean Option to disable/enable exif.
@@ -40,7 +52,7 @@ class ThumbImageFileInput extends TextInput
      *
      * @var boolean Option to enable file drop to preview.
      */
-    public $drag_preview = true;
+    public $droppreview = true;
 
 
     /**
@@ -48,7 +60,7 @@ class ThumbImageFileInput extends TextInput
      *
      * @var boolean Option to enable file drop to upload.
      */
-    public $drag_upload = true;
+    public $dropupload = true;
 
     /**
      * HTML structure
@@ -86,14 +98,19 @@ class ThumbImageFileInput extends TextInput
         if ($this->exif) {
             $this->fileInput->setAttributeValue('data-exif', 'true');
         }
-        if ($this->resize) {
-            $this->fileInput->setAttributeValue('data-resize','true');
+        if ($this->autoresize) {
+            $this->fileInput->setAttributeValue('data-autoresize','true');
         }
-        if ( $this->drag_preview ) {
-            $this->fileInput->setAttributeValue('data-drag-preview','true');
+        if ( $this->droppreview ) {
+            $this->fileInput->setAttributeValue('data-droppreview','true');
         }
-        if ( $this->drag_upload ) {
-            $this->fileInput->setAttributeValue('data-drag-upload','true');
+        if ( $this->dropupload ) {
+            $this->fileInput->setAttributeValue('data-dropupload','true');
+        }
+
+        if ($this->autoresize_input) {
+            $checkbox = new CheckboxInput($this->name . '_autoresize');
+            $label    = new Label(_("Auto-Resize"));
         }
 
         $this->inputWrapper->append($this->imageCover);

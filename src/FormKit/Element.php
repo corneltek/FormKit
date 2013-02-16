@@ -32,8 +32,7 @@ class Element
 
     protected $_attributes = array();
 
-
-    public $_ignoredAttributes = array();
+    protected $_ignoredAttributes = array();
 
     public function isIgnoredAttribute($name)
     {
