@@ -13,6 +13,7 @@ class CheckboxInput extends BaseWidget
 {
     public $class = array('formkit-widget','formkit-widget-checkbox');
     public $type = 'checkbox';
+    public $boolean_value = true;
 
     public function init() 
     { 
@@ -44,6 +45,10 @@ class CheckboxInput extends BaseWidget
 
     public function render( $attributes = array() )
     {
+        if (! $this->boolean_value) {
+            return parent::render($attributes);
+        }
+
         $this->setAttributes( $attributes );
         ob_start();
         $fieldId = $this->getSerialId();
