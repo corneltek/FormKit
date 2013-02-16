@@ -19,17 +19,15 @@ define your own layout engine too!
 For example, to use a text input widget:
 
 ```php
-<?php
+$text = new FormKit\Widget\TextInput('username', array( 
+    'label' => 'Username',
+    'placeholder' => 'Your name please',
+    'hint'  => 'Please enter 6 characters for your username',
+));
+$text->value( 'default' )
+    ->size(20);
 
-    $text = new FormKit\Widget\TextInput('username', array( 
-        'label' => 'Username',
-        'placeholder' => 'Your name please',
-        'hint'  => 'Please enter 6 characters for your username',
-    ));
-    $text->value( 'default' )
-        ->size(20);
-
-    echo $text; // render 
+echo $text; // render 
 ```
 
 Which outputs:
@@ -42,7 +40,6 @@ Which outputs:
 SelectInput:
 
 ```php
-<?php
 /* selector with group options */
 $countries = new FormKit\Widget\SelectInput( 'country' , array(
     'label' => 'Country',
@@ -59,13 +56,11 @@ $countries = new FormKit\Widget\SelectInput( 'country' , array(
 ));
 ```
 
-
 Layout
 ------
 To use generic layout:
 
 ```php
-<?php
 $layout = new FormKit\Layout\GenericLayout;
 $layout->width(400);
 $layout->addWidget( $text )
@@ -89,38 +84,34 @@ Widget Factory
 Form Widget Factory:
 
 ```php
-<?php
-    use FormKit\FormKit;
-    $username = FormKit::text('username');
-    $password = FormKit::password('password',array( 
-        'class' => 'your-element-class-name',
-        'id' =>  'your-element-id',
-        'value' => 'default password',
-    ));
+use FormKit\FormKit;
+$username = FormKit::text('username');
+$password = FormKit::password('password',array( 
+    'class' => 'your-element-class-name',
+    'id' =>  'your-element-id',
+    'value' => 'default password',
+));
 
-    echo $username->render();
-    echo $password->render();
+echo $username->render();
+echo $password->render();
 ```
-
-
 
 
 Open Tag & Close Tag
 --------------------
 
 ```php
-<?php
-    $form = new FormKit\Element\Form(array(
-        'class' => 'blah blah'
-    ));
+$form = new FormKit\Element\Form(array(
+    'class' => 'blah blah'
+));
 
-    // render elements manully
-    echo $form->open();
-    echo $form->renderChildren();
-    echo $form->close();
+// render elements manully
+echo $form->open();
+echo $form->renderChildren();
+echo $form->close();
 
-    // which is equal to
-    echo $form->render();
+// which is equal to
+echo $form->render();
 ```
 
 Availabel Form Widgets
