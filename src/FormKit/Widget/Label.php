@@ -2,6 +2,7 @@
 namespace FormKit\Widget;
 use FormKit\Element;
 use DOMText;
+use BadMethodCallException;
 
 class Label extends Element
 {
@@ -12,6 +13,14 @@ class Label extends Element
     {
         $this->addChild( new DOMText($text) );
         parent::__construct();
+    }
+
+    public function __call($m,$a) 
+    {
+        if($m == "for") {
+            $this->setAttributeValue($m,$a[0]);
+        }
+        return parent::__call($m,$a);
     }
 }
 
