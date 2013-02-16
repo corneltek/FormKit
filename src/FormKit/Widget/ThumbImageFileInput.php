@@ -69,9 +69,11 @@ class ThumbImageFileInput extends TextInput
             $this->imageCover->append($this->image);
         }
 
-        // TODO: c9, you can make exif button as a config, by EJ
-        if($this->exif) {
+        if ($this->exif) {
             $this->fileInput->setAttributeValue('data-exif', 'true');
+        }
+        if ($this->resize) {
+            $this->fileInput->setAttributeValue('data-resize','true');
         }
 
         $this->inputWrapper->append($this->imageCover);
