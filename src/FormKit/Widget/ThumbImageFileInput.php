@@ -2,6 +2,7 @@
 namespace FormKit\Widget;
 use FormKit\Element;
 use FormKit\Element\Div;
+use FormKit\Widget\SelectInput;
 
 /**
  *
@@ -63,12 +64,7 @@ class ThumbImageFileInput extends TextInput
     public $autoresize_type;
 
 
-    public $autoresize_types = array(  
-        'max_width'      => _('Max Width'),
-        'max_height'     => _('Max Height'),
-        'scale'          => _('Scale'),
-        'crop_and_scale' => _('Crop and Scale'),
-    );
+    public $autoresize_types = array();
 
 
     /**
@@ -105,6 +101,13 @@ class ThumbImageFileInput extends TextInput
 
     public function init($attributes) 
     {
+        $this->autoresize_types = array(  
+            _('Max Width')      => 'max_width',
+            _('Max Height')     => 'max_height',
+            _('Scale')          => 'scale',
+            _('Crop and Scale') => 'crop_and_scale',
+        );
+
         parent::init($attributes);
         $this->fileInput = new FileInput( $this->name, $attributes );
 
@@ -154,6 +157,16 @@ class ThumbImageFileInput extends TextInput
             $resizeWrapper->append( $label );
             $resizeWrapper->addClass("autoresize-chk");
             $this->inputWrapper->append($resizeWrapper);
+
+            if ( $this->autoresize_type_input ) {
+                $resizeTypeWrapper = new Div;
+                $typeSelector = new SelectInput($this->name . '_autoresize_type', array(
+                    'options' => $this->autoresize_types
+                ));
+                $resizeTypeWrapper->append($typeSelector);
+                $this->inputWrapper->append($resizeTypeWrapper);
+            }
+
         }
     }
 
