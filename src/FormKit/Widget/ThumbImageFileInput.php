@@ -61,7 +61,7 @@ class ThumbImageFileInput extends TextInput
      *
      * Valid values can be: 'max_width', 'max_height', 'scale'
      */
-    public $autoresize_type;
+    public $autoresize_type = 'max_width';
 
 
     public $autoresize_types = array();
@@ -161,7 +161,8 @@ class ThumbImageFileInput extends TextInput
             if ( $this->autoresize_type_input ) {
                 $resizeTypeWrapper = new Div;
                 $typeSelector = new SelectInput($this->name . '_autoresize_type', array(
-                    'options' => $this->autoresize_types
+                    'options' => $this->autoresize_types,
+                    'value' => $this->autoresize_type,
                 ));
                 $resizeTypeWrapper->append($typeSelector);
                 $this->inputWrapper->append($resizeTypeWrapper);
