@@ -36,6 +36,21 @@ class ThumbImageFileInput extends TextInput
     public $exif = false;
 
     /**
+     * TODO:
+     *
+     * @var boolean Option to enable file drop to preview.
+     */
+    public $drag_preview = true;
+
+
+    /**
+     * TODO:
+     *
+     * @var boolean Option to enable file drop to upload.
+     */
+    public $drag_upload = true;
+
+    /**
      * HTML structure
      *
      * <div class="formkit-widget formkit-widget-thumbimagefile formkit-image-wrapper">
@@ -73,6 +88,12 @@ class ThumbImageFileInput extends TextInput
         }
         if ($this->resize) {
             $this->fileInput->setAttributeValue('data-resize','true');
+        }
+        if ( $this->drag_preview ) {
+            $this->fileInput->setAttributeValue('data-drag-preview','true');
+        }
+        if ( $this->drag_upload ) {
+            $this->fileInput->setAttributeValue('data-drag-upload','true');
         }
 
         $this->inputWrapper->append($this->imageCover);
