@@ -40,7 +40,7 @@ class ThumbImageFileInput extends TextInput
     public $autoresize = false;
 
 
-    public $autoresize_input = true;
+    public $autoresize_input = false;
 
     /**
      * @var boolean Option to disable/enable exif.
@@ -113,7 +113,7 @@ class ThumbImageFileInput extends TextInput
         $this->inputWrapper->append($this->imageCover);
         $this->inputWrapper->append($this->fileInput);
 
-        if ($this->autoresize_input) {
+        if ($this->autoresize && $this->autoresize_input) {
             $this->fileInput->setAttributeValue('data-autoresize-input','true');
             $checkbox = new CheckboxInput($this->name . '_autoresize');
             $checkboxId = $checkbox->getSerialId();
