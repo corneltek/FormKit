@@ -160,6 +160,7 @@ class ThumbImageFileInput extends TextInput
 
             if ( $this->autoresize_type_input ) {
                 $resizeTypeWrapper = new Div;
+                $resizeTypeWrapper->addClass('autoresize-type');
                 $typeSelector = new SelectInput($this->name . '_autoresize_type', array(
                     'options' => $this->autoresize_types,
                     'value' => $this->autoresize_type,
