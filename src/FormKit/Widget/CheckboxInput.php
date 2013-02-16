@@ -13,6 +13,14 @@ class CheckboxInput extends BaseWidget
 {
     public $class = array('formkit-widget','formkit-widget-checkbox');
     public $type = 'checkbox';
+
+
+    /**
+     * @var boolean
+     *
+     * When boolean_value option is enabled, the value will be converted to 1 and 0
+     * And the field value can be toggled by inline javascript.
+     */
     public $boolean_value = true;
 
     public function init() 
