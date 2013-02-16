@@ -148,6 +148,7 @@ class ThumbImageFileInput extends TextInput
         if ($this->autoresize && $this->autoresize_input) {
             $this->fileInput->setAttributeValue('data-autoresize-input','true');
             $checkbox = new CheckboxInput($this->name . '_autoresize');
+            $checkbox->addClass('autoresize-checkbox');
             $checkboxId = $checkbox->getSerialId();
 
             $label    = new Label(_("Use auto-resize"));
@@ -155,7 +156,7 @@ class ThumbImageFileInput extends TextInput
             $resizeWrapper = new Div;
             $resizeWrapper->append( $checkbox );
             $resizeWrapper->append( $label );
-            $resizeWrapper->addClass("autoresize-chk");
+            $resizeWrapper->addClass("autoresize");
             $this->inputWrapper->append($resizeWrapper);
 
             if ( $this->autoresize_type_input ) {
@@ -165,6 +166,7 @@ class ThumbImageFileInput extends TextInput
                     'options' => $this->autoresize_types,
                     'value' => $this->autoresize_type,
                 ));
+                $typeSelector->addClass('autoresize-type-selector');
                 $resizeTypeWrapper->append($typeSelector);
                 $this->inputWrapper->append($resizeTypeWrapper);
             }
