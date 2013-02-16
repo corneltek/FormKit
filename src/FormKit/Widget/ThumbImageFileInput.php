@@ -109,6 +109,10 @@ class ThumbImageFileInput extends TextInput
             $this->fileInput->setAttributeValue('data-dropupload','true');
         }
 
+
+        $this->inputWrapper->append($this->imageCover);
+        $this->inputWrapper->append($this->fileInput);
+
         if ($this->autoresize_input) {
             $this->fileInput->setAttributeValue('data-autoresize-input','true');
             $checkbox = new CheckboxInput($this->name . '_autoresize');
@@ -116,10 +120,12 @@ class ThumbImageFileInput extends TextInput
 
             $label    = new Label(_("Auto-Resize"));
             $label->for($checkboxId);
+            $resizeWrapper = new Div;
+            $resizeWrapper->append( $checkbox );
+            $resizeWrapper->append( $label );
+            $resizeWrapper->addClass("autoresize-chk");
+            $this->inputWrapper->append($resizeWrapper);
         }
-
-        $this->inputWrapper->append($this->imageCover);
-        $this->inputWrapper->append($this->fileInput);
     }
 
     public function render($attributes = array() ) 
