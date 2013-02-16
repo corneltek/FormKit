@@ -84,7 +84,8 @@ class ThumbImageFileInput extends TextInput
         $this->imageCover->setAttributeValue('data-height', $this->dataHeight);
 
         $this->inputWrapper = new Div;
-        $this->inputWrapper->addClass('formkit-widget-thumbimagefile')
+        $this->inputWrapper
+            ->addClass('formkit-widget-thumbimagefile')
             ->addClass('formkit-image-wrapper');
 
         // if it has a value, generate img
@@ -109,6 +110,7 @@ class ThumbImageFileInput extends TextInput
         }
 
         if ($this->autoresize_input) {
+            $this->fileInput->setAttributeValue('data-autoresize-input','true');
             $checkbox = new CheckboxInput($this->name . '_autoresize');
             $label    = new Label(_("Auto-Resize"));
         }
