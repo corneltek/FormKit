@@ -147,7 +147,7 @@ class ThumbImageFileInput extends TextInput
             $checkbox = new CheckboxInput($this->name . '_autoresize');
             $checkboxId = $checkbox->getSerialId();
 
-            $label    = new Label(_("Auto-Resize"));
+            $label    = new Label(_("Use auto-resize"));
             $label->for($checkboxId);
             $resizeWrapper = new Div;
             $resizeWrapper->append( $checkbox );
