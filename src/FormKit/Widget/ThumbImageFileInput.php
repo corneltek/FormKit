@@ -52,6 +52,12 @@ class ThumbImageFileInput extends TextInput
 
 
     /**
+     * @var boolean Option to check autoresize checkbox by default
+     */
+    public $autoresize_input_check = false;
+
+
+    /**
      * @var boolean Option to enable/disable autoresize type selector.
      */
     public $autoresize_type_input = false;
@@ -149,6 +155,7 @@ class ThumbImageFileInput extends TextInput
             $this->fileInput->setAttributeValue('data-autoresize-input','true');
             $checkbox = new CheckboxInput($this->name . '_autoresize');
             $checkbox->addClass('autoresize-checkbox');
+
             $checkboxId = $checkbox->getSerialId();
 
             $label    = new Label(_("Use auto-resize"));
