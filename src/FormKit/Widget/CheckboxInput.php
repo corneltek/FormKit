@@ -60,20 +60,20 @@ class CheckboxInput extends BaseWidget
 
         $this->setAttributes( $attributes );
         ob_start();
-        $fieldId = $this->getSerialId();
+        $fieldId = $this->generateSerialId();
         ?><input id="<?= $fieldId ?>" type="hidden" 
             name="<?=$this->name?>" 
-            value="<?= ($this->value) ? $this->value : '0'; ?>"/>
+            value="<?= ($this->checked) ? ($this->value ?: '1') : '0'; ?>"/>
         <input <?=$this->_renderAttributes(array('type','class','id')); ?> 
         <?php 
         if( $this->checked ): 
             ?>checked<?php 
         endif 
-        ?> onclick=" 
-                var el = document.getElementById('<?= $fieldId ?>');
-                    el.value = (el.value == '1') ? '0' : '1';
-            "/>
-        <?php
+        ?>
+        onclick=" 
+            var el = document.getElementById('<?= $fieldId ?>');
+                el.value = (el.value == '1') ? '0' : '1';
+        "/><?php
         $html = ob_get_contents();
         ob_end_clean();
         return $html;

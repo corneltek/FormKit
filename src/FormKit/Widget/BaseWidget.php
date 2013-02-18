@@ -217,14 +217,16 @@ abstract class BaseWidget extends Element
     {
         if($this->id)
             return $this->id;
-
-        $id = null;
-        if( function_exists('uniqid') )
-            $id = $this->name . '-' . uniqid( $this->name );
-        else
-            $id = $this->name . '-' . microtime(true);
+        $id = $this->generateSerialId();
         $this->setId( $id );
         return $id;
+    }
+
+    public function generateSerialId() 
+    {
+        return function_exists('uniqid') 
+            ? $this->name . '-' . uniqid( $this->name )
+            : $this->name . '-' . microtime(true);
     }
 
     public function getName()
