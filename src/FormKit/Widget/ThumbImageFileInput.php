@@ -65,9 +65,9 @@ class ThumbImageFileInput extends TextInput
     /**
      * @var string Option to decide the autoresize strategy.
      *
-     * Valid values can be: 'max_width', 'max_height', 'scale'
+     * Valid values can be: 'max_width', 'max_height', 'scale', 'crop_and_scale'
      */
-    public $autoresize_type = 'max_width';
+    public $autoresize_type = 'crop_and_scale';
 
 
     public $autoresize_types = array();
