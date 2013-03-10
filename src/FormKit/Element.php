@@ -87,6 +87,9 @@ class Element
 
     /**
      * Set attribute value
+     *
+     * @param string $name
+     * @param mixed $value
      */
     public function __set($name,$value)
     {
@@ -111,10 +114,19 @@ class Element
      */
     public function setAttributeValue($name,$arg)
     {
-        if( property_exists($this, $name) ) {
+        if ( property_exists($this, $name) ) {
             $this->$name = $arg;
         } else {
             $this->_attributes[ $name ] = $arg;
+        }
+    }
+
+    public function getAttributeValue($name)
+    {
+        if ( property_exists($this, $name) ) {
+            return $this->$name;
+        } elseif ( isset($this->_attributes[ $name ] ) ) {
+            return $this->_attributes[ $name ];
         }
     }
 
@@ -547,13 +559,17 @@ class Element
             // this is for adding new class name with
             //   +=newClass
             if( is_string($val) && strpos($val ,'+=') !== false ) {
+
+                
                 $origValue = $this->getAttributeValue($k);
                 if( is_string($origValue) ) {
                     $origValue .= ' ' . substr($val,2);
                 } elseif ( is_array($origValue) ) {
                     $origValue[] = substr($val,2);
+                } elseif ( is_object($origValue) ) {
+                    throw new Exception('Invalid Object for attribute: ' . get_class($origValue) );
                 } else {
-                    throw new Exception('Unknown attribute value type');
+                    throw new Exception('Unknown attribute value type.');
                 }
                 $this->setAttributeValue($k,$origValue);
             } else {
@@ -672,6 +688,13 @@ class Element
         return $html;
     }
 
+
+    /**
+     * Render the whole element.
+     *
+     * @param array $attributes attributes to override.
+     * @param string HTML
+     */
     public function render( $attributes = array() ) 
     {
         if( ! $this->tagName ) {
