@@ -9,10 +9,12 @@ class Label extends Element
     public $tagName = 'label';
     public $class = array('formkit-widget','formkit-label','formkit-widget-label');
 
-    public function __construct($text)
+    public function __construct($text = null)
     {
-        $this->addChild( new DOMText($text) );
         parent::__construct();
+        if ($text) {
+            $this->addChild( new DOMText($text) );
+        }
     }
 
     public function __call($m,$a) 
