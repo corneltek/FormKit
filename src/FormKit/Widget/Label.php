@@ -17,9 +17,15 @@ class Label extends Element
         }
     }
 
+
+    /**
+     * Here is a hack for supportting for $label->for( $elementId );
+     *
+     * Due to the PHP yacc parser issue, we can't define a method named "for".
+     */
     public function __call($m,$a) 
     {
-        if($m == "for") {
+        if($m === "for") {
             $this->setAttributeValue($m,$a[0]);
         }
         return parent::__call($m,$a);

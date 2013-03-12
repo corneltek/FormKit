@@ -130,13 +130,13 @@ abstract class BaseWidget extends Element
         $attributes = array();
 
         //  new FooInput('name',array( ...attributes ... ));
-        if( 2 === count($args) ) {
+        if ( 2 === count($args) ) {
             $this->name = $args[0];
             if( $args[1] && is_array($args[1]) ) {
                 $attributes = $args[1];
             }
         }
-        elseif( 1 === count($args) ) {
+        elseif ( 1 === count($args) ) {
             $arg = $args[0];
             if ( is_string($arg) ) {
                 $this->name = $arg;
