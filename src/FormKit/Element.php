@@ -466,6 +466,19 @@ class Element
     }
 
 
+
+
+    /**
+     * Append DOMText node to children list.
+     */
+    public function appendText($text)
+    {
+        $this->addChild( new DOMText($text) );
+        return $this;
+    }
+
+
+
     /**
      * As same as `append` method
      *
