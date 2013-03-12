@@ -4,16 +4,16 @@ class LabelTest extends PHPUnit_Framework_TestCase
 {
     function test()
     {
-        $label = new FormKit\Widget\Label( 'MyLabel' );
-        ok( $label );
+        $label = new FormKit\Widget\Label("label");
+        ok($label);
+        ok( $label->render() );
+    }
 
-        $label->addClass('class1');
-
-        ok( $label->hasClass('class1') );
-
-        $label->removeClass('class1');
-
-        ok( ! $label->hasClass('class1') );
+    function testNoLabelText()
+    {
+        $label = new FormKit\Widget\Label;
+        ok($label);
+        ok($label->render());
     }
 }
 
