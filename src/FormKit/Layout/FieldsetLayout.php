@@ -21,7 +21,10 @@ class FieldsetLayout extends BaseLayout
 
     public function __call($method,$arguments)
     {
-        return call_user_func_array(array($this->fieldset,$method),$arguments);
+        if ( method_exists($this->fieldset, $method) ) {
+            return call_user_func_array(array($this->fieldset, $method),$arguments);
+        }
+        throw new Exception($method . " does not exist.");
     }
 
     public function layoutWidget($widget)

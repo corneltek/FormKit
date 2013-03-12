@@ -472,7 +472,9 @@ class Element
      */
     public function appendText($text)
     {
-        $this->addChild( new DOMText($text) );
+        if ( $text ) {
+            $this->addChild( new DOMText($text) );
+        }
         return $this;
     }
 

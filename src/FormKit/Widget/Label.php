@@ -10,10 +10,13 @@ class Label extends Element
 
     public function __construct($text = null)
     {
-        parent::__construct('label');
-        if ($text) {
+        if ( $text ) {
+            if ( ! is_string($text) ) {
+                throw new Exception("The argument is not a string.");
+            }
             $this->addChild( new DOMText($text) );
         }
+        parent::__construct('label');
     }
 
 

@@ -27,11 +27,8 @@ class ThumbImageFileInputTest extends PHPUnit_Framework_TestCase
         // data-width="200" data-height="200"
         select_ok('.formkit-widget-thumbimagefile input[data-width="200"]',true,$html);
         select_ok('.formkit-widget-thumbimagefile input[data-height="200"]',true,$html);
-
         select_ok('.formkit-widget-thumbimagefile .formkit-label',1,$html);
-        select_ok('.formkit-widget-thumbimagefile .autoresize-chk',1,$html);
-
-
+        select_ok('.formkit-widget-thumbimagefile .autoresize-checkbox',1,$html);
     }
 }
 
