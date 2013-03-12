@@ -24,14 +24,14 @@ class CheckboxInput extends TextInput
     public $boolean_value = true;
 
     public function init($a)
-    { 
-        if ( $this->value ) {
+    {
+        if ( $this->boolean_value && $this->value ) {
             $this->checked = $this->value;
         }
         parent::init($a);
     }
 
-    public function check( $value = null ) 
+    public function check( $value = null )
     {
         if( $value !== null ) {
             $this->checked = $value;
@@ -67,11 +67,7 @@ class CheckboxInput extends TextInput
             name="<?=$this->name?>" 
             value="<?= ($this->checked) ? ($this->value ?: '1') : '0'; ?>"/>
 
-        <input <?php echo $this->renderAttributes();
-        if ( $this->checked ): 
-            ?>checked<?php 
-        endif 
-        ?>
+        <input <?php echo $this->renderAttributes(); ?>
         onclick=" 
             var el = document.getElementById('<?= $fieldId ?>');
                 el.value = (el.value == '1') ? '0' : '1';
