@@ -9,11 +9,11 @@ namespace FormKit\Widget;
  * $checkbox->value(10);
  * $checkbox->checked();
  */
-class CheckboxInput extends BaseWidget
+class CheckboxInput extends TextInput
 {
     public $class = array('formkit-widget','formkit-widget-checkbox');
     public $type = 'checkbox';
-
+    public $tagName = 'input';
 
     /**
      * @var boolean

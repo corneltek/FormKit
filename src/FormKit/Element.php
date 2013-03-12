@@ -332,10 +332,9 @@ class Element
      *
      * @param string $tagName Tag name
      */
-    public function __construct($tagName = null, $attributes = array() )
+    public function __construct($tagName, $attributes = array() )
     {
-        if( $tagName )
-            $this->tagName = $tagName;
+        $this->tagName = $tagName;
         $this->setAttributeType( 'class', self::ATTR_ARRAY );
         $this->setAttributeType( 'id', self::ATTR_ARRAY );
         $this->setAttributes( $attributes );
@@ -490,6 +489,12 @@ class Element
         return $this;
     }
 
+
+    public function appendTo($container)
+    {
+        $container->append($this);
+        return $this;
+    }
 
 
     /**

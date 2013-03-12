@@ -146,7 +146,11 @@ abstract class BaseWidget extends Element
                 throw new InvalidArgumentException('Unsupported argument type');
             }
         }
-        parent::__construct(null,$attributes); // create element
+
+        if ( ! $this->tagName ) {
+            throw new Exception("tagName is not defined in " . get_class($this) );
+        }
+        parent::__construct($this->tagName,$attributes); // create element
     }
 
     protected function init($attributes)

@@ -4,8 +4,8 @@ namespace FormKit\Widget;
 class TextareaInput extends BaseWidget
 {
     public $tag;
+    public $tagName = 'textarea';
     public $class = array('formkit-widget','formkit-widget-textarea');
-    public $type = 'textarea';
 
     /**
      * Render Widget with attributes

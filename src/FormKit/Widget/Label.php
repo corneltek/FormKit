@@ -6,12 +6,11 @@ use BadMethodCallException;
 
 class Label extends Element
 {
-    public $tagName = 'label';
     public $class = array('formkit-widget','formkit-label','formkit-widget-label');
 
     public function __construct($text = null)
     {
-        parent::__construct();
+        parent::__construct('label');
         if ($text) {
             $this->addChild( new DOMText($text) );
         }

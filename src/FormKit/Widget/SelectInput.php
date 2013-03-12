@@ -8,6 +8,8 @@ class SelectInput extends BaseWidget
     public $multiple;
     public $allow_empty;
 
+    public $tagName = 'select';
+
     /**
      * @var mixed sort flag
      */
