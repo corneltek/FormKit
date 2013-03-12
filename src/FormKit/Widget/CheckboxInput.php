@@ -25,8 +25,9 @@ class CheckboxInput extends BaseWidget
 
     public function init($a)
     { 
-        if( $this->value )
+        if ( $this->value ) {
             $this->checked = $this->value;
+        }
         parent::init($a);
     }
 
@@ -58,15 +59,16 @@ class CheckboxInput extends BaseWidget
             return parent::render($attributes);
         }
 
+        // Here we use a javascript to switch the hidden value.
         $this->setAttributes( $attributes );
         ob_start();
         $fieldId = $this->generateSerialId();
         ?><input id="<?= $fieldId ?>" type="hidden" 
             name="<?=$this->name?>" 
             value="<?= ($this->checked) ? ($this->value ?: '1') : '0'; ?>"/>
-        <input <?=$this->_renderAttributes(array('type','class','id')); ?> 
-        <?php 
-        if( $this->checked ): 
+
+        <input <?php echo $this->renderAttributes();
+        if ( $this->checked ): 
             ?>checked<?php 
         endif 
         ?>
