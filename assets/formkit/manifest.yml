@@ -1,25 +1,20 @@
 ---
-assets:
-
-  - js: 1
-    files:
-      - formkit.js
-      - jscanvas/jscanvas.js
-      - jsimagefile/jsimagefile.js
-      - jsdate/jsdate.js
-      # jsdatetime
-      - jsdatetime/jsdatetime.js
-      - jsdatetime/jquery-ui-timepicker-addon.js
-
+collections:
+  - js:
+    - formkit.js
+    - jscanvas/jscanvas.js
+    - jsimagefile/jsimagefile.js
+    - jsdate/jsdate.js
+    # jsdatetime
+    - jsdatetime/jsdatetime.js
+    - jsdatetime/jquery-ui-timepicker-addon.js
 # jscolor
   - files:
-      - jscolor/arrow.gif
-      - jscolor/cross.gif
-      - jscolor/hs.png
-      - jscolor/hv.png
-  - css: 1
-    files:
-      - jscolor/jscolor.css
-  - js: 1
-    files:
-      - jscolor/jscolor.js
+    - jscolor/arrow.gif
+    - jscolor/cross.gif
+    - jscolor/hs.png
+    - jscolor/hv.png
+  - css:
+    - jscolor/jscolor.css
+  - js:
+    - jscolor/jscolor.js
