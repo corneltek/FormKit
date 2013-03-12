@@ -15,7 +15,6 @@ define your own layout engine too!
 
 
 
-
 For example, to use a text input widget:
 
 ```php
@@ -54,6 +53,26 @@ $countries = new FormKit\Widget\SelectInput( 'country' , array(
         )
     )
 ));
+```
+
+
+Element API
+------------------
+
+```php
+use FormKit\Element;
+$ul = new Element('ul');
+$li = new Element('li');
+
+$li->append( new Element('a') );
+$li->appendText( "DOMText Node here" );
+
+$li->addClass('item');
+$li->setId('MyID');
+
+$li->appendTo($ul);
+
+echo $li->render();
 ```
 
 Layout
