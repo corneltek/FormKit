@@ -42,9 +42,14 @@ class FieldsetLayout extends BaseLayout
         $this->fieldset->addChild( $clear );
     }
 
-    public function __toString()
+    public function render()
     {
         return $this->fieldset->render();
+    }
+
+    public function __toString()
+    {
+        return $this->render();
     }
 }
 

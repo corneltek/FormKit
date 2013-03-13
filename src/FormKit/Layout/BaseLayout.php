@@ -14,7 +14,11 @@ abstract class BaseLayout
      */
     public $widgets;
 
-    function __construct() { 
+    abstract public function layoutWidget($widget);
+    abstract public function render();
+
+    function __construct() 
+    {
         $this->widgets = new WidgetCollection;
     }
 
@@ -39,7 +43,6 @@ abstract class BaseLayout
         return $this;
     }
 
-    abstract public function layoutWidget($widget);
 
     public function getWidget($name) {
         return $this->widgets->get($name);
@@ -77,6 +80,7 @@ abstract class BaseLayout
     public function offsetUnset($name) {
         unset($this->widgets[$name]);
     }
+
 
 }
 

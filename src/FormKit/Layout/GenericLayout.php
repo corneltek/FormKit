@@ -93,6 +93,11 @@ class GenericLayout extends BaseLayout
         return $this;
     }
 
+    public function render()
+    {
+        return $this->table->render();
+    }
+
     public function __call($method,$arguments) { 
         // mix-in
         return call_user_func_array( array($this->table,$method), $arguments );
