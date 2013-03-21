@@ -9,5 +9,6 @@
     "require": {
 
     },
+    "minimum-stability": "stable",
     "autoload": { "FormKit": "src" }
 }
