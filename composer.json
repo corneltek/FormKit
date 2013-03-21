@@ -1,0 +1,13 @@
+{
+    "name": "corneltek/formkit",
+    "authors": [
+        {
+            "name": "c9s",
+            "email": "cornelius.howl@gmail.com"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": { "FormKit": "src" }
+}
