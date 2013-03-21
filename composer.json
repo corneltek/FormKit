@@ -10,5 +10,5 @@
 
     },
     "minimum-stability": "stable",
-    "autoload": { "FormKit": "src" }
+    "autoload": { "psr-0": { "FormKit": "src" } }
 }
