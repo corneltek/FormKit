@@ -226,6 +226,11 @@ abstract class BaseWidget extends Element
         return $id;
     }
 
+    public function convertClassToCssClassName()
+    {
+        return str_replace('\\', '-', strtolower( get_class($this))  );
+    }
+
     public function generateSerialId() 
     {
         return function_exists('uniqid') 

@@ -382,10 +382,16 @@ class Element
      */
     public function addClass($class)
     {
-        if( is_array($class) ) {
-            $this->class = array_merge( $this->class , $class );
+        if ( is_array($this->class) ) {
+            if( is_array($class) ) {
+                $this->class = array_merge( $this->class , $class );
+            } else {
+                $this->class[] = $class;
+            }
+        } elseif ( is_string($this->class) ) {
+            $this->class .= " " . $class;
         } else {
-            $this->class[] = $class;
+            throw new Exception("Wrong class name type, array expected.");
         }
         return $this;
     }
