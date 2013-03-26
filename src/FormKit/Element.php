@@ -435,7 +435,7 @@ class Element
      */
     public function prepend($child)
     {
-        array_splice($this->children,0,0,$child);
+        array_splice($this->children,0,0,array($child));
         return $this;
     }
 
@@ -550,7 +550,7 @@ class Element
             }
             else 
             {
-                throw new Exception('Unknown node type.');
+                throw new Exception('Unknown node type');
             }
         }
         return $html;
