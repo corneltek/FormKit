@@ -6,9 +6,9 @@
             "email": "cornelius.howl@gmail.com"
         }
     ],
-    "require": [
-
-    ],
+    "require-dev": {
+        "corneltek/phpunit-testmore": "dev-master"
+    },
     "minimum-stability": "stable",
     "autoload": {
         "psr-0": {
