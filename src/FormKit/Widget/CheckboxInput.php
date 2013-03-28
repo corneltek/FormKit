@@ -31,13 +31,9 @@ class CheckboxInput extends TextInput
         parent::init($a);
     }
 
-    public function check( $value = null )
+    public function check()
     {
-        if( $value !== null ) {
-            $this->checked = $value;
-        } else {
-            $this->checked = true;
-        }
+        $this->checked = true;
         return $this;
     }
 
@@ -64,8 +60,8 @@ class CheckboxInput extends TextInput
         ob_start();
         $fieldId = $this->generateSerialId();
         ?><input id="<?= $fieldId ?>" type="hidden" 
-            name="<?=$this->name?>" 
-            value="<?= ($this->checked) ? ($this->value ?: '1') : '0'; ?>"/>
+            name="<?= $this->name ?>" 
+            value="<?= $this->checked ? '1' : '0'; ?>" <?= $this->checked ? 'checked' : '' ?>/>
 
         <input <?php echo $this->renderAttributes(); ?>
         onclick=" 
