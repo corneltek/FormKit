@@ -61,12 +61,12 @@ class CheckboxInput extends TextInput
         $fieldId = $this->generateSerialId();
         ?><input id="<?= $fieldId ?>" type="hidden" 
             name="<?= $this->name ?>" 
-            value="<?= $this->checked ? '1' : '0'; ?>" <?= $this->checked ? 'checked' : '' ?>/>
+            value="<?= $this->checked ? '1' : '0'; ?>"/>
 
         <input <?php echo $this->renderAttributes(); ?>
         onclick=" 
             var el = document.getElementById('<?= $fieldId ?>');
-                el.value = (el.value == '1') ? '0' : '1';
+                el.value = el.value ? '0' : '1';
         "/><?php
         $html = ob_get_contents();
         ob_end_clean();
