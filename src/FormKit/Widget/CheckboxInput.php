@@ -68,7 +68,7 @@ class CheckboxInput extends TextInput
         <input <?php echo $this->_renderAttributes(array('class','type')); echo $this->checked ? 'checked' : ''; ?>
         onclick=" 
             var el = document.getElementById('<?= $fieldId ?>');
-                el.value = el.value ? '0' : '1';
+                el.value = el.value != '1' ? '1' : '0';
         "/><?php
         $html = ob_get_contents();
         ob_end_clean();
