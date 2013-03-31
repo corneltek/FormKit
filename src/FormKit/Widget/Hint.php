@@ -11,7 +11,7 @@ class Hint extends Element
     public function __construct($text)
     {
         $this->append($text);
-        parent::__construct();
+        parent::__construct($this->tagName);
     }
 }
 
