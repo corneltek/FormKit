@@ -446,6 +446,12 @@ class Element
     }
 
 
+    public function insert($child)
+    {
+        array_splice($this->children,0,0,array($child));
+        return $this;
+    }
+
     /**
      * Insert child at index position.
      *

@@ -10,19 +10,23 @@ use ArrayAccess;
 use RuntimeException;
 
 /**
- * @class Generic table layout is a 2 column table layout.
+ * @class Grid table layout is a simple table layout.
+ *
+ * $gridLayout = new GridLayout;
+ * $gridLayout->setHeaderLabels( $widget1->label, $widget2, $widget3 )
+ * $gridLayout->insertWidgetsByRow( $widget1 , $widget2 , $widget3 );
  */
-class GenericLayout extends BaseLayout
+class GridLayout
 {
     public $labelColumnAlign = 'right';
 
     public $widgetColumnAlign = 'left';
 
-
     /**
      * configure label column width
      */
     public $labelColumnWidth;
+
 
     /**
      * configure widget column width
@@ -31,6 +35,7 @@ class GenericLayout extends BaseLayout
 
     public $table;
 
+    public $widgets;
 
     /* tbody */
     public $body;
@@ -42,12 +47,11 @@ class GenericLayout extends BaseLayout
     public $footer;
 
     public function __construct() { 
+        $this->widgets = new WidgetCollection;
         $this->table = new \FormKit\Element\Table;
         $this->table->addClass('formkit-layout-generic');
         $this->body = new Element('tbody');
-
         $this->table->addChild($this->body);
-        parent::__construct();
     }
 
     public function getHeader() {
@@ -66,36 +70,46 @@ class GenericLayout extends BaseLayout
         return $this->footer;
     }
 
-    /**
-     * Add Widget into a new row , two cells
-     */
-    public function layoutWidget($widget)
+
+    public function setHeaderLabels($labels)
     {
-        $cell = new TableCell;
-        $cell->align( $this->labelColumnAlign );
-        $cell->width( $this->labelColumnWidth );
-        $cell->addClass( 'formkit-column-label' );
-        if( $widget->label ) {
-            $cell->addChild( new Label($widget->label) );
+        $labels = array_map(function($a) {
+            if ( $a instanceof \FormKit\BaseWidget ) {
+                return $a->label;
+            }
+            return $a;
+        }, $labels);
+
+        $thead = $this->getHeader();
+        $tr = new Element('tr');
+        $tr->appendTo($thead);
+
+        foreach( $labels as $label ) {
+            $cell = new Element('th');
+            $cell->append( $label );
+            $tr->addChild($cell);
         }
+    }
 
-        $cell2 = new TableCell;
-        $cell2->align( $this->widgetColumnAlign );
-        $cell2->width( $this->widgetColumnWidth );
-        $cell2->addClass( 'formkit-column-widget' );
-        $cell2->addChild( $widget );
-
-        $row = new TableRow;
-        $row->addChild($cell);
-        $row->addChild($cell2);
-
-        $this->body->addChild( $row );
-        return $this;
+    public function insertWidgetsByRow($widgets)
+    {
+        $tr = new Element('tr');
+        $tr->appendTo($this->body);
+        foreach( $widgets as $widget ) {
+            $cell = new TableCell;
+            $cell->append($widget);
+            $cell->appendTo($tr);
+        }
     }
 
     public function render()
     {
         return $this->table->render();
+    }
+
+    public function __toString()
+    {
+        return $this->render();
     }
 
     public function __call($method,$arguments) { 
