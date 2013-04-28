@@ -16,7 +16,7 @@ class TimeInput extends TextInput
         if( $this->value instanceof DateTime ) {
             $this->origValue = $this->value;
             $this->value = $this->value->format($this->format);
-        } else {
+        } elseif ( $this->value ) {
             // reformat time
             $date = new DateTime("2012-01-01 " . $this->value );
             $this->value = $date->format($this->format);
