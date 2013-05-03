@@ -34,7 +34,7 @@
   <delete dir="${basedir}/build/doxygen"/>
  </target>
 
- <target name="prepare" depends="clean,init-config" description="Prepare for build">
+ <target name="prepare" depends="clean" description="Prepare for build">
   <mkdir dir="${basedir}/build/api"/>
   <mkdir dir="${basedir}/build/wiki"/>
   <mkdir dir="${basedir}/build/code-browser"/>
