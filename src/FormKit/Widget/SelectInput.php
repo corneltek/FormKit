@@ -67,8 +67,9 @@ class SelectInput extends BaseWidget
                 $value = $option['value'];
                 $label = $option['label'];
                 $html .= '<option value="' . $value . '"';
-                if( $this->value == $value )
+                if ( $this->value == $value ) {
                     $html .=' selected';
+                }
                 $html .= '>' . $label . '</option>';
             }
         }
