@@ -65,7 +65,9 @@ class CheckboxInput extends TextInput
             name="<?= $this->name ?>" 
             value="<?= $this->value || $this->checked ? '1' : '0'; ?>"/>
 
-        <input <?php echo $this->_renderAttributes(array('class','type')); echo $this->value || $this->checked ? 'checked' : ''; ?>
+        <input 
+        <?php echo $this->renderAttributes();
+            echo $this->value || $this->checked ? 'checked' : ''; ?>
         onclick=" 
             var el = document.getElementById('<?= $fieldId ?>');
                 el.value = el.value != '1' ? '1' : '0';
