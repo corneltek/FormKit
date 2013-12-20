@@ -1,6 +1,19 @@
 <?php
 namespace FormKit\Widget;
 
+function render_value($val) {
+    if ( $val !== null ) {
+        if ( is_bool($val) ) {
+            if ( false === $val ) {
+                return 0;
+            } else if ( true === $val ) {
+                return 1;
+            }
+        }
+    }
+    return $val;
+}
+
 class SelectInput extends BaseWidget
 {
     public $class = array('formkit-widget','formkit-widget-select');
@@ -43,14 +56,14 @@ class SelectInput extends BaseWidget
             foreach( $options as $i => $option ) {
                 $list[] = array(
                     'label' => (is_array($option) ? $i : $option),
-                    'value' => $option,
+                    'value' => render_value($option),
                 );
             }
         } else {
             foreach( $options as $label => $option ) {
                 $list[] = array(
                     'label' => $label,
-                    'value' => $option,
+                    'value' => render_value($option),
                 );
             }
         }
@@ -67,7 +80,7 @@ class SelectInput extends BaseWidget
             } else {
                 $value = $option['value'];
                 $label = $option['label'];
-                $html .= '<option value="' . $value . '"';
+                $html .= '<option value="' . render_value($value) . '"';
                 if ( $this->value == $value ) {
                     $html .=' selected';
                 }
