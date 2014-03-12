@@ -172,8 +172,8 @@ class DateSelectInput extends TextInput
                     'value' => $value,
                     'allow_empty' => $this->allow_empty,
                 ));
-                $id = $this->getSerialId();
-                $select->setId($id);
+                $id = $select->getSerialId();
+                // $select->setId($id);
                 $formatIds[ $c ] = $id;
                 $nodes[] = $select;
             } else {
@@ -187,7 +187,7 @@ class DateSelectInput extends TextInput
 <script>
 // when changing selector values
 // update date string by the format
-(function() {
+$(function() {
     var s = document.getElementById('<?=$selfId?>');
     var columns = <?=json_encode($formatIds)?>;
     var format = '<?=$this->format ?>';
@@ -230,7 +230,7 @@ class DateSelectInput extends TextInput
             document.getElementById(id).addEventListener('change',updater,false);
         }
     }
-})();
+});
 </script>
 <?php
         $script = ob_get_contents();
