@@ -108,8 +108,8 @@ class ThumbImageFileInput extends TextInput
     public function init($attributes) 
     {
         $this->autoresize_types = array(  
-            _('Max Width')      => 'max_width',
-            _('Max Height')     => 'max_height',
+            _('Fit to Width')      => 'max_width',
+            _('Fit to Height')     => 'max_height',
             _('Scale')          => 'scale',
             _('Crop and Scale') => 'crop_and_scale',
         );
