@@ -46,6 +46,10 @@ class SelectInput extends BaseWidget
         if( $this->allow_empty !== null ) {
             if ( is_bool($this->allow_empty) ) {
                 $html .= '<option></option>';
+            } elseif ( is_string($this->allow_empty) ) {
+                $html .= "<option>" . $this->allow_empty . "</option>";
+            } elseif ( is_array($this->allow_empty) ) {
+                $html .= "<option value=\"". $this->allow_empty[0] ."\">" . $this->allow_empty[1] . "</option>";
             } else {
                 $html .= "<option value=\"{$this->allow_empty}\"></option>";
             }
