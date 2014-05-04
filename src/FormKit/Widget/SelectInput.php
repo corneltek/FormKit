@@ -95,7 +95,7 @@ class SelectInput extends BaseWidget
         }
 
         // for plain value, we should just render it.
-        if ( ! $found ) {
+        if ( ! $found && $this->value ) {
             $html .= '<option value="' . render_value($this->value) . '" selected';
             $html .= '>' . $this->value . '</option>';
         }
