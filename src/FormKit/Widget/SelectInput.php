@@ -78,6 +78,7 @@ class SelectInput extends BaseWidget
             });
         }
 
+        $found = false;
         foreach( $list as $option ) {
             if( is_array($option['value']) ) {
                 $html .= $this->renderGroup($option['label'],$option['value']);
@@ -87,9 +88,16 @@ class SelectInput extends BaseWidget
                 $html .= '<option value="' . render_value($value) . '"';
                 if ( $this->value == $value ) {
                     $html .=' selected';
+                    $found = true;
                 }
                 $html .= '>' . $label . '</option>';
             }
+        }
+
+        // for plain value, we should just render it.
+        if ( ! $found ) {
+            $html .= '<option value="' . render_value($this->value) . '" selected';
+            $html .= '>' . $this->value . '</option>';
         }
         return $html;
     }
