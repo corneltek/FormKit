@@ -56,12 +56,31 @@ class SelectInput extends BaseWidget
         }
 
         $list = array();
+
+        /**
+         *
+         * Support value list:
+         *
+         *     [ "Item 1", "Item 2", ... ]
+         *
+         *     [ [ "Item 1", 1 ], [ "Item 2", 2 ], ... ]
+         *
+         *     [ "Item 1" => 1, "Item 2" => 2, ... ]
+         *
+         */
         if( $indexed ) {
             foreach( $options as $i => $option ) {
-                $list[] = array(
-                    'label' => (is_array($option) ? $i : $option),
-                    'value' => render_value($option),
-                );
+                if ( is_array( $option ) ) {
+                    $list[] = array(
+                        'label' => $option[0],
+                        'value' => render_value($option[1]),
+                    );
+                } else {
+                    $list[] = array(
+                        'label' => $option,
+                        'value' => render_value($option),
+                    );
+                }
             }
         } else {
             foreach( $options as $label => $option ) {
