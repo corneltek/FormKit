@@ -1,5 +1,4 @@
 <?php
-
 namespace FormKit\Widget;
 
 class PasswordInput extends TextInput
