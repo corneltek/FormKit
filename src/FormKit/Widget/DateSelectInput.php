@@ -28,7 +28,7 @@ class DateSelectInput extends TextInput
      *  const string ISO8601 = "Y-m-d\TH:i:sO";
      *
      */
-    public $data_format = DateTime::ISO8601;
+    public $data_format = DateTime::ATOM;
 
 
     /**
