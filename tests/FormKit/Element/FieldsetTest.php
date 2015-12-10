@@ -4,26 +4,21 @@ use FormKit\Element\Legend;
 
 class FieldsetTest extends PHPUnit_Framework_TestCase
 {
-    function test()
+    public function test()
     {
         $legend = new Legend('MyLegend');
-
         $fieldset = new Fieldset();
-        ok( $fieldset );
-
         $fieldset->addChild( $legend );
         $html = $fieldset->render();
-        select_ok('fieldset legend',1 , $html);
+        $this->assertXmlStringEqualsXmlFile('tests/fixture/legend-fieldset.xml', $html);
     }
 
-    function testDOM()
+    public function testDOMChild()
     {
         $legend = new Legend;
-        ok($legend);
-
         $legend->addChild( new DOMText('DOMText Test') );
         $html = $legend->render();
-        like( '/DOMText Test/', $html );
+        $this->assertXmlStringEqualsXmlFile('tests/fixture/legend_dom_child.xml', $html);
     }
 }
 
