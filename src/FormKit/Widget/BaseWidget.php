@@ -233,7 +233,7 @@ abstract class BaseWidget extends Element
 
     public function generateSerialId() 
     {
-        return $this->name . '-' . md5(microtime(true));
+        return uniqid($this->name ?: 'widget_');
     }
 
     public function getName()
