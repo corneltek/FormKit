@@ -143,11 +143,12 @@ class Element
      */
     public function setAttribute($name,$args)
     {
-        if ( $this->isIgnoredAttribute($name) )
-            continue;
+        if ($this->isIgnoredAttribute($name)) {
+            return;
+        }
 
         // check if it's registered.
-        if( isset($this->_supportedAttributes[ $name ]) ) 
+        if (isset($this->_supportedAttributes[ $name ]))
         {
             $c = count($args);
             $t = $this->_supportedAttributes[ $name ];
@@ -584,9 +585,10 @@ class Element
      */
     public function setAttributes($attributes)
     {
-        foreach( $attributes as $k => $val ) {
-            if ( $this->isIgnoredAttribute($k) )
+        foreach ($attributes as $k => $val) {
+            if ($this->isIgnoredAttribute($k)) {
                 continue;
+            }
 
             // this is for adding new class name with
             //   +=newClass
