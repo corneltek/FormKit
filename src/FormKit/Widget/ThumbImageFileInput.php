@@ -72,6 +72,8 @@ class ThumbImageFileInput extends TextInput
 
     public $autoresize_types = array();
 
+    public $renderImageTag = false;
+
 
     /**
      * @var boolean Option to disable/enable exif.
@@ -92,6 +94,7 @@ class ThumbImageFileInput extends TextInput
      * @var boolean Option to enable file drop to upload.
      */
     public $dropupload = true;
+
 
     /**
      * HTML structure
@@ -115,10 +118,10 @@ class ThumbImageFileInput extends TextInput
         );
 
         parent::init($attributes);
-        $this->fileInput = new FileInput( $this->name, $attributes );
+        $this->fileInput = new FileInput( $this->name, $attributes);
 
         $this->imageCover = new Div(array('class' => 'formkit-image-cover'));
-        $this->imageCover->setAttributeValue('data-width', $this->dataWidth);
+        $this->imageCover->setAttributeValue('data-width', $this->dataWidth ?: 200);
         $this->imageCover->setAttributeValue('data-height', $this->dataHeight);
 
         $this->inputWrapper = new Div;
@@ -127,25 +130,31 @@ class ThumbImageFileInput extends TextInput
             ->addClass('formkit-image-wrapper');
 
         // if it has a value, generate img
-        if ( $this->value ) {
+        if ($this->renderImageTag && $this->value) {
             $this->image = new Element('img',array(
                 'src' => $this->prefix . $this->value,
             ));
             $this->imageCover->append($this->image);
         }
 
+        if ($this->value) {
+            $this->fileInput->setAttributeValue('data-image-src', $this->prefix . $this->value);
+        }
         if ($this->exif) {
             $this->fileInput->setAttributeValue('data-exif', 'true');
         }
         if ($this->autoresize) {
             $this->fileInput->setAttributeValue('data-autoresize','true');
         }
-        if ( $this->droppreview ) {
+        if ($this->droppreview) {
             $this->fileInput->setAttributeValue('data-droppreview','true');
         }
-        if ( $this->dropupload ) {
+        if ($this->dropupload) {
             $this->fileInput->setAttributeValue('data-dropupload','true');
         }
+
+        $this->fileInput->setAttributeValue('data-width', $this->dataWidth);
+        $this->fileInput->setAttributeValue('data-height', $this->dataHeight);
 
 
         $this->inputWrapper->append($this->imageCover);
@@ -165,18 +174,18 @@ class ThumbImageFileInput extends TextInput
             $label    = new Label(_("Use auto-resize"));
             $label->for($checkboxId);
             $resizeWrapper = new Div;
-            $resizeWrapper->append( $checkbox );
-            $resizeWrapper->append( $label );
+            $resizeWrapper->append($checkbox);
+            $resizeWrapper->append($label);
             $resizeWrapper->addClass("autoresize");
             $this->inputWrapper->append($resizeWrapper);
 
-            if ( $this->autoresize_type_input ) {
+            if ($this->autoresize_type_input) {
                 $resizeTypeWrapper = new Div;
                 $resizeTypeWrapper->addClass('autoresize-type');
-                $typeSelector = new SelectInput($this->name . '_autoresize_type', array(
+                $typeSelector = new SelectInput($this->name . '_autoresize_type', [
                     'options' => $this->autoresize_types,
-                    'value' => $this->autoresize_type,
-                ));
+                    'value'   => $this->autoresize_type,
+                ]);
                 $typeSelector->addClass('autoresize-type-selector');
                 $resizeTypeWrapper->append($typeSelector);
                 $this->inputWrapper->append($resizeTypeWrapper);
