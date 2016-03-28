@@ -1,9 +1,11 @@
 <?php
 namespace FormKit\Widget;
 use FormKit\Widget\SelectInput;
+use FormKit\Widget\HiddenInput;
 use FormKit\ResponseUtils;
 use DateTime;
 use DateTimeZone;
+use Exception;
 
 /**
  * DateHelper from Rails
@@ -13,12 +15,16 @@ use DateTimeZone;
 class DateSelectInput extends TextInput
 {
     public $class = array('formkit-widget','formkit-widget-dateselect');
+
+    /*
+     * we use hidden field but extends from TextInput because we need label.
+     */
     public $type = 'hidden';
 
     /**
-     * @var string display display format
+     * @var string The date display format. This geneartes the select inputs.
      */
-    public $format;
+    public $format = 'Ymd';
 
     /**
      * @var string date format for storage
@@ -28,8 +34,7 @@ class DateSelectInput extends TextInput
      *  const string ISO8601 = "Y-m-d\TH:i:sO";
      *
      */
-    public $data_format = DateTime::ATOM;
-
+    public $storageFormat = DateTime::ATOM;
 
     /**
      * @var boolean Convert date value to standard format (for front-end)
@@ -42,25 +47,34 @@ class DateSelectInput extends TextInput
 
     public $formatOptions = array();
 
-    public $dateValue;
+    protected $dateObject;
 
     public $timezone;
+
+    /**
+     * @var boolean Allow select could be empty.
+     */
+    public $allow_empty;
 
     public function init($a)
     {
         parent::init($a);
 
-        if( $this->value )
+        if ($this->value) {
             $this->loadValue();
+        }
 
-        if( ! $this->timezone )
-            $this->timezone = new DateTimeZone( ini_get('date.timezone') ?: 'Asia/Taipei' );
-        
-        if( ! $this->start_year )
+        if (! $this->timezone) {
+            $this->timezone = new DateTimeZone(ini_get('date.timezone') ?: 'Asia/Taipei' );
+        }
+
+        if (! $this->start_year) {
             $this->start_year = 1980;
+        }
 
-        if( ! $this->end_year )
+        if (! $this->end_year) {
             $this->end_year = (int) date('Y');
+        }
 
         $this->formatOptions = array(
             'Y' => array(),
@@ -68,24 +82,24 @@ class DateSelectInput extends TextInput
             'd' => array(),
         );
 
-        foreach( range( $this->start_year ?: 1980, $this->end_year ) as $i )
+        foreach (range( $this->start_year ?: 1980, $this->end_year ) as $i )
             $this->formatOptions['Y'][ $i ] = $i;
 
-        foreach( range( $this->start_year ?: 1980, $this->end_year ) as $i )
+        foreach (range( $this->start_year ?: 1980, $this->end_year ) as $i )
             $this->formatOptions['y'][ $i ] = substr($i,-2);
 
-        foreach( range(1,12) as $m )
+        foreach (range(1,12) as $m)
             $this->formatOptions['m'][ sprintf('%02d',$m) ] = sprintf('%02d',$m);
 
         $months = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
-        foreach( $months as $m )
+        foreach ($months as $m)
             $this->formatOptions['M'][ $m ] = $m;
 
-        foreach( range(1,31) as $d )
+        foreach (range(1,31) as $d)
             $this->formatOptions['d'][ sprintf('%02d',$d) ] = sprintf('%02d',$d);
 
-        $days = array("Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed" );
-        foreach( $days as $d )
+        $weekDays = array("Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed" );
+        foreach ($weekDays as $d)
             $this->formatOptions['D'][ $d ] = $d;
 
         foreach( range(1,31) as $j )
@@ -101,71 +115,94 @@ class DateSelectInput extends TextInput
             'PM' => 'PM',
         );
 
-        foreach( range(1,12) as $g )
+        foreach (range(1,12) as $g) {
             $this->formatOptions['g'][ $g ] = $g;
+        }
 
-        foreach( range(0,23) as $G )
+        foreach (range(0,23) as $G) {
             $this->formatOptions['G'][ $G ] = $G;
+        }
 
-        foreach( range(1,12) as $h )
+        foreach (range(1,12) as $h) {
             $this->formatOptions['h'][ $h ] = $h;
+        }
 
-        foreach( range(0,23) as $H )
+        foreach (range(0,23) as $H) {
             $this->formatOptions['H'][ sprintf('%02d',$h) ] = sprintf('%02d',$h);
+        }
 
-        foreach( range(0,59) as $i )
+        foreach (range(0,59) as $i) {
             $this->formatOptions['i'][ sprintf('%02d',$i) ] = sprintf('%02d',$i);
+        }
 
-        foreach( range(0,59) as $s )
+        foreach (range(0,59) as $s) {
             $this->formatOptions['s'][ sprintf('%02d',$s) ] = sprintf('%02d',$s);
+        }
     }
 
-    public function loadValue()
+    protected function loadValue()
     {
-        $this->dateValue = $this->inflateDate($this->value);
-        // $this->timezone = $this->dateValue->getTimezone();
-        $this->value = $this->deflateDate($this->dateValue);
+        // If value is defined, we can parse the date with the storage format.
+        if ($this->value) {
+            if ($dateObject = $this->inflateDate($this->value)) {
+                $this->dateObject = $dateObject;
+                if ($tz = $this->dateObject->getTimezone()) {
+                    $this->timezone = $tz;
+                }
+            }
+        }
     }
 
-    public function inflateDate($date)
+    protected function inflateDate($date)
     {
-        if( is_object($date) )
+        if (is_object($date))
             return $date;
-        if( is_string($date) ) {
-            $newDate = DateTime::createFromFormat($this->data_format,$date);
-            if($newDate === false)
+        if (is_string($date)) {
+            $newDate = DateTime::createFromFormat($this->storageFormat,$date);
+
+            // try to parse with display format
+            if ($newDate === false)
                 $newDate = DateTime::createFromFormat($this->format,$date);
             return $newDate;
         }
-        if( is_numeric($date) )
+        if (is_numeric($date)) {
             return new DateTime('@' . $date);
+        }
     }
 
-    public function deflateDate($date)
+    protected function deflateDate($date)
     {
-        if( is_object($date) ) 
-            return $date->format($this->data_format);
-        if( is_numeric($date) )
-            return date($this->data_format,(int)$date);
+        if (is_object($date)) {
+            return $date->format($this->format);
+        }
+        if (is_numeric($date)) {
+            return date($this->format, intval($date));
+        }
         return $date;
     }
 
-    public function render( $attributes = array() )
+    public function render($attributes = array())
     {
         $this->setAttributes($attributes);
-        $formatIds = array();
+
+
         $selfId = $this->getSerialId();
         $this->setId($selfId);
 
+
+        // @var array[string]string formatIds array contains the format charactor and corresponding
+        // element ID.
+        $formatIds = array();
         $nodes = array();
-        for ( $i = 0 ; $i < strlen($this->format) ; $i++ ) {
+        for ($i = 0 ; $i < strlen($this->format) ; $i++ ) {
             $c = $this->format[ $i ];
-            if( isset($this->formatOptions[$c]) ) {
+            if (isset($this->formatOptions[$c])) {
                 $value = null;
-                if( $this->dateValue )
-                    $value = $this->dateValue->format($c);
-                elseif ( $this->value )
+                if ($this->dateObject) {
+                    $value = $this->dateObject->format($c);
+                } else if ($this->value) {
                     $value = $this->value;
+                }
 
                 $select = new SelectInput(array(
                     'options' => $this->formatOptions[$c],
@@ -190,14 +227,13 @@ class DateSelectInput extends TextInput
 $(function() {
     var s = document.getElementById('<?=$selfId?>');
     var columns = <?=json_encode($formatIds)?>;
-    var format = '<?=$this->format ?>';
-    var data_format = '<?=$this->data_format?>';
+    var format = '<?=$this->storageFormat?>';
     function updater() {
         var datestr = '';
         for ( var i = 0; i < format.length ; i++ ) {
             var c = format[i];
             var sid = columns[c];
-            if(sid) {
+            if (sid) {
                 datestr += document.getElementById(sid).value;
             } else {
                 datestr += c;
@@ -209,7 +245,7 @@ $(function() {
         // parse datestring
         var d = new Date(datestr);
         // get timestamp and add timezone
-        // <?php // d = new Date( d.getTime() + <?=$this->timezone->getOffset( $this->dateValue )?> ); ?>
+        // <?php // d = new Date( d.getTime() + <?=$this->timezone->getOffset( $this->dateObject )?> ); ?>
         // use built-in date formatter
         s.value = d.getFullYear() 
             + '-' + (d.getMonth() + 1)
@@ -220,9 +256,9 @@ $(function() {
 <?php else: ?>
         s.value = datestr;
 <?php endif ?>
-        if( window.console ) console.log(s.value);
+        // console.log('debug date', s.value);
     }
-    for( var c in columns ) {
+    for (var c in columns) {
         var id = columns[c];
         if( typeof jQuery !== 'undefined' ) {
             $('#' + id).bind('change',updater);
@@ -236,34 +272,6 @@ $(function() {
         $script = ob_get_contents();
         ob_end_clean();
         return parent::render() . $this->_renderNodes($nodes) . $script;
-        /*
-        $yearS = new SelectInput(array(
-            'options' => $this->year_range,
-        ));
-        $yearS->setId( $yearId = $this->getSerialId() );
-
-        $monthS = new SelectInput(array(
-            'options' => $this->month_range
-        ));
-        $monthS->setId( $monthId = $this->getSerialId() );
-
-        $dayS = new SelectInput(array(
-            'options' => $this->day_range
-        ));
-        $dayS->setId( $dayId = $this->getSerialId() );
-
-        spl_autoload_call('FormKit\ResponseUtils');
-        block_start(); ?>
-        <script>
-
-        </script>
-        <?php $html = block_end();
-
-        $this->append($yearS);
-        $this->append($monthS);
-        $this->append($dayS);
-        return parent::render( $attributes ) . $html;
-        */
     }
 }
 
