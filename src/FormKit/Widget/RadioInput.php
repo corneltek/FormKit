@@ -7,6 +7,8 @@ class RadioInput extends BaseWidget
 
     public $options = array();
 
+    public $tagName = 'div';
+
     /* render format option */
     public $render_format = '{radio} {label}';
 

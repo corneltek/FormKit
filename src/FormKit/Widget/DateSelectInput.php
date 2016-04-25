@@ -208,6 +208,7 @@ class DateSelectInput extends TextInput
                     'options' => $this->formatOptions[$c],
                     'value' => $value,
                     'allow_empty' => $this->allow_empty,
+                    'class' => '+=form-control',
                 ));
                 $id = $select->getSerialId();
                 // $select->setId($id);
@@ -271,7 +272,12 @@ $(function() {
 <?php
         $script = ob_get_contents();
         ob_end_clean();
-        return parent::render() . $this->_renderNodes($nodes) . $script;
+        return '<div class="form-inline">'
+            . parent::render()
+            . $this->_renderNodes($nodes)
+            . $script
+            . '</div>'
+            ;
     }
 }
 
