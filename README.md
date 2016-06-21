@@ -160,23 +160,8 @@ Availabel Form Widgets
 * AjaxCompleteInput
 * CanvasInput
 
-
-Requirement
------------
-
-* AssetKit
-* Onion
-
 Installation
 ------------
-In our system, we use `onion` installer tool to install dependencies:
-
-    $ onion install
-
-Or install through:
-
-    $ pear install -f package.xml
-
 Install assets for demo:
 
     $ assetkit install
