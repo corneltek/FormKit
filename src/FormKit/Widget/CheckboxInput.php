@@ -59,10 +59,20 @@ class CheckboxInput extends TextInput
         $this->setAttributes( $attributes );
         ob_start();
         $fieldId = $this->generateSerialId();
-        ?><input id="<?= $fieldId ?>" <?=$this->renderAttributes()?>
-            <?php echo $this->value || $this->checked ? 'checked' : ''; ?>
-            value="<?= $this->value || $this->checked ? '1' : '0'; ?>"
-            onclick="this.value = this.checked ? '1' : '0'; jQuery(this).triggerHandler('change');"/><?php
+        ?><input id="<?= $fieldId ?>" type="hidden" 
+            name="<?= $this->name ?>" 
+            value="<?= $this->checked ? '1' : '0'; ?>"/>
+
+        <input 
+            <?php 
+            echo " data-hidden-id=\"$fieldId\" ";
+            echo $this->renderAttributes();
+            echo $this->checked ? 'checked' : ''; ?>
+        onclick=" 
+            var el = document.getElementById('<?= $fieldId ?>');
+                el.value = el.value != '1' ? '1' : '0';
+                $(el).triggerHandler('change');
+        "/><?php
         $html = ob_get_contents();
         ob_end_clean();
         return $html;
