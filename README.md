@@ -1,6 +1,7 @@
 FormKit
 ========
 
+[![Build Status](https://travis-ci.org/corneltek/FormKit.svg?branch=master)](https://travis-ci.org/corneltek/FormKit)
 [![Latest Stable Version](https://poser.pugx.org/corneltek/formkit/v/stable)](https://packagist.org/packages/corneltek/formkit)
 [![Total Downloads](https://poser.pugx.org/corneltek/formkit/downloads)](https://packagist.org/packages/corneltek/formkit)
 [![Latest Unstable Version](https://poser.pugx.org/corneltek/formkit/v/unstable)](https://packagist.org/packages/corneltek/formkit)
