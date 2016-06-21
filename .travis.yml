@@ -10,7 +10,7 @@ install:
 - travis_retry composer install
 before_script:
 - phpenv rehash
-script: phpunit
+script: phpunit -c phpunit.xml.dist
 after_success:
 - php vendor/bin/coveralls -v
 cache:
