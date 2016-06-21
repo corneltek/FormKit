@@ -1,6 +1,14 @@
 FormKit
 ========
 
+[![Latest Stable Version](https://poser.pugx.org/corneltek/formkit/v/stable)](https://packagist.org/packages/corneltek/formkit)
+[![Total Downloads](https://poser.pugx.org/corneltek/formkit/downloads)](https://packagist.org/packages/corneltek/formkit)
+[![Latest Unstable Version](https://poser.pugx.org/corneltek/formkit/v/unstable)](https://packagist.org/packages/corneltek/formkit)
+[![License](https://poser.pugx.org/corneltek/formkit/license)](https://packagist.org/packages/corneltek/formkit)
+[![Monthly Downloads](https://poser.pugx.org/corneltek/formkit/d/monthly)](https://packagist.org/packages/corneltek/formkit)
+[![Daily Downloads](https://poser.pugx.org/corneltek/formkit/d/daily)](https://packagist.org/packages/corneltek/formkit)
+
+
 With FormKit library, you can integrate form widgets with your own frameworks,
 
 And of course, you can define your own form widgets for your applications easily.
