@@ -1,6 +1,6 @@
 <?php
 
-class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase
+class SeleniumTest_ extends PHPUnit_Extensions_SeleniumTestCase
 {
     protected $captureScreenshotOnFailure = TRUE;
 
