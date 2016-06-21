@@ -11,11 +11,18 @@ define your own layout engine too!
 
 
 
+INSTALL
+-------
 
 
+```sh
+composer require corneltek/formkit "^1.3"
+```
 
+USAGE
+-----
 
-For example, to use a text input widget:
+To use a text input widget:
 
 ```php
 $text = new FormKit\Widget\TextInput('username', array( 
