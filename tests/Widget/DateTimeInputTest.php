@@ -1,6 +1,6 @@
 <?php
 
-class DateTimeInputTest extends PHPUnit_Framework_TestCase
+class DateTimeInputTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

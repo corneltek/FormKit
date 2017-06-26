@@ -1,6 +1,6 @@
 <?php
 
-class DateSelectInputTest extends PHPUnit_Framework_TestCase
+class DateSelectInputTest extends \PHPUnit\Framework\TestCase
 {
     public function testDateSelectWithNormalFormat()
     {

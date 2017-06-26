@@ -1,6 +1,6 @@
 <?php
 
-class ClearDivTest extends PHPUnit_Framework_TestCase
+class ClearDivTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

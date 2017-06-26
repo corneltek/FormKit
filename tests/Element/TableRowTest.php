@@ -2,7 +2,7 @@
 use FormKit\Element\TableRow;
 use FormKit\Element\TableCell;
 
-class TableRowTest extends PHPUnit_Framework_TestCase
+class TableRowTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

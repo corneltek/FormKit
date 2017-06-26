@@ -1,6 +1,6 @@
 <?php
 
-class GridLayoutTest extends PHPUnit_Framework_TestCase
+class GridLayoutTest extends \PHPUnit\Framework\TestCase
 {
     public function test()
     {

@@ -1,5 +1,5 @@
 <?php
-class GenericLayoutTest extends PHPUnit_Framework_TestCase
+class GenericLayoutTest extends \PHPUnit\Framework\TestCase
 {
     public function testTextInput()
     {

@@ -1,6 +1,6 @@
 <?php
 
-class LabelTest extends PHPUnit_Framework_TestCase
+class LabelTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

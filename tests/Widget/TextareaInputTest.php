@@ -1,6 +1,6 @@
 <?php
 
-class TextareaInputTest extends PHPUnit_Framework_TestCase
+class TextareaInputTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

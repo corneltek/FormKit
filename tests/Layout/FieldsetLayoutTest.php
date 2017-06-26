@@ -1,6 +1,6 @@
 <?php
 
-class FieldsetLayoutTest extends PHPUnit_Framework_TestCase
+class FieldsetLayoutTest extends \PHPUnit\Framework\TestCase
 {
     public function testFieldsetLayoutWithTextInput()
     {

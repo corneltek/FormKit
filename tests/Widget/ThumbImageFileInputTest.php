@@ -1,6 +1,6 @@
 <?php
 
-class ThumbImageFileInputTest extends PHPUnit_Framework_TestCase
+class ThumbImageFileInputTest extends \PHPUnit\Framework\TestCase
 {
     public function test()
     {

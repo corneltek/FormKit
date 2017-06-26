@@ -1,6 +1,6 @@
 <?php
 
-class TimeInputTest extends PHPUnit_Framework_TestCase
+class TimeInputTest extends \PHPUnit\Framework\TestCase
 {
 
 

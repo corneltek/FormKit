@@ -1,7 +1,7 @@
 <?php
 use FormKit\ResponseUtils;
 
-class ResponseUtilsTest extends PHPUnit_Framework_TestCase
+class ResponseUtilsTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

@@ -1,6 +1,6 @@
 <?php
 
-class WidgetCollectionTest extends PHPUnit_Framework_TestCase
+class WidgetCollectionTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

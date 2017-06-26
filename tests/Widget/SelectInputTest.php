@@ -1,6 +1,6 @@
 <?php
 
-class SelectInputTest extends PHPUnit_Framework_TestCase
+class SelectInputTest extends \PHPUnit\Framework\TestCase
 {
     function test()
     {

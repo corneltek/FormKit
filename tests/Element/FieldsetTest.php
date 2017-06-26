@@ -2,7 +2,7 @@
 use FormKit\Element\Fieldset;
 use FormKit\Element\Legend;
 
-class FieldsetTest extends PHPUnit_Framework_TestCase
+class FieldsetTest extends \PHPUnit\Framework\TestCase
 {
     public function test()
     {

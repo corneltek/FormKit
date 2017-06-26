@@ -1,6 +1,6 @@
 <?php
 
-class FormKitTest extends PHPUnit_Framework_TestCase
+class FormKitTest extends \PHPUnit\Framework\TestCase
 {
     function testTextInput()
     {
@@ -33,9 +33,11 @@ class FormKitTest extends PHPUnit_Framework_TestCase
         ok($canvas);
     }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
     function testLoadFail()
     {
-        $this->setExpectedException('InvalidArgumentException');
         $blah = FormKit\FormKit::blah('blah');
     }
 
