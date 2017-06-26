@@ -1,6 +1,12 @@
 <?php
+
 namespace FormKit\Widget;
 
+use InvalidArgumentException;
+
+/**
+ * for boolean value, we cast the value into one and zero.
+ */
 function render_value($val) {
     if ( $val !== null ) {
         if ( is_bool($val) ) {
@@ -68,22 +74,28 @@ class SelectInput extends BaseWidget
          *     [ "Item 1" => 1, "Item 2" => 2, ... ]
          *
          */
-        if( $indexed ) {
-            foreach( $options as $i => $option ) {
-                if ( is_array( $option ) ) {
-                    $list[] = array(
-                        'label' => $option[0],
-                        'value' => render_value($option[1]),
-                    );
+        if ($indexed) {
+            foreach ($options as $i => $option) {
+                if (is_array($option)) {
+                    if (isset($option['value'])) {
+                        $list[] = $option;
+                    } else if (isset($option[1]) && count($option) === 2) {
+                        $list[] = [
+                            'label' => $option[0],
+                            'value' => render_value($option[1]),
+                        ];
+                    } else {
+                        throw new InvalidArgumentException("Incorrect option value structure.");
+                    }
                 } else {
-                    $list[] = array(
+                    $list[] = [
                         'label' => $option,
                         'value' => render_value($option),
-                    );
+                    ];
                 }
             }
         } else {
-            foreach( $options as $label => $option ) {
+            foreach($options as $label => $option ) {
                 $list[] = array(
                     'label' => $label,
                     'value' => render_value($option),
